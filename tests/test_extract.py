@@ -154,6 +154,30 @@ def test_non_numeric_revenue_value_downgrades_to_other(monkeypatch, tmp_path):
     assert outcome.facts[0].field is None
 
 
+def test_inventory_value_misclassified_as_revenue_is_downgraded(monkeypatch, tmp_path):
+    """Regression test for a real bug found during live testing (see
+    docs/FINDINGS.md): gpt-4o-mini classified "$2.5 million dollars of
+    blank soft goods" (inventory value) as revenue_usd even after the
+    prompt was tightened to exclude inventory explicitly. The deterministic
+    keyword backstop must catch what the prompt alone did not.
+    """
+    snapshot = "We have space to hold over $2.5 million dollars of blank soft goods."
+    payload = {
+        "claims": [
+            {
+                "field": "revenue_usd",
+                "value": "2500000",
+                "statement": "The company holds $2.5 million of blank soft goods.",
+                "quote": "space to hold over $2.5 million dollars of blank soft goods",
+                "model_confidence": "high",
+            }
+        ]
+    }
+    outcome = _run(monkeypatch, tmp_path, payload, snapshot_text=snapshot)
+    assert len(outcome.facts) == 1
+    assert outcome.facts[0].field is None  # downgraded to "other", not scored as scale
+
+
 def test_missing_quote_or_statement_is_rejected(monkeypatch, tmp_path):
     payload = {"claims": [{"field": "segment", "value": "x", "statement": "", "quote": ""}]}
     outcome = _run(monkeypatch, tmp_path, payload)

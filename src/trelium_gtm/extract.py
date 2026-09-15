@@ -45,6 +45,20 @@ _SEGMENT_VALUES = {e.value for e in SegmentLabel}
 _TRIGGER_VALUES = {e.value for e in Trigger if e != Trigger.OPS_HIRING}
 _OPS_SUBSIGNAL_VALUES = {e.value for e in OpsSubSignal}
 
+# Deterministic backstop for revenue_usd misclassification: prompt-level
+# instruction alone was insufficient in practice (verified live — a claim
+# about "$2.5 million dollars of blank soft goods" in inventory was still
+# tagged revenue_usd after tightening the prompt). If the supporting quote
+# contains any of these, the figure is describing something other than the
+# company's own annual revenue and the claim is downgraded to "other"
+# regardless of what field the model assigned. Consistent with this
+# project's own principle: verify in code, don't just ask more nicely.
+_REVENUE_DISQUALIFYING_KEYWORDS = (
+    "inventory", "warehouse", "square feet", "sq ft", "sq. ft", "space to hold",
+    "square foot", "raised", "funding", "valued at", "valuation", "capacity",
+    "invested", "investment of", "grant of", "loan of", "insured for",
+)
+
 _SYSTEM_PROMPT_TEMPLATE = """You are a careful research analyst extracting claims from ONE webpage of \
 company text for a GTM research tool. You must never invent or paraphrase.
 
@@ -57,8 +71,12 @@ claim, do not include that claim at all.
 outside knowledge about the company.
 3. Classify each claim into exactly one "field":
    - "segment": value must be exactly one of: {segment_values}
-   - "revenue_usd": value is annual revenue in US dollars as a plain number or \
-"NNNM"/"NNNB" string (e.g. "87000000" or "87M"), only if a specific figure appears
+   - "revenue_usd": value is the COMPANY'S OWN TOTAL ANNUAL REVENUE (sales/turnover) in US \
+dollars as a plain number or "NNNM"/"NNNB" string (e.g. "87000000" or "87M"), only if the \
+text specifically states an annual revenue or sales figure for the company. Do NOT use this \
+field for inventory value, warehouse capacity, funding raised, a single product's price, deal \
+size, or any dollar figure that is not the company's own annual revenue - classify those as \
+"other" instead.
    - "employee_count": value is a plain integer string, only if a specific headcount \
 appears in the text
    - "system": value is the name of one named software/platform/system mentioned \
@@ -212,6 +230,10 @@ def extract_claims(
         if field == "trigger" and value not in _TRIGGER_VALUES:
             field = "other"
         if field == "ops_subsignal" and value not in _OPS_SUBSIGNAL_VALUES:
+            field = "other"
+        if field == "revenue_usd" and any(
+            kw in quote.lower() for kw in _REVENUE_DISQUALIFYING_KEYWORDS
+        ):
             field = "other"
 
         parsed_value: object = value
