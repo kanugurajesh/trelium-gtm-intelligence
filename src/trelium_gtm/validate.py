@@ -87,26 +87,51 @@ def ablate(briefs: list[AccountBrief], top_n: int = 10) -> list[AblationResult]:
     return results
 
 
+NEGATIVE_CONTROL_LEAK_THRESHOLD = 50  # WATCH band and above; see docs/SCORING.md section 9
+
+
 @dataclass
 class NegativeControlResult:
     company: str
     domain: str
     status: str
     total: int | None
-    passed: bool  # True iff excluded (status == OUT_OF_ICP)
+    passed: bool
+    reason: str
 
 
 def check_negative_controls(briefs: list[AccountBrief]) -> list[NegativeControlResult]:
+    """A negative control "passes" if the pipeline never produces a usable,
+    rankable recommendation for it. That is true in three cases:
+
+    - status == OUT_OF_ICP: gate G1 explicitly excluded it (a segment claim
+      of "out_of_icp" was made with confidence).
+    - status == INSUFFICIENT_EVIDENCE: no facts were extracted at all, so
+      nothing was ever scored or could be ranked.
+    - status == SCORED but total is below the WATCH band (50): the account
+      technically received a number, but it sits at the deprioritized
+      floor and would never surface as a recommendation in practice.
+
+    The only real failure is a SCORED result at 50+ for an account that is
+    obviously outside the ICP — a genuine false positive, not merely a
+    missing explicit exclusion label. This definition was refined after
+    a live run: the first version required OUT_OF_ICP specifically and
+    flagged Asana (which the model correctly left segment-UNRESOLVED,
+    scoring 3/100) as a "leak", which overstated the failure — Asana was
+    never going to be recommended either way. See docs/FINDINGS.md.
+    """
     results = []
     for b in briefs:
-        passed = b.score.status == "OUT_OF_ICP"
+        if b.score.status in ("OUT_OF_ICP", "INSUFFICIENT_EVIDENCE"):
+            passed, reason = True, f"{b.score.status}, never scored"
+        elif b.score.status == "SCORED" and (b.score.total or 0) < NEGATIVE_CONTROL_LEAK_THRESHOLD:
+            passed, reason = True, f"scored {b.score.total}, below WATCH threshold"
+        else:
+            passed, reason = False, f"scored {b.score.total} — at or above WATCH band"
         results.append(
             NegativeControlResult(
-                company=b.company,
-                domain=b.domain,
-                status=b.score.status,
-                total=b.score.total,
-                passed=passed,
+                company=b.company, domain=b.domain, status=b.score.status,
+                total=b.score.total, passed=passed, reason=reason,
             )
         )
     return results

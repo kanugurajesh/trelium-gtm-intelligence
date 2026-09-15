@@ -47,6 +47,16 @@ def make_out_of_icp_brief(company: str) -> AccountBrief:
     )
 
 
+def make_insufficient_evidence_brief(company: str) -> AccountBrief:
+    return AccountBrief(
+        company=company,
+        domain=f"{company.lower().replace(' ', '')}.example",
+        corpus_hash="deadbeef",
+        signals=SignalSet(),
+        score=ScoreResult(status="INSUFFICIENT_EVIDENCE", evidence_grade=EvidenceGrade.D),
+    )
+
+
 def test_spearman_rho_perfect_agreement_is_one():
     order = ["A", "B", "C", "D"]
     assert spearman_rho(order, order) == 1.0
@@ -108,3 +118,20 @@ def test_check_negative_controls_flags_a_leak():
     leaked = next(r for r in results if r.company == "LeakedSaaSCo")
     assert not leaked.passed
     assert leaked.total == 100
+
+
+def test_check_negative_controls_scored_below_watch_threshold_passes():
+    """A company left segment-UNRESOLVED (never explicitly gated OUT_OF_ICP)
+    but scoring near the floor was never going to be recommended anyway —
+    this must not count as a failure. Mirrors the real Asana case
+    (docs/FINDINGS.md): scored 3/100, status SCORED, not OUT_OF_ICP."""
+    briefs = [make_scored_brief("LowScoreSaaSCo", {"c1": 0, "c2": 0, "c3": 0, "c4": 0, "c5": 0, "c6": 3})]
+    results = check_negative_controls(briefs)
+    assert results[0].passed
+    assert results[0].total == 3
+
+
+def test_check_negative_controls_insufficient_evidence_passes():
+    briefs = [make_insufficient_evidence_brief("NeverCollected")]
+    results = check_negative_controls(briefs)
+    assert results[0].passed

@@ -1,0 +1,156 @@
+{
+  "company": "Asana",
+  "domain": "asana.com",
+  "corpus_hash": "3fc76dd290b909f436f08e668758f53566065850e30b90a579506ea8b9fa46db",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_dd524fae92_1",
+      "statement": "85% of Fortune 100 companies choose Asana.",
+      "evidence_ids": [
+        "ev_dd524fae92"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_48c0debaed_2",
+      "statement": "Asana is recognized as a leader in Collaborative Work Management for three years in a row.",
+      "evidence_ids": [
+        "ev_48c0debaed"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_5b1c9fa40e_3",
+      "statement": "Asana is a leader in Work Management and OKR Software with more than 12,000 user reviews.",
+      "evidence_ids": [
+        "ev_5b1c9fa40e"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_08c7831a2c_4",
+      "statement": "Asana is the only platform that can support your company at any scale.",
+      "evidence_ids": [
+        "ev_08c7831a2c"
+      ],
+      "field": null,
+      "value": null
+    }
+  ],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [
+    {
+      "id": "ev_dd524fae92",
+      "source_url": "https://asana.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_34dbad98a5d3.txt",
+      "content_sha256": "1fe028ba81eccb5e04b236910884cc320c3c2bbb4f1821d06b6ea7aef11ac422",
+      "quote": "85% of Fortune 100 companies choose Asana¹",
+      "quote_offset": 1897
+    },
+    {
+      "id": "ev_48c0debaed",
+      "source_url": "https://asana.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_34dbad98a5d3.txt",
+      "content_sha256": "1fe028ba81eccb5e04b236910884cc320c3c2bbb4f1821d06b6ea7aef11ac422",
+      "quote": "A Leader in the Collaborative Work Management three years in a row",
+      "quote_offset": 8461
+    },
+    {
+      "id": "ev_5b1c9fa40e",
+      "source_url": "https://asana.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_34dbad98a5d3.txt",
+      "content_sha256": "1fe028ba81eccb5e04b236910884cc320c3c2bbb4f1821d06b6ea7aef11ac422",
+      "quote": "A leader in Work Management and OKR Software with more than 12,000 user reviews",
+      "quote_offset": 8542
+    },
+    {
+      "id": "ev_08c7831a2c",
+      "source_url": "https://asana.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_34dbad98a5d3.txt",
+      "content_sha256": "1fe028ba81eccb5e04b236910884cc320c3c2bbb4f1821d06b6ea7aef11ac422",
+      "quote": "The only platform that can support your company at any scale",
+      "quote_offset": 8643
+    }
+  ],
+  "signals": {
+    "segment_label": "unresolved",
+    "segment_tier": "UNRESOLVED",
+    "segment_signal": null,
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "asana.com"
+    ],
+    "tier_1_2_fact_count": 4,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 3,
+    "components": {
+      "c1": 0,
+      "c2": 0,
+      "c3": 0,
+      "c4": 0,
+      "c5": 0,
+      "c6": 3
+    },
+    "contributing_signals": {
+      "c1": [],
+      "c2": [],
+      "c3": [],
+      "c4": [],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "Segment unconfirmed from primary sources",
+    "No sourced scale figure; scale scored 0",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM",
+    "1/5 extracted claims failed verbatim-quote verification and were discarded"
+  ],
+  "flags": []
+}

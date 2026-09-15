@@ -178,6 +178,49 @@ def test_inventory_value_misclassified_as_revenue_is_downgraded(monkeypatch, tmp
     assert outcome.facts[0].field is None  # downgraded to "other", not scored as scale
 
 
+def test_years_of_experience_misclassified_as_employee_count_is_downgraded(monkeypatch, tmp_path):
+    """Regression test for a second real bug found during the manual claim
+    audit (docs/FINDINGS.md): gpt-4o-mini tagged "over 25 years of
+    experience" as employee_count=25 for High Caliber Line. Same class of
+    error as the revenue/inventory bug: a number without checking what it
+    actually counts.
+    """
+    snapshot = "We've grown into an award-winning company with over 25 years of experience."
+    payload = {
+        "claims": [
+            {
+                "field": "employee_count",
+                "value": "25",
+                "statement": "The company has over 25 years of experience.",
+                "quote": "grown into an award-winning company with over 25 years of experience",
+                "model_confidence": "medium",
+            }
+        ]
+    }
+    outcome = _run(monkeypatch, tmp_path, payload, snapshot_text=snapshot)
+    assert len(outcome.facts) == 1
+    assert outcome.facts[0].field is None
+
+
+def test_real_employee_count_with_the_word_employees_is_accepted(monkeypatch, tmp_path):
+    snapshot = "With more than 1,800 employees in 42 global offices, we operate worldwide."
+    payload = {
+        "claims": [
+            {
+                "field": "employee_count",
+                "value": "1800",
+                "statement": "The company has more than 1,800 employees.",
+                "quote": "With more than 1,800 employees in 42 global offices",
+                "model_confidence": "high",
+            }
+        ]
+    }
+    outcome = _run(monkeypatch, tmp_path, payload, snapshot_text=snapshot)
+    assert len(outcome.facts) == 1
+    assert outcome.facts[0].field == "employee_count"
+    assert outcome.facts[0].value == 1800.0
+
+
 def test_missing_quote_or_statement_is_rejected(monkeypatch, tmp_path):
     payload = {"claims": [{"field": "segment", "value": "x", "statement": "", "quote": ""}]}
     outcome = _run(monkeypatch, tmp_path, payload)

@@ -59,6 +59,15 @@ _REVENUE_DISQUALIFYING_KEYWORDS = (
     "invested", "investment of", "grant of", "loan of", "insured for",
 )
 
+# Same problem, same fix, found on the same live batch: "over 25 years of
+# experience" was tagged employee_count=25 (High Caliber Line). A number is
+# only a headcount if the quote actually says so; require a positive
+# indicator rather than trying to blacklist every non-headcount phrasing.
+_EMPLOYEE_COUNT_REQUIRED_KEYWORDS = (
+    "employee", "staff", "team of", "workforce", "professional", "personnel",
+    "headcount", "workers", "people work",
+)
+
 _SYSTEM_PROMPT_TEMPLATE = """You are a careful research analyst extracting claims from ONE webpage of \
 company text for a GTM research tool. You must never invent or paraphrase.
 
@@ -233,6 +242,10 @@ def extract_claims(
             field = "other"
         if field == "revenue_usd" and any(
             kw in quote.lower() for kw in _REVENUE_DISQUALIFYING_KEYWORDS
+        ):
+            field = "other"
+        if field == "employee_count" and not any(
+            kw in quote.lower() for kw in _EMPLOYEE_COUNT_REQUIRED_KEYWORDS
         ):
             field = "other"
 
