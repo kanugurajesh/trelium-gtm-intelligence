@@ -1,0 +1,104 @@
+{
+  "company": "SanMar",
+  "domain": "sanmar.com",
+  "corpus_hash": "e3cc3ce6241bfaf3d7abdce5cfc1dfa8c2d0b1021d342622ab28dd13bb9969d1",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_d3d015d9e8_1",
+      "statement": "SanMar has more than 5,000 employees.",
+      "evidence_ids": [
+        "ev_d3d015d9e8"
+      ],
+      "field": "employee_count",
+      "value": 5000.0
+    }
+  ],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [
+    {
+      "id": "ev_d3d015d9e8",
+      "source_url": "https://sanmar.com/aboutus",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_9ca434686f3d.txt",
+      "content_sha256": "24a847f0b3c50891c16771a34a24b91bcbca7e0ab6c458c1526c978bbe47f552",
+      "quote": "SanMar expanded from a mom-and-pop operation to a US leader with more than 5,000 employees.",
+      "quote_offset": 11092
+    }
+  ],
+  "signals": {
+    "segment_label": "unresolved",
+    "segment_tier": "UNRESOLVED",
+    "segment_signal": null,
+    "scale_band": "LARGE",
+    "scale_basis": "headcount",
+    "scale_signal": {
+      "id": "sig_scale_fct_d3d015d9e8_1",
+      "kind": "scale",
+      "value": "LARGE",
+      "evidence_ids": [
+        "ev_d3d015d9e8"
+      ],
+      "fact_ids": [
+        "fct_d3d015d9e8_1"
+      ],
+      "published_at": null
+    },
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "sanmar.com"
+    ],
+    "tier_1_2_fact_count": 1,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": true,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 10,
+    "components": {
+      "c1": 0,
+      "c2": 0,
+      "c3": 0,
+      "c4": 8,
+      "c5": 0,
+      "c6": 2
+    },
+    "contributing_signals": {
+      "c1": [],
+      "c2": [],
+      "c3": [],
+      "c4": [
+        "sig_scale_fct_d3d015d9e8_1"
+      ],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [
+      "ECOSYSTEM_AMBIGUOUS"
+    ],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "Segment unconfirmed from primary sources",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Failed to collect https://careers.sanmar.com/: Blocked by robots.txt",
+    "Not de-duplicated against Trelium CRM",
+    "1/2 extracted claims failed verbatim-quote verification and were discarded"
+  ],
+  "flags": [
+    "ECOSYSTEM_AMBIGUOUS"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_5ca09ede5a_0",
+        "fct_eb72d53d93_0",
+        "fct_102d05aa9b_3"
+      ],
+      "reason": "As a supplier in the promotional products industry, High Caliber Line likely engages in quoting for custom orders, which is critical for managing client expectations and pricing.",
+      "statement": "The quoting process may be worth investigating at High Caliber Line, given its role as a promotional products supplier and the scale of production.",
+      "validation_questions": [
+        {
+          "kills_if": "They do not have a formal quoting process.",
+          "question": "How does your team handle the quoting process for promotional products?"
+        }
+      ],
+      "workflow_id": "WF_QUOTING"
+    },
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_102d05aa9b_3"
+      ],
+      "reason": "With the production of approximately 30 million items annually, maintaining visibility on order status could be crucial for operational efficiency and customer satisfaction.",
+      "statement": "Order status tracking may be worth investigating at High Caliber Line, considering the high volume of production and the need for effective order management.",
+      "validation_questions": [
+        {
+          "kills_if": "They do not track order status.",
+          "question": "What system do you use to track the status of orders?"
+        }
+      ],
+      "workflow_id": "WF_ORDER_STATUS"
+    }
+  ]
+}

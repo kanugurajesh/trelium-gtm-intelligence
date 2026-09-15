@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Interested in a job opportunity at one of the leading suppliers of promotional products?",
+      "statement": "HIRSCH is one of the leading suppliers of promotional products.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}

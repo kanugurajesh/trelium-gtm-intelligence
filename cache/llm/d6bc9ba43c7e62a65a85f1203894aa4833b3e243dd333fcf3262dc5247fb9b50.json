@@ -1,0 +1,46 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Staples Promotional Products is The Brand Love, Built Better, Together,\u2122 company.",
+      "statement": "Staples Promotional Products is The Brand Love, Built Better, Together,\u2122 company.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Nike rates our decoration quality 3 million swooshes!",
+      "statement": "Nike rates the decoration quality of Staples Promotional Products.",
+      "value": "Nike rates our decoration quality 3 million swooshes!"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "It runs on 100% renewable energy and was awarded a silver medal for sustainability by EcoVadis.",
+      "statement": "The decoration and distribution center runs on 100% renewable energy and received a silver medal for sustainability.",
+      "value": "It runs on 100% renewable energy and was awarded a silver medal for sustainability by EcoVadis."
+    },
+    {
+      "field": "employee_count",
+      "model_confidence": "high",
+      "quote": "75 Years in Business",
+      "statement": "Staples Promotional Products has been in business for 75 years.",
+      "value": "75"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "We stock and fulfill merchandise from 40+ warehouses worldwide.",
+      "statement": "Staples Promotional Products stocks and fulfills merchandise from over 40 warehouses worldwide.",
+      "value": "We stock and fulfill merchandise from 40+ warehouses worldwide."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "We also work with Village Northwest Unlimited to employ neurodivergent talent in our operations.",
+      "statement": "Staples Promotional Products works with Village Northwest Unlimited to employ neurodivergent talent.",
+      "value": "We also work with Village Northwest Unlimited to employ neurodivergent talent in our operations."
+    }
+  ]
+}

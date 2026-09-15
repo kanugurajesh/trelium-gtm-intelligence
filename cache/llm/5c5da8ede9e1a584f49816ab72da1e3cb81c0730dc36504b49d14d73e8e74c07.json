@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "HIRSCH is built on premium products that say something about the people who give them \u2014 and the brands that stand behind them.",
+      "statement": "HIRSCH is built on premium products that say something about the people who give them.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}

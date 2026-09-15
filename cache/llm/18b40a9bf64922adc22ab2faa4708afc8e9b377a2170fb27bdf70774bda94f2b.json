@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "Powered by Shopify",
+      "statement": "Ball Pro is powered by Shopify.",
+      "value": "Shopify"
+    }
+  ]
+}

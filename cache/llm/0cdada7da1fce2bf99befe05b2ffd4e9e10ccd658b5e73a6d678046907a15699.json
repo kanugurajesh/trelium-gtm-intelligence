@@ -1,0 +1,18 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "We\u2019re proud to be the most trusted, customer-focused supplier in the blank apparel industry.",
+      "statement": "SanMar is a trusted, customer-focused supplier in the blank apparel industry.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "employee_count",
+      "model_confidence": "high",
+      "quote": "SanMar expanded from a mom-and-pop operation to a US leader with more than 5,000 employees.",
+      "statement": "SanMar has more than 5,000 employees.",
+      "value": "5000"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "High Caliber Line (HCL) is a family-owned and operated business that has been a trusted name in the promotional products industry since 1999.",
+      "statement": "High Caliber Line (HCL) is a trusted name in the promotional products industry.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "employee_count",
+      "model_confidence": "high",
+      "quote": "From our humble beginnings specializing in lapel pins, we've grown into an award-winning company with over 25 years of experience.",
+      "statement": "High Caliber Line has over 25 years of experience.",
+      "value": "25"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Today, we operate three state-of-the-art facilities in the Greater Los Angeles area, including a 100,000 sq. ft. production and office space in Southern California, where we produce approximately 30 million items annually.",
+      "statement": "HCL operates three state-of-the-art facilities in the Greater Los Angeles area.",
+      "value": "HCL operates three state-of-the-art facilities in the Greater Los Angeles area."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Today, we operate three state-of-the-art facilities in the Greater Los Angeles area, including a 100,000 sq. ft. production and office space in Southern California, where we produce approximately 30 million items annually.",
+      "statement": "HCL produces approximately 30 million items annually.",
+      "value": "HCL produces approximately 30 million items annually."
+    }
+  ]
+}

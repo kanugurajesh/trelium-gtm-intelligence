@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "To be the industry\u2019s most trusted and responsive partner \u2014 winning through exceptional service, outstanding people, and first-to-market innovation.",
+      "statement": "High Caliber Line is a promotional products supplier.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}
