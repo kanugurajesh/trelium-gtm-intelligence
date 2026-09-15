@@ -1,0 +1,104 @@
+{
+  "company": "Ball Pro",
+  "domain": "ballpro.com",
+  "corpus_hash": "e3cd6058f8a3949bc713c74e4b35d5a0b157a4de6f8a825bcb567025793846ad",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_4ed7079f71_0",
+      "statement": "Ball Pro is powered by Shopify.",
+      "evidence_ids": [
+        "ev_4ed7079f71"
+      ],
+      "field": "system",
+      "value": "Shopify"
+    }
+  ],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [
+    {
+      "id": "ev_4ed7079f71",
+      "source_url": "https://ballpro.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_45f9ef42595f.txt",
+      "content_sha256": "81cb0adc45f9e60606587b143884b6d0edcc13cdee6667508c77793a5e1efb71",
+      "quote": "Powered by Shopify",
+      "quote_offset": 5085
+    }
+  ],
+  "signals": {
+    "segment_label": "unresolved",
+    "segment_tier": "UNRESOLVED",
+    "segment_signal": null,
+    "segment_candidates": [],
+    "segment_conflict": "none",
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
+    "stack_signals": [
+      {
+        "id": "sig_stack_commerce_store_shopify",
+        "kind": "stack",
+        "value": "COMMERCE_STORE:shopify",
+        "evidence_ids": [
+          "ev_4ed7079f71"
+        ],
+        "fact_ids": [
+          "fct_4ed7079f71_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "ballpro.com"
+    ],
+    "tier_1_2_fact_count": 1,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 5,
+    "components": {
+      "c1": 0,
+      "c2": 0,
+      "c3": 3,
+      "c4": 0,
+      "c5": 0,
+      "c6": 2
+    },
+    "contributing_signals": {
+      "c1": [],
+      "c2": [],
+      "c3": [
+        "sig_stack_commerce_store_shopify"
+      ],
+      "c4": [],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "Segment unconfirmed from primary sources",
+    "No sourced scale figure; scale scored 0",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM"
+  ],
+  "flags": []
+}

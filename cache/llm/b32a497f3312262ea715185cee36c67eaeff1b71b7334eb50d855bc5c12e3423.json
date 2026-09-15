@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "The Titleist Custom Outing Program is available for qualifying accounts. It supports custom golf ball and gear orders for tournaments, outings, corporate events, and country club programs.",
+      "statement": "The Titleist Custom Outing Program supports custom golf ball and gear orders for tournaments, outings, corporate events, and country club programs.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}

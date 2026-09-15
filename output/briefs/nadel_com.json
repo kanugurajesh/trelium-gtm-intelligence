@@ -1,7 +1,7 @@
 {
   "company": "Nadel",
   "domain": "nadel.com",
-  "corpus_hash": "fa9fb2de1663568e06055dfce9d5bf072455c3b0bc3c472b95ca6e1aac496eeb",
+  "corpus_hash": "1f37a2c3cc7c9944d64ec3b4a3b76575db2da817ae0838b233a48ce399a9c0dc",
   "facts": [
     {
       "kind": "fact",
@@ -9,6 +9,16 @@
       "statement": "Nadel first began creating branded merchandise in Culver City, California, in 1953.",
       "evidence_ids": [
         "ev_8fbca08313"
+      ],
+      "field": "segment",
+      "value": "adjacent_branded_merchandise"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_bd59a72ff0_0",
+      "statement": "Nadel is known best for their branded merchandise.",
+      "evidence_ids": [
+        "ev_bd59a72ff0"
       ],
       "field": "segment",
       "value": "adjacent_branded_merchandise"
@@ -26,10 +36,23 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_399b6eea1e89.txt",
+      "snapshot_path": "evidence/raw/src_399b6eea1e89_79d1fc26.txt",
       "content_sha256": "79d1fc26af0b6c99cf783bd54da2cac53d22eaab84a2e6de67d29372340a49c0",
       "quote": "Our founder, Jack Nadel, first began creating branded merchandise in Culver City, California, in 1953.",
       "quote_offset": 575
+    },
+    {
+      "id": "ev_bd59a72ff0",
+      "source_url": "https://nadel.com/services",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Services / capabilities",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_22836530037d_48bc62ac.txt",
+      "content_sha256": "48bc62ac12a32cc122f811b059b2b97d5f662082956b56c4fb9e2fdd775ab654",
+      "quote": "There's a good reason people know us best for our branded merchandise!",
+      "quote_offset": 568
     }
   ],
   "signals": {
@@ -40,10 +63,12 @@
       "kind": "segment",
       "value": "adjacent_branded_merchandise",
       "evidence_ids": [
-        "ev_8fbca08313"
+        "ev_8fbca08313",
+        "ev_bd59a72ff0"
       ],
       "fact_ids": [
-        "fct_8fbca08313_0"
+        "fct_8fbca08313_0",
+        "fct_bd59a72ff0_0"
       ],
       "published_at": null
     },
@@ -53,10 +78,12 @@
         "kind": "segment",
         "value": "adjacent_branded_merchandise",
         "evidence_ids": [
-          "ev_8fbca08313"
+          "ev_8fbca08313",
+          "ev_bd59a72ff0"
         ],
         "fact_ids": [
-          "fct_8fbca08313_0"
+          "fct_8fbca08313_0",
+          "fct_bd59a72ff0_0"
         ],
         "published_at": null
       }
@@ -109,6 +136,8 @@
     "No sourced scale figure; scale scored 0",
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://nadel.com: no extractable claims",
+    "Read https://nadel.com/careers: no extractable claims",
     "Not de-duplicated against Trelium CRM"
   ],
   "flags": []

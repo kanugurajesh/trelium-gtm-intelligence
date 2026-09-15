@@ -1,0 +1,10 @@
+# Generated artifacts and snapshots are byte-exact evidence; never let the
+# checkout platform rewrite their line endings (E1 hashes are computed over
+# the stored text).
+* text=auto eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.csv text eol=lf
+*.pdf binary

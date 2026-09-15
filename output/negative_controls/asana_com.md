@@ -44,5 +44,8 @@ No workflow hypothesis was generated for this account.
 - No sourced scale figure; scale scored 0
 - No order or ERP system identified in public sources
 - No growth, hiring or migration trigger found in public sources
+- Read https://asana.com/jobs: no extractable claims
+- Read https://asana.com/press: no extractable claims
+- Read https://asana.com/product/service-management: no extractable claims
 - Not de-duplicated against Trelium CRM
 - 1/5 extracted claims failed verbatim-quote verification and were discarded

@@ -3,16 +3,16 @@
 | # | Company | Score | Band | Grade | Flags |
 |---|---|---|---|---|---|
 | 1 | Showdown Displays | 39 | DEPRIORITIZE | C | - |
-| 2 | HALO | 36 | DEPRIORITIZE | C | - |
-| 3 | High Caliber Line | 28 | DEPRIORITIZE | C | - |
-| 4 | Stran Promotional Solutions | 28 | DEPRIORITIZE | C | - |
+| 2 | Stran Promotional Solutions | 32 | DEPRIORITIZE | C | - |
+| 3 | Concord Marketing Solutions | 29 | DEPRIORITIZE | C | - |
+| 4 | HALO | 28 | DEPRIORITIZE | C | - |
 | 5 | Hirsch | 27 | DEPRIORITIZE | C | - |
-| 6 | Concord Marketing Solutions | 24 | DEPRIORITIZE | C | SEGMENT_CONFLICT_UNRESOLVED |
-| 7 | Nadel | 17 | DEPRIORITIZE | C | - |
-| 8 | SanMar | 10 | DEPRIORITIZE | C | ECOSYSTEM_AMBIGUOUS |
-| 9 | Ball Pro | 5 | DEPRIORITIZE | C | - |
-| 10 | Staples Promotional Products | 3 | DEPRIORITIZE | C | - |
-| 11 | LeaderPromos | 2 | DEPRIORITIZE | C | - |
+| 6 | Nadel | 17 | DEPRIORITIZE | C | - |
+| 7 | SanMar | 10 | DEPRIORITIZE | C | ECOSYSTEM_AMBIGUOUS |
+| 8 | Ball Pro | 5 | DEPRIORITIZE | C | - |
+| 9 | LeaderPromos | 4 | DEPRIORITIZE | C | - |
+| 10 | High Caliber Line | 3 | DEPRIORITIZE | C | - |
+| 11 | Staples Promotional Products | 3 | DEPRIORITIZE | C | - |
 | 12 | 4imprint | None | INSUFFICIENT_EVIDENCE | D | - |
 | 13 | American Solutions for Business | None | INSUFFICIENT_EVIDENCE | D | - |
 | 14 | Ariel Premium Supply | None | INSUFFICIENT_EVIDENCE | D | - |

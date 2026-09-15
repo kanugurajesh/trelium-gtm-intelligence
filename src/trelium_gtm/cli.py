@@ -24,6 +24,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_EVIDENCE_DIR = REPO_ROOT / "evidence"
 DEFAULT_CACHE_DIR = REPO_ROOT / "cache" / "llm"
 DEFAULT_OUTPUT_DIR = REPO_ROOT / "output" / "briefs"
+DEFAULT_PROSPECTS_CSV = REPO_ROOT / "data" / "prospects.csv"
 
 # Public customer / ecosystem-ambiguous names from docs/TRELIUM_RESEARCH_NOTES.md
 # section 2 and section 10. Matched case-insensitively against the CSV's
@@ -34,35 +35,106 @@ PUBLIC_CUSTOMER_NAMES = {
 }
 ECOSYSTEM_AMBIGUOUS_NAMES = {"s&s activewear", "sanmar"}
 
+# Which same-domain pages to look for from the homepage's navigation, in
+# priority order: (path-word prefixes, publisher label, title, max pages).
+# The first pass collected only "about" and "careers"; docs/FINDINGS.md
+# finding B predicted that the rubric's operational components could not
+# fire without deeper pages, so the second pass adds technology/
+# integrations, press/news and services/capabilities pages. Still at most
+# six requests per account, one at a time (R22).
+DISCOVERY_GROUPS: tuple[tuple[tuple[str, ...], str, str, int], ...] = (
+    (("about",), "Company website", "About", 1),
+    (("career", "job", "join"), "Company careers page", "Careers", 1),
+    (
+        ("integrat", "technolog", "software", "platform", "api"),
+        "Company website",
+        "Technology / integrations",
+        1,
+    ),
+    (("press", "news", "newsroom", "media", "blog"), "Company website", "Press / news", 1),
+    (
+        ("service", "capabilit", "solution", "fulfil", "decorat", "operation"),
+        "Company website",
+        "Services / capabilities",
+        1,
+    ),
+)
+
+
 def _discover_sources(domain: str, evidence_dir: Path) -> list[SourceSpec]:
-    """Fetch the homepage once, discover real about/careers links from its
-    navigation rather than guessing fixed paths blindly, and return a
-    small source list. The homepage's raw HTML is used only for link
-    discovery and is never itself persisted (R25) — only the cleaned text
-    snapshots collect_source normally writes are kept.
+    """Fetch the homepage once, discover real same-domain links from its
+    navigation rather than guessing fixed paths blindly, and return the
+    source list. The homepage's raw HTML is used only for link discovery
+    and is never itself persisted (R25); the fetched homepage text is
+    handed to the pipeline as a prefetched source so it is requested once.
     """
     homepage_url = f"https://{domain}"
-    sources = [SourceSpec(url=homepage_url, publisher="Company website", title="Home")]
     try:
         discovery = collect_source(homepage_url, evidence_dir, keep_html=True)
-    except Exception:
-        discovery = None
+    except Exception as exc:  # noqa: BLE001 - a transport error is a recorded gap, not a crash
+        from trelium_gtm.collect import CollectResult
 
-    if discovery and discovery.ok and discovery.raw_html:
-        for url in discover_links(discovery.raw_html, homepage_url, ("about",), max_links=1):
-            sources.append(SourceSpec(url=url, publisher="Company website", title="About"))
-        for url in discover_links(
-            discovery.raw_html, homepage_url, ("career", "job"), max_links=1
-        ):
-            sources.append(SourceSpec(url=url, publisher="Company careers page", title="Careers"))
+        discovery = CollectResult(
+            ok=False, url=homepage_url, snapshot_id="src_unfetched", error=f"Fetch failed: {exc!r}"
+        )
+
+    sources = [
+        SourceSpec(url=homepage_url, publisher="Company website", title="Home", prefetched=discovery)
+    ]
+    if not (discovery.ok and discovery.raw_html):
+        return sources
+
+    seen = {homepage_url}
+    for keywords, publisher, title, max_links in DISCOVERY_GROUPS:
+        for url in discover_links(discovery.raw_html, homepage_url, keywords, max_links=max_links):
+            if url in seen:
+                continue
+            seen.add(url)
+            sources.append(SourceSpec(url=url, publisher=publisher, title=title))
     return sources
 
 
+def _canonical_company(company: str, domain: str, csv_path: Path = DEFAULT_PROSPECTS_CSV) -> str:
+    """If ``domain`` is in the prospects CSV, use the CSV's company name.
+
+    The company name is part of the hypothesis prompt, so "halo" and "HALO"
+    are different cache keys and can produce different hypotheses for the
+    same evidence. Pinning the name to the dataset keeps a one-off `brief`
+    run reproducible against the committed batch.
+    """
+    if not csv_path.exists():
+        return company
+    with csv_path.open("r", encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            if row.get("domain", "").strip().lower() == domain.strip().lower():
+                canonical = row["company"].strip()
+                if canonical != company:
+                    print(
+                        f"NOTE: using dataset company name {canonical!r} for {domain} "
+                        f"(given {company!r}) so the cached run is reproducible.",
+                        file=sys.stderr,
+                    )
+                return canonical
+    return company
+
+
+def _write_brief(report_brief: AccountBrief, out_dir: Path, domain: str) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    safe_name = domain.replace(".", "_")
+    (out_dir / f"{safe_name}.json").write_text(
+        render_brief_json(report_brief), encoding="utf-8", newline="\n"
+    )
+    (out_dir / f"{safe_name}.md").write_text(
+        render_brief_markdown(report_brief), encoding="utf-8", newline="\n"
+    )
+
+
 def cmd_collect_brief(args: argparse.Namespace) -> None:
+    company = _canonical_company(args.company.strip(), args.domain.strip())
     sources = _discover_sources(args.domain, Path(args.evidence_dir))
-    name_key = args.company.strip().lower()
+    name_key = company.lower()
     report = run_account(
-        company=args.company,
+        company=company,
         domain=args.domain,
         sources=sources,
         evidence_dir=Path(args.evidence_dir),
@@ -70,29 +142,23 @@ def cmd_collect_brief(args: argparse.Namespace) -> None:
         as_of=date.today(),
         is_public_customer=name_key in PUBLIC_CUSTOMER_NAMES,
         is_ecosystem_ambiguous=name_key in ECOSYSTEM_AMBIGUOUS_NAMES,
+        inter_request_delay=args.delay,
     )
-    out_dir = Path(args.output_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    safe_name = args.domain.replace(".", "_")
-    (out_dir / f"{safe_name}.json").write_text(
-        render_brief_json(report.brief), encoding="utf-8", newline="\n"
-    )
-    (out_dir / f"{safe_name}.md").write_text(
-        render_brief_markdown(report.brief), encoding="utf-8", newline="\n"
-    )
-    print(f"{args.company}: status={report.brief.score.status} total={report.brief.score.total} "
+    _write_brief(report.brief, Path(args.output_dir), args.domain)
+    print(f"{company}: status={report.brief.score.status} total={report.brief.score.total} "
+          f"sources={report.sources_collected}/{len(sources)} "
           f"collection_errors={len(report.collection_errors)} "
           f"rejection_rate={report.extraction_rejection_rate}")
 
 
 def cmd_score_from(args: argparse.Namespace) -> None:
     brief = AccountBrief.model_validate_json(Path(args.from_path).read_text(encoding="utf-8"))
-    from trelium_gtm.signals import compute_evidence_age_months_min, compute_trigger_ages_months
+    from trelium_gtm.signals import compute_evidence_age_months_max, compute_trigger_ages_months
 
     trigger_ages = compute_trigger_ages_months(brief.signals, date.today())
-    evidence_age_min = compute_evidence_age_months_min(brief.evidence, date.today())
+    evidence_age_min = compute_evidence_age_months_max(brief.evidence, date.today())
     result = score_signals(
-        brief.signals, trigger_ages_months=trigger_ages, evidence_age_months_min=evidence_age_min
+        brief.signals, trigger_ages_months=trigger_ages, evidence_age_months_max=evidence_age_min
     )
     print(json.dumps(result.model_dump(mode="json"), indent=2))
     if result.total != brief.score.total:
@@ -132,21 +198,18 @@ def cmd_run_all(args: argparse.Namespace) -> None:
                 as_of=date.today(),
                 is_public_customer=name_key in PUBLIC_CUSTOMER_NAMES,
                 is_ecosystem_ambiguous=name_key in ECOSYSTEM_AMBIGUOUS_NAMES,
+                inter_request_delay=args.delay,
             )
         except Exception as exc:  # noqa: BLE001 - keep going across 30 accounts
             print(f"ERROR {company}: {exc!r}", file=sys.stderr)
             continue
 
-        safe_name = domain.replace(".", "_")
-        (out_dir / f"{safe_name}.json").write_text(
-            render_brief_json(report.brief), encoding="utf-8", newline="\n"
-        )
-        (out_dir / f"{safe_name}.md").write_text(
-            render_brief_markdown(report.brief), encoding="utf-8", newline="\n"
-        )
+        _write_brief(report.brief, out_dir, domain)
         print(
             f"[{i+1}/{limit}] {company}: status={report.brief.score.status} "
-            f"total={report.brief.score.total} errors={len(report.collection_errors)}"
+            f"total={report.brief.score.total} sources={report.sources_collected}/{len(sources)} "
+            f"errors={len(report.collection_errors)}",
+            flush=True,
         )
         if args.delay:
             time.sleep(args.delay)
@@ -185,6 +248,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_collect.add_argument("--evidence-dir", dest="evidence_dir", default=str(DEFAULT_EVIDENCE_DIR))
     p_collect.add_argument("--cache-dir", dest="cache_dir", default=str(DEFAULT_CACHE_DIR))
     p_collect.add_argument("--output-dir", dest="output_dir", default=str(DEFAULT_OUTPUT_DIR))
+    p_collect.add_argument("--delay", type=float, default=1.0, help="Seconds between page requests")
     p_collect.set_defaults(func=cmd_collect_brief)
 
     p_score = sub.add_parser("score", help="Rescore a stored brief to prove determinism")
@@ -197,7 +261,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_run_all.add_argument("--cache-dir", dest="cache_dir", default=str(DEFAULT_CACHE_DIR))
     p_run_all.add_argument("--output-dir", dest="output_dir", default=str(DEFAULT_OUTPUT_DIR))
     p_run_all.add_argument("--limit", type=int, default=0)
-    p_run_all.add_argument("--delay", type=float, default=1.0, help="Seconds between accounts")
+    p_run_all.add_argument(
+        "--delay", type=float, default=1.0, help="Seconds between requests and between accounts"
+    )
     p_run_all.set_defaults(func=cmd_run_all)
 
     p_rank = sub.add_parser("rank", help="Rank all generated briefs")

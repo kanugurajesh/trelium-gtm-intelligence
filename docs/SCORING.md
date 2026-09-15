@@ -100,6 +100,19 @@ evidence in the corpus. The model proposes a label; the mapping table decides th
 
 ---
 
+**Whose word?** A segment claim only counts when its quote contains the role word it asserts
+("supplier" or "manufacturer", "distributor", "decorator"/"print"/"embroidery"/"engraving",
+"branded merchandise"/"swag"/"promotional"). Added after the manual audit of the deeper-page
+pass found that every inaccurate fact in the top five briefs was a segment label attached to a
+quote that never stated the role: "several ways to connect with you" as supplier, a page heading
+as supplier, a mission statement as supplier (`docs/VALIDATION.md` V3, `docs/FINDINGS.md`
+finding C, sixth instance). C1 is the largest component and was being fed by the weakest
+quotes. Exclusion labels are not guarded: a missed exclusion is the conservative direction and
+the negative control covers it. Enforced in `extract.py`, tested in
+`tests/test_segment_support.py`.
+
+---
+
 ## 4. C2 - Operational and process complexity (0-20)
 
 Replaces the single +20 binary with eight independently evidenced sub-signals. Each requires
@@ -133,10 +146,17 @@ is manual. That distinction is stated on the brief itself.
 | ERP / accounting (NetSuite, SAP, Oracle, QuickBooks, Acumatica, Dynamics) | 5 | +1 | 6 |
 | Supplier data (PromoStandards, SanMar API, S&S API, alphabroder) | 4 | +1 | 5 |
 | CRM (Salesforce, HubSpot) | 3 | +1 | 4 |
-| Commerce / company store platform (Shopify, OrderMyGear, custom) | 3 | +1 | 4 |
+| Commerce / company store platform (Shopify, OrderMyGear, Magento/Adobe Commerce, BigCommerce, WooCommerce, custom) | 3 | +1 | 4 |
 | Generic office (Gmail, Outlook, Sheets, Excel, Slack) | 1 | 0 | 1 |
 
 **Cross-boundary bonus:** +3 if two or more distinct non-generic classes are present.
+
+**Whose system?** A system name only counts when the page presents it as the company's own.
+A quote that frames the system as the reader's ("connect with your ERP") or as a punch-out /
+e-procurement connection is kept as an unscored fact, not a stack signal. Added after a
+distributor's list of customer punch-out targets (Oracle, SAP, Ariba, ...) scored as its own
+ERP stack (`docs/FINDINGS.md`, finding C, fifth instance). Enforced in `extract.py` by a
+disqualifying-context check on the quote, the same mechanism as the revenue guard.
 
 **Generic-office rule:** the generic class scores 0 unless at least one non-generic class is
 also present. A company that mentions Excel and nothing else has told us nothing; a company
@@ -189,7 +209,13 @@ revenue [notes section 10].
 
 `GROWTH_HIGH` and `GROWTH_MODERATE` are mutually exclusive. Sum capped at 15.
 
-**Recency discount**, applied per trigger from `Evidence.published_at`:
+**Recency discount**, applied per trigger from `Evidence.published_at`. `published_at` is the
+page's publication date when the source provides one; otherwise, if the supporting quote names
+a year, the latest year it names (as 1 January of that year, the earliest possible date, so the
+discount is never under-applied); otherwise unknown, which scores at full weight. The quote-year
+rule was added after a press-page headline dated 2015 scored as a live growth trigger
+(`docs/FINDINGS.md`, finding C, fourth instance). A claim that dates itself is discounted for
+its own date; a claim that does not is not guessed at.
 
 | Age | Multiplier |
 |---|---|
@@ -211,12 +237,18 @@ Gemline [notes section 10]. The brief's framing changes; the account is not puni
 | 6+ tier-1/2 facts | 3 |
 | 3-5 tier-1/2 facts | 2 |
 | 1-2 tier-1/2 facts | 1 |
-| All key evidence under 12 months old | 2 |
-| All key evidence under 24 months old | 1 |
+| All evidence dated, and the oldest item under 12 months old | 2 |
+| All evidence dated, and the oldest item under 24 months old | 1 |
 | Any component corroborated by 2+ independent domains | 1 |
 
 Capped at 10. "Independent" means distinct registrable domains; two pages of one company site
 count once.
+
+"All evidence dated" is strict: one undated item means the freshness bonus is not earned,
+because a bonus that says every claim is fresh cannot be granted while some claim's age is
+unknown. (The first implementation keyed this bonus off the youngest item, which would have
+granted it on a single fresh quote; it never fired only because no evidence carried a date
+before the quote-year rule in section 7 existed.)
 
 **The honest problem.** Under hard rule H1, an account with thin evidence already scores low on
 C1-C5, because unsourced signals contribute nothing. Adding C6 on top double-counts research

@@ -1,0 +1,163 @@
+{
+  "company": "Showdown Displays",
+  "domain": "showdowndisplays.com",
+  "corpus_hash": "547d345a737419213571db4ff549d15d3d40e156e2ddfe523d267762d65aec13",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_36a34f08af_0",
+      "statement": "Showdown Displays stands as a premier, privately-held global manufacturer and supplier of cutting-edge visual communication, event, and display products.",
+      "evidence_ids": [
+        "ev_36a34f08af"
+      ],
+      "field": "segment",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_005658c530_1",
+      "statement": "Showdown Displays Europe has a dedicated team of 185 professionals.",
+      "evidence_ids": [
+        "ev_005658c530"
+      ],
+      "field": "employee_count",
+      "value": 185.0
+    }
+  ],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [
+    {
+      "id": "ev_36a34f08af",
+      "source_url": "https://showdowndisplays.com/Company?display=AboutUs",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_93dc0e0c6474.txt",
+      "content_sha256": "6429e1bd366688c22ff3de6db48c78204f7382030410f42ad3ce97238f66111b",
+      "quote": "Showdown Displays stands as a premier, privately-held global manufacturer and supplier of cutting-edge visual communication, event, and display products.",
+      "quote_offset": 7455
+    },
+    {
+      "id": "ev_005658c530",
+      "source_url": "https://showdowndisplays.com/Company?display=AboutUs",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_93dc0e0c6474.txt",
+      "content_sha256": "6429e1bd366688c22ff3de6db48c78204f7382030410f42ad3ce97238f66111b",
+      "quote": "Their dedicated team of 185 professionals operate out of two primary European locations, serving clients in more than 45 countries.",
+      "quote_offset": 9222
+    }
+  ],
+  "signals": {
+    "segment_label": "promotional_products_supplier",
+    "segment_tier": "A",
+    "segment_signal": {
+      "id": "sig_segment_promotional_products_supplier",
+      "kind": "segment",
+      "value": "promotional_products_supplier",
+      "evidence_ids": [
+        "ev_36a34f08af"
+      ],
+      "fact_ids": [
+        "fct_36a34f08af_0"
+      ],
+      "published_at": null
+    },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_36a34f08af"
+        ],
+        "fact_ids": [
+          "fct_36a34f08af_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
+    "scale_band": "SWEET_SPOT",
+    "scale_basis": "headcount",
+    "scale_signal": {
+      "id": "sig_scale_headcount_sweet_spot",
+      "kind": "scale",
+      "value": "SWEET_SPOT",
+      "evidence_ids": [
+        "ev_005658c530"
+      ],
+      "fact_ids": [
+        "fct_005658c530_1"
+      ],
+      "published_at": null
+    },
+    "scale_candidates": [
+      {
+        "id": "sig_scale_headcount_sweet_spot",
+        "kind": "scale",
+        "value": "SWEET_SPOT",
+        "evidence_ids": [
+          "ev_005658c530"
+        ],
+        "fact_ids": [
+          "fct_005658c530_1"
+        ],
+        "published_at": null
+      }
+    ],
+    "scale_conflict": false,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "showdowndisplays.com"
+    ],
+    "tier_1_2_fact_count": 2,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 39,
+    "components": {
+      "c1": 25,
+      "c2": 0,
+      "c3": 0,
+      "c4": 12,
+      "c5": 0,
+      "c6": 2
+    },
+    "contributing_signals": {
+      "c1": [
+        "sig_segment_promotional_products_supplier"
+      ],
+      "c2": [],
+      "c3": [],
+      "c4": [
+        "sig_scale_headcount_sweet_spot"
+      ],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM"
+  ],
+  "flags": []
+}

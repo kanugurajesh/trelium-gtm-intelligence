@@ -1,0 +1,19 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_b0ad63c02c_0"
+      ],
+      "reason": "The company's focus on custom orders suggests a need for efficient order entry workflows to manage these transactions.",
+      "statement": "Order entry processes for custom golf ball and gear orders may be worth investigating at Ball Pro, given its involvement in the Titleist Custom Outing Program which supports various custom orders.",
+      "validation_questions": [
+        {
+          "kills_if": "They use a fully automated system with no manual entry.",
+          "question": "How does Ball Pro handle the entry of custom orders for the Titleist Custom Outing Program?"
+        }
+      ],
+      "workflow_id": "WF_PO_ORDER_ENTRY"
+    }
+  ]
+}

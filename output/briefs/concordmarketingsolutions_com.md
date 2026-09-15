@@ -1,17 +1,16 @@
 # Concord Marketing Solutions
 
-Domain: `concordmarketingsolutions.com` | Corpus hash: `d1c4ff89be7f`
+Domain: `concordmarketingsolutions.com` | Corpus hash: `258dd29ca44f`
 
 > **Before any outreach:** this account has NOT been checked against Trelium's CRM or active pipeline. This tool has no visibility into existing customers, prospects or in-flight conversations. De-duplicate before contacting anyone.
 
-## Fit score: 24 / 100 — DEPRIORITIZE
+## Fit score: 29 / 100 — DEPRIORITIZE
 
 Evidence grade: **C**
-Flags: SEGMENT_CONFLICT_UNRESOLVED
 
 | Component | Points |
 |---|---|
-| Core vertical fit (0-25) | 20 |
+| Core vertical fit (0-25) | 25 |
 | Operational complexity (0-20) | 0 |
 | Software/ecosystem signals (0-15) | 0 |
 | Transaction/org scale (0-15) | 0 |
@@ -32,8 +31,8 @@ Confidence: **medium** | System boundaries crossed: 0
 *Why this role:* At smaller distributors the COO or a hands-on President typically owns day-to-day order operations directly.
 
 **Validate before outreach:**
-- How does Concord manage its supplier relationships and purchasing processes for inventory?
-  - *Kills the hypothesis if:* They have a fully automated supplier purchasing system with no manual intervention.
+- How does Concord manage its supplier relationships and purchasing processes for its inventory?
+  - *Kills the hypothesis if:* They have a fully automated supplier purchasing system in place.
 
 
 ## Verified facts
@@ -56,12 +55,26 @@ Confidence: **medium** | System boundaries crossed: 0
 **[6]** Concord was ranked 19 on the 2024 PPAI 100 Distributors.
   - Source: [Company website](https://concordmarketingsolutions.com/aboutf.htm) (retrieved 2026-09-15, tier 1) — "Most up to date, Concord was ranked 19 on the 2024 PPAI 100 Distributors."
 
+**[7]** Concord Marketing Solutions announces record growth in 2015.
+  - Source: [Company website](https://concordmarketingsolutions.com/events--news.htm) (retrieved 2026-09-15, tier 1) — "Concord Marketing Solutions announces record growth in 2015"
+
+**[8]** Concord Marketing Solutions makes Counselor 2024 Best Places to Work.
+  - Source: [Company website](https://concordmarketingsolutions.com/events--news.htm) (retrieved 2026-09-15, tier 1) — "Concord Marketing Solutions Makes Counselor 2024 Best Places to Work"
+
+**[9]** Concord Marketing Solutions makes PPAI's 2023 Greatest Companies to Work for List.
+  - Source: [Company website](https://concordmarketingsolutions.com/events--news.htm) (retrieved 2026-09-15, tier 1) — "Concord Marketing Solutions Makes PPAI's 2023 Greatest Companies to Work for List"
+
+**[10]** Concord Marketing Solutions named #20 on ASI Counselor’s Best Places to Work 2018.
+  - Source: [Company website](https://concordmarketingsolutions.com/events--news.htm) (retrieved 2026-09-15, tier 1) — "Concord Marketing Solutions named #20 on ASI Counselor’s Best Places to Work 2018."
+
+**[11]** Concord Marketing Solutions is a full-service corporate identity company.
+  - Source: [Company website](https://concordmarketingsolutions.com/global-solutions-.htm) (retrieved 2026-09-15, tier 1) — "Concord Marketing Solutions is a full-service corporate identity company with global distribution and sourcing capabilities."
+
 
 ## Research gaps
 
 - No sourced scale figure; scale scored 0
 - No order or ERP system identified in public sources
-- No growth, hiring or migration trigger found in public sources
+- Read https://concordmarketingsolutions.com/technology_001.htm: no extractable claims
 - Not de-duplicated against Trelium CRM
-- 1/7 extracted claims failed verbatim-quote verification and were discarded
-- SEGMENT CONFLICT (unresolved, equal evidence tier) — sources disagree on the company's segment: promotional_products_distributor (1 fact(s); https://concordmarketingsolutions.com); promotional_products_supplier (1 fact(s); https://concordmarketingsolutions.com/aboutf.htm). Winner 'promotional_products_distributor' chosen by breadth of support then fixed lexical order, C1 penalised; validate manually before relying on the segment.
+- 2/13 extracted claims failed verbatim-quote verification and were discarded

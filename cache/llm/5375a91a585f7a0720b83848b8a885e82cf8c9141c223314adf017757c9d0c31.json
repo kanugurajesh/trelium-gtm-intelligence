@@ -1,0 +1,39 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "The OS for human-agent teams",
+      "statement": "Asana is the OS for human-agent teams.",
+      "value": "operations_heavy_non_promo"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "85% of Fortune 100 companies choose Asana\u00b9",
+      "statement": "85% of Fortune 100 companies choose Asana.",
+      "value": "85% of Fortune 100 companies choose Asana"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "A Leader in the Collaborative Work Management three years in a row",
+      "statement": "Asana is recognized as a leader in Collaborative Work Management for three years in a row.",
+      "value": "A Leader in the Collaborative Work Management three years in a row"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "A leader in Work Management and OKR Software with more than 12,000 user reviews",
+      "statement": "Asana is a leader in Work Management and OKR Software with more than 12,000 user reviews.",
+      "value": "A leader in Work Management and OKR Software with more than 12,000 user reviews"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "The only platform that can support your company at any scale",
+      "statement": "Asana is the only platform that can support your company at any scale.",
+      "value": "The only platform that can support your company at any scale"
+    }
+  ]
+}

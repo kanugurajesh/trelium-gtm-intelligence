@@ -1,0 +1,36 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_6f454b5936_0",
+        "fct_176e5ec2b0_1"
+      ],
+      "reason": "The company's scale and technology deployment suggest a complex supply chain that could benefit from optimized purchasing workflows.",
+      "statement": "Supplier purchasing processes may be worth investigating at HALO, given its position as the largest promotional merchandise distributor and its support for a wide range of punch-out connections.",
+      "validation_questions": [
+        {
+          "kills_if": "HALO uses a completely manual process without any technology or systems in place.",
+          "question": "How does HALO manage supplier relationships and purchasing processes for branded merchandise?"
+        }
+      ],
+      "workflow_id": "WF_SUPPLIER_PURCHASING"
+    },
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_a51942b4b7_0",
+        "fct_6f454b5936_0"
+      ],
+      "reason": "The nature of the promotional merchandise industry often involves customized quotes, which could indicate a need for a streamlined quoting workflow.",
+      "statement": "Quoting processes may be worth investigating at HALO, as the company provides branded merchandise and likely engages in pricing negotiations with clients.",
+      "validation_questions": [
+        {
+          "kills_if": "HALO has a fixed pricing model with no need for customized quotes.",
+          "question": "What is the process for generating quotes for clients seeking branded merchandise?"
+        }
+      ],
+      "workflow_id": "WF_QUOTING"
+    }
+  ]
+}

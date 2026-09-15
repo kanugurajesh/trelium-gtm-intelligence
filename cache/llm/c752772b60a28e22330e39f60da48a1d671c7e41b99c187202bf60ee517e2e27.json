@@ -1,0 +1,35 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_4ed7079f71_0",
+        "fct_b0ad63c02c_0"
+      ],
+      "reason": "The use of Shopify suggests an online order entry system, and the custom orders indicate a need for efficient order processing workflows.",
+      "statement": "Order Entry / PO Entry processes may be worth investigating at Ball Pro, given its operation through Shopify and the support for custom orders in the Titleist Custom Outing Program.",
+      "validation_questions": [
+        {
+          "kills_if": "They do not have a structured order entry process.",
+          "question": "How does Ball Pro handle order entry for custom golf ball and gear orders?"
+        }
+      ],
+      "workflow_id": "WF_PO_ORDER_ENTRY"
+    },
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_b0ad63c02c_0"
+      ],
+      "reason": "Custom orders often necessitate quoting workflows to provide accurate pricing for different events and bulk orders.",
+      "statement": "Quoting processes could be worth investigating at Ball Pro, as the Titleist Custom Outing Program involves custom orders that may require tailored pricing.",
+      "validation_questions": [
+        {
+          "kills_if": "There is no quoting process for custom orders.",
+          "question": "Is there a quoting process in place for custom orders in the Titleist Custom Outing Program?"
+        }
+      ],
+      "workflow_id": "WF_QUOTING"
+    }
+  ]
+}

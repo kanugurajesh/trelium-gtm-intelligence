@@ -97,7 +97,7 @@ between systems [notes section 1].
 | ERP / accounting | NetSuite, SAP, Oracle, QuickBooks, Acumatica, Dynamics | Named Trelium integrations; the destination side of order entry |
 | CRM | Salesforce, HubSpot | Named integrations; quote and proposal follow-up |
 | Supplier data | PromoStandards, SanMar API, S&S Activewear API, alphabroder | The source side; Trelium's clearest published example |
-| Commerce / company stores | Shopify, custom company-store platforms, OrderMyGear | Company-store-to-ERP sync is a named Trelium agent |
+| Commerce / company stores | Shopify, Magento/Adobe Commerce, BigCommerce, WooCommerce, custom company-store platforms, OrderMyGear | Company-store-to-ERP sync is a named Trelium agent |
 | Generic office | Gmail, Outlook, Google Sheets, Excel, Slack | Weak alone; **strong when combined with any system above**, because that is a boundary crossing |
 
 **Scoring principle:** a spreadsheet mentioned alongside an ERP is worth more than either

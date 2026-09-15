@@ -1,0 +1,142 @@
+{
+  "company": "Hirsch",
+  "domain": "hirschpromo.com",
+  "corpus_hash": "52de281514d942d0aaf42a84b1644a298a21442e296d425b614bf3c0de0f8571",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_438df52da5_0",
+      "statement": "HIRSCH is built on premium products that say something about the people who give them.",
+      "evidence_ids": [
+        "ev_438df52da5"
+      ],
+      "field": "segment",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_ca91fbf620_0",
+      "statement": "HIRSCH is one of the leading suppliers of promotional products.",
+      "evidence_ids": [
+        "ev_ca91fbf620"
+      ],
+      "field": "segment",
+      "value": "promotional_products_supplier"
+    }
+  ],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [
+    {
+      "id": "ev_438df52da5",
+      "source_url": "https://hirschpromo.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_69b6e1eaaf0b.txt",
+      "content_sha256": "091fa45202c26dd4b7a97c2f45cbd172bac172a3d83cc5185aed9b570e8366a1",
+      "quote": "HIRSCH is built on premium products that say something about the people who give them — and the brands that stand behind them.",
+      "quote_offset": 6262
+    },
+    {
+      "id": "ev_ca91fbf620",
+      "source_url": "https://hirschpromo.com/usa/careers",
+      "source_tier": 1,
+      "publisher": "Company careers page",
+      "title": "Careers",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_a516a4280335.txt",
+      "content_sha256": "8230081902382efc17367f9bfc9a239c790709258c30faa9c00f8bffd19dd78f",
+      "quote": "Interested in a job opportunity at one of the leading suppliers of promotional products?",
+      "quote_offset": 2206
+    }
+  ],
+  "signals": {
+    "segment_label": "promotional_products_supplier",
+    "segment_tier": "A",
+    "segment_signal": {
+      "id": "sig_segment_promotional_products_supplier",
+      "kind": "segment",
+      "value": "promotional_products_supplier",
+      "evidence_ids": [
+        "ev_438df52da5",
+        "ev_ca91fbf620"
+      ],
+      "fact_ids": [
+        "fct_438df52da5_0",
+        "fct_ca91fbf620_0"
+      ],
+      "published_at": null
+    },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_438df52da5",
+          "ev_ca91fbf620"
+        ],
+        "fact_ids": [
+          "fct_438df52da5_0",
+          "fct_ca91fbf620_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "hirschpromo.com"
+    ],
+    "tier_1_2_fact_count": 1,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 27,
+    "components": {
+      "c1": 25,
+      "c2": 0,
+      "c3": 0,
+      "c4": 0,
+      "c5": 0,
+      "c6": 2
+    },
+    "contributing_signals": {
+      "c1": [
+        "sig_segment_promotional_products_supplier"
+      ],
+      "c2": [],
+      "c3": [],
+      "c4": [],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "No sourced scale figure; scale scored 0",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM"
+  ],
+  "flags": []
+}

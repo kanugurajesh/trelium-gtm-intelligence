@@ -1,0 +1,114 @@
+{
+  "company": "LeaderPromos",
+  "domain": "leaderpromos.com",
+  "corpus_hash": "5daac2e02920792ec59559c910131cabcf61c21b6e055de5d5449a2d2d67e5c6",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_7ba0866611_1",
+      "statement": "Leaderpromos is a certified woman-owned business.",
+      "evidence_ids": [
+        "ev_7ba0866611"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_e885e12966_3",
+      "statement": "Leaderpromos has consistent year after year growth and profitability.",
+      "evidence_ids": [
+        "ev_e885e12966"
+      ],
+      "field": null,
+      "value": null
+    }
+  ],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [
+    {
+      "id": "ev_7ba0866611",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089.txt",
+      "content_sha256": "6306c4608a3091b086e208f067174ca400d02b01dcb286189ceee2db1162585c",
+      "quote": "Supplier diversity – certified woman owned business",
+      "quote_offset": 6701
+    },
+    {
+      "id": "ev_e885e12966",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089.txt",
+      "content_sha256": "6306c4608a3091b086e208f067174ca400d02b01dcb286189ceee2db1162585c",
+      "quote": "Financial strength & stability consistent year after year growth & profitability",
+      "quote_offset": 6954
+    }
+  ],
+  "signals": {
+    "segment_label": "unresolved",
+    "segment_tier": "UNRESOLVED",
+    "segment_signal": null,
+    "segment_candidates": [],
+    "segment_conflict": "none",
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "leaderpromos.com"
+    ],
+    "tier_1_2_fact_count": 2,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 2,
+    "components": {
+      "c1": 0,
+      "c2": 0,
+      "c3": 0,
+      "c4": 0,
+      "c5": 0,
+      "c6": 2
+    },
+    "contributing_signals": {
+      "c1": [],
+      "c2": [],
+      "c3": [],
+      "c4": [],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "Segment unconfirmed from primary sources",
+    "No sourced scale figure; scale scored 0",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM",
+    "3/5 extracted claims failed verbatim-quote verification and were discarded"
+  ],
+  "flags": []
+}

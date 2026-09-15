@@ -29,7 +29,7 @@ from trelium_gtm.models import Evidence, Fact
 from trelium_gtm.taxonomy import OpsSubSignal, SegmentLabel, Trigger
 
 DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
-MAX_PAGE_CHARS = 12000
+MAX_PAGE_CHARS = 20000  # raised from 12000 for the deeper-page pass: careers and services pages list the operational detail late
 
 _ALLOWED_FIELDS = {
     "segment",
@@ -78,6 +78,63 @@ _EMPLOYEE_COUNT_REQUIRED_KEYWORDS = (
 # quote can contain "$" and still be disqualified, e.g. the inventory
 # example above also contains "$2.5 million dollars").
 _REVENUE_REQUIRED_KEYWORDS = ("$", "usd", "dollars", "revenue", "sales", "turnover")
+
+# A fourth live instance, found on the deeper-page pass: a press-page
+# headline "announces record growth in 2015" scored as a live growth trigger
+# at full weight, because Evidence.published_at was never populated and an
+# unknown age is (deliberately) not penalised. Same failure class as the
+# three numeric cases above: the quote is verbatim and real, but its meaning
+# - here, its date - was never checked. Fix in code: if the quote dates
+# itself, the latest plausible year it states becomes the claim's date, as
+# YYYY-01-01 (the earliest day of that year, so the recency discount is
+# never under-applied). A quote naming no year keeps published_at=None.
+# A fifth live instance, also from the deeper-page pass: a distributor's
+# technology page listing the procurement systems its *customers* can
+# punch out from ("GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba")
+# produced six "system" facts, and Oracle + SAP scored as the company's own
+# ERP stack. A system named on a page is not necessarily a system the
+# company runs. If the quote frames the system as the reader's, or as a
+# punch-out/e-procurement connection, the claim is kept as an unscored
+# "other" fact rather than a stack signal.
+# A sixth instance, found by auditing the deeper-page pass's top five briefs:
+# four of the four inaccurate facts were segment claims whose quote never
+# states the role asserted - "several ways to connect with you" tagged as
+# supplier, a page heading tagged as supplier, a mission statement tagged
+# as supplier. Segment is worth 25 points, the single largest component,
+# and it was being fed by the weakest quotes. Rule: a segment claim must
+# quote the role word it asserts. Exclusion labels (out_of_icp,
+# operations_heavy_non_promo) are not guarded, because a missed exclusion
+# is the conservative direction and the negative control covers them.
+_SEGMENT_REQUIRED_KEYWORDS = {
+    SegmentLabel.PROMO_DISTRIBUTOR.value: ("distributor",),
+    SegmentLabel.PROMO_SUPPLIER.value: ("supplier", "manufactur"),
+    SegmentLabel.DECORATOR_PRINT_SHOP.value: ("decorat", "print", "embroider", "engrav"),
+    SegmentLabel.ADJACENT_BRANDED_MERCH.value: ("branded merchandise", "merch", "swag", "promotional"),
+}
+
+_SYSTEM_DISQUALIFYING_KEYWORDS = (
+    "punch-out", "punchout", "punch out", "cxml", "e-procurement", "eprocurement",
+    "your erp", "your procurement", "your system", "your platform", "your accounting",
+    "connect with your", "connect to your", "integrate with your", "integrates with your",
+    "integration with your", "compatible with your", "works with your",
+)
+
+_YEAR_RE = re.compile(r"(?<!\d)(19[89]\d|20\d\d)(?!\d)")
+
+
+def infer_dated_year(quote: str, retrieved_at: str) -> str | None:
+    """Latest year stated inside ``quote`` that is not after the retrieval
+    year, as an ISO date on 1 January; None when the quote names no year.
+    Deterministic, and never produces a date the text does not contain.
+    """
+    try:
+        retrieved_year = int(retrieved_at[:4])
+    except ValueError:
+        return None
+    years = [int(y) for y in _YEAR_RE.findall(quote) if int(y) <= retrieved_year]
+    if not years:
+        return None
+    return f"{max(years)}-01-01"
 
 _SYSTEM_PROMPT_TEMPLATE = """You are a careful research analyst extracting claims from ONE webpage of \
 company text for a GTM research tool. You must never invent or paraphrase.
@@ -219,6 +276,7 @@ def extract_claims(
     evidence: list[Evidence] = []
     rejected: list[dict] = []
 
+    seen_claims: set[tuple[str, str, str | None, str | None]] = set()
     for i, claim in enumerate(raw_claims):
         field = claim.get("field")
         value = claim.get("value")
@@ -247,6 +305,10 @@ def extract_claims(
             field = "other"
         if field == "segment" and value not in _SEGMENT_VALUES:
             field = "other"
+        if field == "segment" and value in _SEGMENT_REQUIRED_KEYWORDS and not any(
+            kw in quote.lower() for kw in _SEGMENT_REQUIRED_KEYWORDS[value]
+        ):
+            field = "other"
         if field == "trigger" and value not in _TRIGGER_VALUES:
             field = "other"
         if field == "ops_subsignal" and value not in _OPS_SUBSIGNAL_VALUES:
@@ -263,6 +325,10 @@ def extract_claims(
             kw in quote.lower() for kw in _EMPLOYEE_COUNT_REQUIRED_KEYWORDS
         ):
             field = "other"
+        if field == "system" and any(
+            kw in quote.lower() for kw in _SYSTEM_DISQUALIFYING_KEYWORDS
+        ):
+            field = "other"
 
         parsed_value: object = value
         if field in ("revenue_usd", "employee_count"):
@@ -272,6 +338,19 @@ def extract_claims(
             else:
                 parsed_value = numeric
 
+        # One page, one claim: the model may emit the same statement several
+        # times over one quote (six "system" claims for one list of punch-out
+        # targets, all downgraded to "other" by the context guard above).
+        # After classification they are indistinguishable, and a reader
+        # should not see one sentence rendered six times. Signal-level
+        # deduplication (signals.py, R36) already ignores them for scoring;
+        # this keeps the rendered fact list honest too.
+        claim_key = (statement, quote, field, None if field == "other" else str(parsed_value))
+        if claim_key in seen_claims:
+            rejected.append({"quote": quote, "field": field, "reason": "duplicate of an accepted claim on this page"})
+            continue
+        seen_claims.add(claim_key)
+
         evidence_id = compute_evidence_id(source_url, quote)
         ev = Evidence(
             id=evidence_id,
@@ -280,7 +359,7 @@ def extract_claims(
             publisher=publisher,
             title=title,
             retrieved_at=retrieved_at,
-            published_at=published_at,
+            published_at=published_at or infer_dated_year(quote, retrieved_at),
             snapshot_path=snapshot_path,
             content_sha256=content_sha256,
             quote=quote,

@@ -1,0 +1,20 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_b8acfde728_0",
+        "fct_0ca76b9bec_1"
+      ],
+      "reason": "The company's focus on promotional products and substantial inventory suggests a need for effective supplier purchasing workflows to manage stock and supplier relationships.",
+      "statement": "Supplier purchasing processes may be worth investigating at Concord Marketing Solutions, given its role as a promotional products distributor and its significant inventory of blank soft goods.",
+      "validation_questions": [
+        {
+          "kills_if": "They have a fully automated supplier purchasing system in place.",
+          "question": "How does Concord manage its supplier relationships and purchasing processes for its inventory?"
+        }
+      ],
+      "workflow_id": "WF_SUPPLIER_PURCHASING"
+    }
+  ]
+}

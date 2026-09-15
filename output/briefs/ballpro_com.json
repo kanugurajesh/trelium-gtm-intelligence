@@ -1,7 +1,7 @@
 {
   "company": "Ball Pro",
   "domain": "ballpro.com",
-  "corpus_hash": "e3cd6058f8a3949bc713c74e4b35d5a0b157a4de6f8a825bcb567025793846ad",
+  "corpus_hash": "698a7e59a96ec4e2c15daf18c180d191d880f8af4f413486c4003e57d55a33ac",
   "facts": [
     {
       "kind": "fact",
@@ -12,11 +12,79 @@
       ],
       "field": "system",
       "value": "Shopify"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_b0ad63c02c_0",
+      "statement": "The Titleist Custom Outing Program supports custom golf ball and gear orders for tournaments, outings, corporate events, and country club programs.",
+      "evidence_ids": [
+        "ev_b0ad63c02c"
+      ],
+      "field": null,
+      "value": null
     }
   ],
-  "inferences": [],
-  "validation_questions": [],
-  "workflow_hypotheses": [],
+  "inferences": [
+    {
+      "kind": "inference",
+      "id": "inf_h_0",
+      "statement": "Order Entry / PO Entry processes may be worth investigating at Ball Pro, given its operation through Shopify and the support for custom orders in the Titleist Custom Outing Program.",
+      "from_fact_ids": [
+        "fct_4ed7079f71_0",
+        "fct_b0ad63c02c_0"
+      ],
+      "rule": "ICP.WF.WF_PO_ORDER_ENTRY",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_0_0"
+      ]
+    },
+    {
+      "kind": "inference",
+      "id": "inf_h_1",
+      "statement": "Quoting processes could be worth investigating at Ball Pro, as the Titleist Custom Outing Program involves custom orders that may require tailored pricing.",
+      "from_fact_ids": [
+        "fct_b0ad63c02c_0"
+      ],
+      "rule": "ICP.WF.WF_QUOTING",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_1_0"
+      ]
+    }
+  ],
+  "validation_questions": [
+    {
+      "id": "vq_h_0_0",
+      "question": "How does Ball Pro handle order entry for custom golf ball and gear orders?",
+      "tests_inference_id": "inf_h_0",
+      "kills_if": "They do not have a structured order entry process."
+    },
+    {
+      "id": "vq_h_1_0",
+      "question": "Is there a quoting process in place for custom orders in the Titleist Custom Outing Program?",
+      "tests_inference_id": "inf_h_1",
+      "kills_if": "There is no quoting process for custom orders."
+    }
+  ],
+  "workflow_hypotheses": [
+    {
+      "workflow_id": "WF_PO_ORDER_ENTRY",
+      "inference_id": "inf_h_0",
+      "boundary_count": 1,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Default operations-and-finance pairing for operations-heavy non-promo businesses."
+    },
+    {
+      "workflow_id": "WF_QUOTING",
+      "inference_id": "inf_h_1",
+      "boundary_count": 1,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Default operations-and-finance pairing for operations-heavy non-promo businesses."
+    }
+  ],
   "evidence": [
     {
       "id": "ev_4ed7079f71",
@@ -26,10 +94,23 @@
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_45f9ef42595f.txt",
+      "snapshot_path": "evidence/raw/src_45f9ef42595f_81cb0adc.txt",
       "content_sha256": "81cb0adc45f9e60606587b143884b6d0edcc13cdee6667508c77793a5e1efb71",
       "quote": "Powered by Shopify",
       "quote_offset": 5085
+    },
+    {
+      "id": "ev_b0ad63c02c",
+      "source_url": "https://ballpro.com/blogs/news/titleist-custom-outing-program",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Press / news",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_97ec3f36657c_1ca30635.txt",
+      "content_sha256": "1ca3063529ac3a1e6daff1b6063cecb86afbb9d6fe8cf764cb136c8227cff66a",
+      "quote": "The Titleist Custom Outing Program is available for qualifying accounts. It supports custom golf ball and gear orders for tournaments, outings, corporate events, and country club programs.",
+      "quote_offset": 3249
     }
   ],
   "signals": {
@@ -62,7 +143,7 @@
     "evidence_domains": [
       "ballpro.com"
     ],
-    "tier_1_2_fact_count": 1,
+    "tier_1_2_fact_count": 2,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true

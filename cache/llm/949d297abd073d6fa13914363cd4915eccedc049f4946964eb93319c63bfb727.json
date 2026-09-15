@@ -1,0 +1,35 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "high",
+      "from_fact_ids": [
+        "fct_e885e12966_2",
+        "fct_cd287d6bc1_9"
+      ],
+      "reason": "The combination of growth and advanced technology suggests that effective reporting could be critical to their operations.",
+      "statement": "Business reporting processes may be worth investigating at LeaderPromos, given its consistent year after year growth and profitability, as well as its use of cutting-edge technology with robust reporting.",
+      "validation_questions": [
+        {
+          "kills_if": "They do not use any specific tools or systems for reporting.",
+          "question": "What tools or systems do you currently use for business reporting?"
+        }
+      ],
+      "workflow_id": "WF_REPORTING"
+    },
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_7f4a72cdc9_4"
+      ],
+      "reason": "High accuracy in inventory control may indicate a sophisticated purchasing workflow to maintain such standards.",
+      "statement": "Supplier purchasing processes could be worth investigating at LeaderPromos, considering their 99% error-free inventory control kitting and fulfillment.",
+      "validation_questions": [
+        {
+          "kills_if": "They have a very basic or manual process for supplier purchasing.",
+          "question": "How do you manage supplier relationships and purchasing decisions?"
+        }
+      ],
+      "workflow_id": "WF_SUPPLIER_PURCHASING"
+    }
+  ]
+}

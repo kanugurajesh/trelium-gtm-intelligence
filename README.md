@@ -10,6 +10,44 @@ It is an unaffiliated research/application project that studies Trelium's public
 (see `research/` and `docs/TRELIUM_RESEARCH_NOTES.md`) and builds the kind of tool a GTM team in
 that position might use.
 
+## The result, first
+
+I ran it against 30 candidate accounts, twice: once reading each company's homepage, once reading
+up to six pages per site. The honest answer to "can public web pages qualify this vertical on
+workflow evidence?" is no.
+
+| | |
+|---|---|
+| Accounts that blocked or defeated automated collection | 19 of 30, both passes |
+| Accounts that scored | 11 of 30 |
+| Accounts above the deprioritise band | 0 |
+| Accounts where an operational-complexity or buying-trigger signal ever scored | 0 |
+| Facts in the top five briefs that survived a by-hand audit against the page | 22 of 26 |
+| Extraction defects found by that auditing, each fixed in code with a test | 6 |
+
+Full memo: `docs/FINDINGS.md`. What one brief looks like, from `output/briefs/stran_com.md`:
+
+> **Fit score: 32 / 100 — DEPRIORITIZE** · Evidence grade C
+> Core vertical fit 25 · Operational complexity 0 · Software/ecosystem 3 · Scale 0 · Trigger 0 · Evidence quality 4
+>
+> **1. WF_SUPPLIER_PURCHASING — Supplier Purchasing Agent** (confidence: medium)
+> *Hypothesis:* Supplier purchasing processes may be worth investigating at Stran, given its role
+> as a promotional product supplier and the diverse range of products it oversees.
+> *Validate before outreach:* How does Stran manage its supplier relationships and purchasing
+> processes for promotional products? — kills the hypothesis if Stran has a fully automated
+> supplier purchasing system in place.
+>
+> **Verified facts** — [2] Stran uses a Magento-based technology platform. Source: stran.com
+> (retrieved 2026-09-15, tier 1) — "we harness the power of a Magento-based technology platform
+> to oversee a diverse range of promotional products, gifts, and branded merchandise."
+>
+> **Research gaps** — No sourced scale figure; No growth, hiring or migration trigger found in
+> public sources; Not de-duplicated against Trelium CRM; 1/7 extracted claims failed
+> verbatim-quote verification and were discarded.
+
+The hypothesis is generic and the brief says so. That is the point: it will not say more than
+the evidence supports, and it tells you what it could not find.
+
 ## Problem
 
 Trelium's GTM team needs a way to decide which accounts have an operational workflow worth
@@ -26,16 +64,12 @@ those claims, computes a 0-100 fit score with a fully decomposable rubric, and g
 workflow hypotheses — each hedged, each with a validation question that would falsify it — from
 a fixed nine-item taxonomy mapped onto Trelium's own published agents.
 
-Run for real against 30 candidate accounts drawn from the research report's independently
-researched prospect list (`docs/TRELIUM_RESEARCH_NOTES.md` section 10), plus a 5-company negative
-control and a full validation pass. See `docs/FINDINGS.md` for what came out of that.
-
 ## How it works
 
 ```
-prospects.csv --> collect (fetch + robots.txt + snapshot)
+prospects.csv --> collect (fetch up to 6 pages/site + robots.txt + content-addressed snapshot)
               --> extract (LLM, verbatim quote only, never an offset)
-              --> verify  (code: hash match + substring-at-offset match)
+              --> verify  (code: hash match + substring-at-offset match + context guards)
               --> signals (code: segment/scale/stack/triggers from verified facts)
               --> score   (code: pure function, integers only)
               --> hypothesise (LLM, closed workflow taxonomy, hedging-linted)
@@ -53,6 +87,12 @@ Two things make this trustworthy rather than merely plausible-sounding:
    rubric.** `score(signals) -> ScoreResult` takes no network, no clock, no randomness. A signal
    with no evidence behind it scores zero, enforced at the type level, not by convention.
 
+A third thing turned out to matter as much: **a verbatim quote can still be misread.** Six
+times, the model quoted a real sentence and mislabelled what it meant (inventory as revenue,
+years as headcount, a 2015 headline as a live trigger, customers' procurement systems as the
+company's own, a page heading as a segment). Each is now a deterministic check on the quote's
+own words, with a test. None was fixed by rewording the prompt, and the first one was tried.
+
 Full architecture in `docs/PROJECT_SPEC.md`; the exact scoring rubric and why the report's
 example rules were replaced (not just implemented) in `docs/SCORING.md`.
 
@@ -66,41 +106,52 @@ trusted to do the other's job.
 
 ## What I learned
 
-Three findings, in full in `docs/FINDINGS.md`:
+Four findings, in full in `docs/FINDINGS.md`:
 
-- **Public-page collection alone fails on roughly two-thirds of this vertical**, mostly to bot
-  protection (robots.txt and WAF/403s), not thin content. A GTM research tool for this segment
-  needs a second data source, not a better prompt.
-- **Homepage-level evidence can name a segment but rarely a workflow.** Across every account
-  that did score, public content surfaced generic "supplier purchasing" and "order status"
-  hypotheses; it never once surfaced Trelium's own flagship pattern (inbound PO to order entry)
-  from a homepage alone. Specificity requires deeper pages than a homepage-only pass reaches.
-- **A prompt asked nicely is not a verification layer.** Three separate live extraction runs
-  produced a number that was technically present on the page but described the wrong thing
-  (inventory value read as revenue, twice in different forms; years-in-business read as
-  headcount). Tightening the prompt did not fix the first instance; a deterministic keyword
-  check in code did, and caught the next two instances for free.
+- **Two-thirds of this vertical cannot be researched from its own site.** 19 of 30 accounts
+  produced nothing, mostly robots.txt and bot protection, and no amount of deeper crawling
+  reaches a site that blocks the homepage. A GTM research tool for this segment needs a second
+  data source, not a better prompt.
+- **Deeper pages were the memo's own proposed next step, and they were not enough.** Reading
+  careers, technology, press and services pages nearly tripled the pages read and added half
+  again as many facts, and the two rubric components that describe Trelium's actual pain pattern
+  (operational complexity, buying triggers) still scored zero on every account. The evidence
+  is not on the company's domain at any depth (`docs/DEEP_COLLECTION.md`).
+- **A prompt asked nicely is not a verification layer.** Six separate cases of a real quote
+  described wrongly; each fixed with a deterministic keyword check in code. The sixth, segment
+  labels on quotes that never stated the role, was carrying 25 of the top score's 39 points.
+  Fixing it moved four accounts out of the top ten.
+- **Claim precision is measurable and should be published.** 22 of 26 facts in the top five
+  briefs are fully accurate on a by-hand audit; the four that are not are all semantic
+  over-readings the substring check cannot catch, and they are listed row by row in
+  `docs/VALIDATION.md`.
 
 ## What I would do next
 
-Test the single clearest falsifiable prediction from this run: see `docs/FINDINGS.md`'s closing
-section for the prediction, the sample size needed, and the first-week experiment that would
-test it.
+Add a second data source (job postings, industry-association listings) rather than crawl
+deeper, with a stated prediction for what it should do to the trigger component. Then run a
+frontier deep-research product on the same five audited accounts, hold its claims to the same
+verbatim-quote standard, and publish the two precision numbers side by side. If deep research
+wins on verified precision and reach, that is the recommendation. See the closing section of
+`docs/FINDINGS.md`.
 
 ## Repository layout
 
 ```
 src/trelium_gtm/     Pipeline: models, taxonomy, scoring, evidence verification, collection,
                      extraction, hypothesis generation, rendering, CLI
-tests/               165+ tests covering every deterministic component: scoring boundaries,
-                     evidence invariants, the hedging linter, ranking, validation harness
+tests/               226 tests covering every deterministic component: scoring boundaries,
+                     evidence invariants, link discovery, snapshot preservation across passes,
+                     the six extraction guards, the hedging linter, ranking, validation harness
 data/prospects.csv   30 candidate accounts, domains verified by search (not guessed), with
                      disambiguation and exclusion notes
-evidence/            Committed source snapshots (hash-pinned) for every collected page
+evidence/            Committed source snapshots, content-addressed, for every collected page
 cache/llm/           Committed, content-addressed LLM responses — the whole pipeline replays
                      offline with no OPENAI_API_KEY
-output/briefs/       Generated account briefs, JSON + Markdown, for all 30 accounts
+output/briefs/       Generated account briefs, JSON + Markdown, for all 30 accounts (deeper-page pass)
+output/briefs_pass1_homepage/  The homepage-only pass, archived for comparison
 output/negative_controls/  5 out-of-ICP companies run through the same pipeline (V4)
+scripts/             One-off analysis drivers: validation, negative controls, pass comparison
 docs/                Planning docs, research notes, scoring/evidence model, findings, validation
 ```
 
@@ -108,15 +159,19 @@ docs/                Planning docs, research notes, scoring/evidence model, find
 
 ```bash
 pip install -e .
-pytest                                    # 165+ tests, no network, no API key needed
-trelium brief --company "..." --domain example.com
+pytest                                    # 226 tests, no network, no API key needed
+trelium brief --company "Stran Promotional Solutions" --domain stran.com
 trelium run-all --input data/prospects.csv
 trelium rank --output docs/RANKING.md
-trelium score --from output/briefs/example_com.json   # proves the score is reproducible
+trelium score --from output/briefs/stran_com.json   # proves the score is reproducible
+python scripts/compare_passes.py                    # regenerates docs/DEEP_COLLECTION.md
 ```
 
 Collection and extraction need `OPENAI_API_KEY` set (see `.env.example`) unless the exact
-prompt has already been cached under `cache/llm/`.
+prompt has already been cached under `cache/llm/`. The company name is part of the hypothesis
+prompt, so `brief` pins it to the name in `data/prospects.csv` when the domain matches; pass
+the dataset's spelling to reproduce a committed brief exactly. Requests are spaced one second
+apart and never exceed six per site.
 
 ## What this deliberately does not do
 

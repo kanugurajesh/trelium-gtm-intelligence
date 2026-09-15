@@ -426,14 +426,22 @@ def compute_trigger_ages_months(
     return ages
 
 
-def compute_evidence_age_months_min(evidence: list[Evidence], as_of: date) -> int | None:
+def compute_evidence_age_months_max(evidence: list[Evidence], as_of: date) -> int | None:
+    """Age in months of the OLDEST dated evidence item, for the C6 "all key
+    evidence under N months" bonus (docs/SCORING.md section 8). Returns None
+    when there is no evidence or when any item has no usable published_at:
+    a bonus that says "all evidence is fresh" cannot be earned while some
+    evidence is of unknown age. (An earlier version returned the youngest
+    item's age, which would have granted the bonus on a single fresh quote;
+    it never fired only because published_at was never populated.)
+    """
     ages = []
     for e in evidence:
         if not e.published_at:
-            continue
+            return None
         parsed = _parse_iso_date(e.published_at)
         if parsed is None:
-            continue
+            return None
         months = (as_of.year - parsed.year) * 12 + (as_of.month - parsed.month)
         ages.append(max(0, months))
-    return min(ages) if ages else None
+    return max(ages) if ages else None

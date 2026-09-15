@@ -1,0 +1,19 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_ca91fbf620_0"
+      ],
+      "reason": "As a supplier, HIRSCH likely engages in purchasing activities to maintain inventory and fulfill orders.",
+      "statement": "Supplier purchasing processes may be worth investigating at HIRSCH, given its position as a leading supplier of promotional products.",
+      "validation_questions": [
+        {
+          "kills_if": "They have a fully automated purchasing system with no manual intervention.",
+          "question": "How does HIRSCH manage its supplier relationships and purchasing processes?"
+        }
+      ],
+      "workflow_id": "WF_SUPPLIER_PURCHASING"
+    }
+  ]
+}

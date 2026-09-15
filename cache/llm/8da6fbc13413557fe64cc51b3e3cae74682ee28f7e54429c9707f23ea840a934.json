@@ -1,0 +1,36 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_6f454b5936_0",
+        "fct_176e5ec2b0_1"
+      ],
+      "reason": "The scale of operations and the technology used suggests a potentially complex order entry system that could benefit from optimization.",
+      "statement": "Order Entry / PO Entry processes may be worth investigating at HALO, given its status as the largest promotional merchandise distributor and its support for multiple punch-out connections.",
+      "validation_questions": [
+        {
+          "kills_if": "They have a fully automated and optimized system with no issues.",
+          "question": "How does HALO currently handle order entry and purchase orders?"
+        }
+      ],
+      "workflow_id": "WF_PO_ORDER_ENTRY"
+    },
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_6f454b5936_0",
+        "fct_176e5ec2b0_1"
+      ],
+      "reason": "The variety of connections indicates a potentially complex purchasing workflow that could benefit from further exploration.",
+      "statement": "Supplier Purchasing processes could be worth investigating at HALO, considering its extensive punch-out connections which may involve multiple suppliers.",
+      "validation_questions": [
+        {
+          "kills_if": "They have a simple, straightforward process with no challenges.",
+          "question": "What systems are in place for managing supplier relationships and purchasing?"
+        }
+      ],
+      "workflow_id": "WF_SUPPLIER_PURCHASING"
+    }
+  ]
+}

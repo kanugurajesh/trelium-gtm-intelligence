@@ -3,6 +3,12 @@ write a committed snapshot. One request at a time, no logins, no bulk
 crawling (CLAUDE.md R21-R22).
 
 Failures are recorded as gaps, never as silent empty successes.
+
+Snapshots are content-addressed: the file name carries both a hash of the
+URL and a hash of the extracted text, so re-collecting a page that has
+changed writes a new file and never overwrites the snapshot an earlier
+brief's evidence points at. A committed brief therefore stays E1-verifiable
+(docs/EVIDENCE_MODEL.md) across later collection passes.
 """
 
 from __future__ import annotations
@@ -93,30 +99,54 @@ class CollectResult:
 
 
 _HREF_RE = re.compile(r'href\s*=\s*["\']([^"\']+)["\']', re.IGNORECASE)
+_PATH_TOKEN_RE = re.compile(r"[a-z0-9]+")
+
+# Link targets that are not HTML pages. html_to_text of a PDF or image body
+# is noise, and R25 says snapshots hold extracted page text only.
+_NON_PAGE_EXTENSIONS = (
+    ".pdf", ".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".ico", ".zip", ".doc",
+    ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".mp4", ".mp3", ".csv", ".css", ".js",
+    ".json", ".xml", ".rss", ".txt", ".woff", ".woff2", ".ttf",
+)
+
+
+def _path_tokens(url: str) -> list[str]:
+    """Lower-case alphanumeric tokens of a URL's path and query.
+
+    Matching keywords against tokens (prefix match) rather than against the
+    raw href string is what stops "api" matching "/rapid-quote" or "edi"
+    matching "/editorial": a keyword must start a real path word.
+    """
+    parsed = urlparse(url)
+    return _PATH_TOKEN_RE.findall(f"{parsed.path} {parsed.query}".lower())
 
 
 def discover_links(
     html: str, base_url: str, keywords: tuple[str, ...], max_links: int = 3
 ) -> list[str]:
     """Best-effort same-domain link discovery: finds hrefs whose path
-    contains one of ``keywords`` (e.g. "about", "career"), resolves them
-    against ``base_url``, and returns up to ``max_links`` unique, same
-    registrable-domain URLs. This replaces blind path guessing (R25: we
-    still only ever store the cleaned text we actually fetch, never a site
-    mirror) with a lightweight real navigation pass.
+    contains a word starting with one of ``keywords`` (e.g. "about",
+    "career"), resolves them against ``base_url``, and returns up to
+    ``max_links`` unique, same-registrable-domain page URLs in document
+    order. This replaces blind path guessing (R25: we still only ever
+    store the cleaned text we actually fetch, never a site mirror) with a
+    lightweight real navigation pass.
     """
     from trelium_gtm.evidence.verify import registrable_domain
 
     base_domain = registrable_domain(base_url)
+    lowered_keywords = tuple(k.lower() for k in keywords)
     seen: set[str] = set()
     found: list[str] = []
     for href in _HREF_RE.findall(html):
-        href_lower = href.lower()
-        if not any(kw in href_lower for kw in keywords):
-            continue
         absolute = urljoin(base_url, href.split("#")[0])
         parsed = urlparse(absolute)
         if parsed.scheme not in ("http", "https"):
+            continue
+        if parsed.path.lower().endswith(_NON_PAGE_EXTENSIONS):
+            continue
+        tokens = _path_tokens(absolute)
+        if not any(tok.startswith(kw) for tok in tokens for kw in lowered_keywords):
             continue
         if registrable_domain(absolute) != base_domain:
             continue
@@ -129,8 +159,16 @@ def discover_links(
     return found
 
 
-def _snapshot_id_for_url(url: str) -> str:
-    return "src_" + hashlib.sha1(url.encode("utf-8")).hexdigest()[:12]
+def _url_digest(url: str) -> str:
+    return hashlib.sha1(url.encode("utf-8")).hexdigest()[:12]
+
+
+def snapshot_id_for(url: str, text: str) -> str:
+    """src_<12 hex of sha1(url)>_<8 hex of sha256(text)>: one file per
+    (page, content) pair. Same page, same text -> same file; same page,
+    changed text -> a new file alongside the old one.
+    """
+    return f"src_{_url_digest(url)}_{sha256_text(text)[:8]}"
 
 
 def collect_source(
@@ -148,13 +186,13 @@ def collect_source(
     caller's responsibility, and the caller is expected to space calls out
     rather than fire them concurrently (R22).
     """
-    snapshot_id = _snapshot_id_for_url(url)
+    failed_id = f"src_{_url_digest(url)}"
 
     if not robots_allowed(url, user_agent):
         return CollectResult(
             ok=False,
             url=url,
-            snapshot_id=snapshot_id,
+            snapshot_id=failed_id,
             error="Blocked by robots.txt",
             blocked_by_robots=True,
         )
@@ -170,7 +208,7 @@ def collect_source(
         response.raise_for_status()
     except httpx.HTTPError as exc:
         return CollectResult(
-            ok=False, url=url, snapshot_id=snapshot_id, error=f"Fetch failed: {exc}"
+            ok=False, url=url, snapshot_id=failed_id, error=f"Fetch failed: {exc}"
         )
     finally:
         if owns_client:
@@ -179,9 +217,10 @@ def collect_source(
     text = html_to_text(response.text)
     if not text:
         return CollectResult(
-            ok=False, url=url, snapshot_id=snapshot_id, error="No visible text extracted"
+            ok=False, url=url, snapshot_id=failed_id, error="No visible text extracted"
         )
 
+    snapshot_id = snapshot_id_for(url, text)
     result = write_snapshot(text, snapshot_id, evidence_dir)
     return CollectResult(
         ok=True,

@@ -4,13 +4,13 @@ Domain: `highcaliberline.com` | Corpus hash: `5b8adc231d78`
 
 > **Before any outreach:** this account has NOT been checked against Trelium's CRM or active pipeline. This tool has no visibility into existing customers, prospects or in-flight conversations. De-duplicate before contacting anyone.
 
-## Fit score: 28 / 100 — DEPRIORITIZE
+## Fit score: 3 / 100 — DEPRIORITIZE
 
 Evidence grade: **C**
 
 | Component | Points |
 |---|---|
-| Core vertical fit (0-25) | 25 |
+| Core vertical fit (0-25) | 0 |
 | Operational complexity (0-20) | 0 |
 | Software/ecosystem signals (0-15) | 0 |
 | Transaction/org scale (0-15) | 0 |
@@ -18,35 +18,9 @@ Evidence grade: **C**
 | Evidence quality (0-10) | 3 |
 
 
-## Workflow opportunities (ranked)
+## Workflow opportunity
 
-### 1. WF_QUOTING — Quoting Agent
-Confidence: **medium** | System boundaries crossed: 0
-
-**Hypothesis:** The quoting process may be worth investigating at High Caliber Line, given its role as a promotional products supplier and the scale of production.
-
-*Supporting rule:* `ICP.WF.WF_QUOTING` (model-stated confidence: medium)
-
-**Persona:** COO / VP Operations
-*Why this role:* Suppliers route distributor PO intake and status requests through operations and customer-experience functions.
-
-**Validate before outreach:**
-- How does your team handle the quoting process for promotional products?
-  - *Kills the hypothesis if:* They do not have a formal quoting process.
-
-### 2. WF_ORDER_STATUS — Order Status Agent
-Confidence: **medium** | System boundaries crossed: 0
-
-**Hypothesis:** Order status tracking may be worth investigating at High Caliber Line, considering the high volume of production and the need for effective order management.
-
-*Supporting rule:* `ICP.WF.WF_ORDER_STATUS` (model-stated confidence: medium)
-
-**Persona:** COO / VP Operations
-*Why this role:* Suppliers route distributor PO intake and status requests through operations and customer-experience functions.
-
-**Validate before outreach:**
-- What system do you use to track the status of orders?
-  - *Kills the hypothesis if:* They do not track order status.
+No workflow hypothesis was generated for this account.
 
 
 ## Verified facts
@@ -69,7 +43,11 @@ Confidence: **medium** | System boundaries crossed: 0
 
 ## Research gaps
 
+- Segment unconfirmed from primary sources
 - No sourced scale figure; scale scored 0
 - No order or ERP system identified in public sources
 - No growth, hiring or migration trigger found in public sources
+- Read https://highcaliberline.com/blogs/news: all 4 extracted claims failed verbatim-quote verification
+- Read https://highcaliberline.com/policies/terms-of-service: no extractable claims
 - Not de-duplicated against Trelium CRM
+- 4/9 extracted claims failed verbatim-quote verification and were discarded

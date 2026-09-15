@@ -1,5 +1,9 @@
 # Re-score Comparison (offline replay, no fresh research)
 
+> Historical note: this comparison was made on the homepage-only collection pass. Those briefs
+> are now archived in `output/briefs_pass1_homepage/`; `output/briefs/` holds the deeper-page
+> pass described in `docs/DEEP_COLLECTION.md`.
+
 Re-derived from the facts/evidence already committed in `output/briefs/*.json` after the 
 correctness-hardening changes (deduplication + contradiction policy). No pages were 
 re-fetched and no model calls were made.

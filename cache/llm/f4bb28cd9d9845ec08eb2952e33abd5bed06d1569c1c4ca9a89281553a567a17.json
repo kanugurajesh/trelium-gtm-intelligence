@@ -1,0 +1,18 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Showdown Displays stands as a premier, privately-held global manufacturer and supplier of cutting-edge visual communication, event, and display products.",
+      "statement": "Showdown Displays stands as a premier, privately-held global manufacturer and supplier of cutting-edge visual communication, event, and display products.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "employee_count",
+      "model_confidence": "high",
+      "quote": "Their dedicated team of 185 professionals operate out of two primary European locations, serving clients in more than 45 countries.",
+      "statement": "Their dedicated team of 185 professionals operate out of two primary European locations.",
+      "value": "185"
+    }
+  ]
+}

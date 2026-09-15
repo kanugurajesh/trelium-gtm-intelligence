@@ -1,7 +1,7 @@
 {
   "company": "Concord Marketing Solutions",
   "domain": "concordmarketingsolutions.com",
-  "corpus_hash": "d1c4ff89be7f6a88b433912df955defa76cfe0a0d9e62be6b0284e2c6523e023",
+  "corpus_hash": "258dd29ca44fa8c6f0f25d5cda143472d07b2fac46775baf38ac0db86b49b42e",
   "facts": [
     {
       "kind": "fact",
@@ -20,8 +20,8 @@
       "evidence_ids": [
         "ev_fd4a69b8ea"
       ],
-      "field": "segment",
-      "value": "promotional_products_supplier"
+      "field": null,
+      "value": null
     },
     {
       "kind": "fact",
@@ -62,6 +62,56 @@
       ],
       "field": null,
       "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_89ac9fdc5f_1",
+      "statement": "Concord Marketing Solutions announces record growth in 2015.",
+      "evidence_ids": [
+        "ev_89ac9fdc5f"
+      ],
+      "field": "trigger",
+      "value": "GROWTH_HIGH"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_3e29a739e4_2",
+      "statement": "Concord Marketing Solutions makes Counselor 2024 Best Places to Work.",
+      "evidence_ids": [
+        "ev_3e29a739e4"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_8124c68544_3",
+      "statement": "Concord Marketing Solutions makes PPAI's 2023 Greatest Companies to Work for List.",
+      "evidence_ids": [
+        "ev_8124c68544"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_52b37959cd_4",
+      "statement": "Concord Marketing Solutions named #20 on ASI Counselor’s Best Places to Work 2018.",
+      "evidence_ids": [
+        "ev_52b37959cd"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_e7cbdcdcab_0",
+      "statement": "Concord Marketing Solutions is a full-service corporate identity company.",
+      "evidence_ids": [
+        "ev_e7cbdcdcab"
+      ],
+      "field": null,
+      "value": null
     }
   ],
   "inferences": [
@@ -83,9 +133,9 @@
   "validation_questions": [
     {
       "id": "vq_h_0_0",
-      "question": "How does Concord manage its supplier relationships and purchasing processes for inventory?",
+      "question": "How does Concord manage its supplier relationships and purchasing processes for its inventory?",
       "tests_inference_id": "inf_h_0",
-      "kills_if": "They have a fully automated supplier purchasing system with no manual intervention."
+      "kills_if": "They have a fully automated supplier purchasing system in place."
     }
   ],
   "workflow_hypotheses": [
@@ -107,7 +157,7 @@
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_8a78a5f14f18.txt",
+      "snapshot_path": "evidence/raw/src_8a78a5f14f18_12fe274c.txt",
       "content_sha256": "12fe274c8dd1ec6aaa45c570536eaea609c25fdadd25c848145ffc4b894b11a8",
       "quote": "Concord Marketing Solutions, the industry’s leading promotional products distributor.",
       "quote_offset": 651
@@ -119,8 +169,8 @@
       "publisher": "Company website",
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
-      "published_at": null,
-      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "published_at": "1993-01-01",
+      "snapshot_path": "evidence/raw/src_04e3f82018bb_dacdc0da.txt",
       "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
       "quote": "Concord Marketing Solutions Inc. was established in 1993 by Kirk Graves and Robert Conte, with a shared focus on ushering retail name-brands to the corporate marketplace.",
       "quote_offset": 656
@@ -133,7 +183,7 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "snapshot_path": "evidence/raw/src_04e3f82018bb_dacdc0da.txt",
       "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
       "quote": "as well as space to hold over $2.5 million dollars of blank soft goods.",
       "quote_offset": 1561
@@ -146,7 +196,7 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "snapshot_path": "evidence/raw/src_04e3f82018bb_dacdc0da.txt",
       "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
       "quote": "For the past ten years, Concord has been named as one of the  Best Places to Work by the Counselor Magazine.",
       "quote_offset": 1635
@@ -158,8 +208,8 @@
       "publisher": "Company website",
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
-      "published_at": null,
-      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "published_at": "2023-01-01",
+      "snapshot_path": "evidence/raw/src_04e3f82018bb_dacdc0da.txt",
       "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
       "quote": "In 2023, we were recognized by the Promotional Products Association International (PPAI) as one if its “Greatest Companies to Work For.”",
       "quote_offset": 1744
@@ -171,11 +221,76 @@
       "publisher": "Company website",
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
-      "published_at": null,
-      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "published_at": "2024-01-01",
+      "snapshot_path": "evidence/raw/src_04e3f82018bb_dacdc0da.txt",
       "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
       "quote": "Most up to date, Concord was ranked 19 on the 2024 PPAI 100 Distributors.",
       "quote_offset": 1881
+    },
+    {
+      "id": "ev_89ac9fdc5f",
+      "source_url": "https://concordmarketingsolutions.com/events--news.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Press / news",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": "2015-01-01",
+      "snapshot_path": "evidence/raw/src_3defafe7a465_355d3b63.txt",
+      "content_sha256": "355d3b630af7e5ead9f205b74feb5ba062c4592c36c399256594ac837b4e648e",
+      "quote": "Concord Marketing Solutions announces record growth in 2015",
+      "quote_offset": 2840
+    },
+    {
+      "id": "ev_3e29a739e4",
+      "source_url": "https://concordmarketingsolutions.com/events--news.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Press / news",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": "2024-01-01",
+      "snapshot_path": "evidence/raw/src_3defafe7a465_355d3b63.txt",
+      "content_sha256": "355d3b630af7e5ead9f205b74feb5ba062c4592c36c399256594ac837b4e648e",
+      "quote": "Concord Marketing Solutions Makes Counselor 2024 Best Places to Work",
+      "quote_offset": 1023
+    },
+    {
+      "id": "ev_8124c68544",
+      "source_url": "https://concordmarketingsolutions.com/events--news.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Press / news",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": "2023-01-01",
+      "snapshot_path": "evidence/raw/src_3defafe7a465_355d3b63.txt",
+      "content_sha256": "355d3b630af7e5ead9f205b74feb5ba062c4592c36c399256594ac837b4e648e",
+      "quote": "Concord Marketing Solutions Makes PPAI's 2023 Greatest Companies to Work for List",
+      "quote_offset": 1155
+    },
+    {
+      "id": "ev_52b37959cd",
+      "source_url": "https://concordmarketingsolutions.com/events--news.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Press / news",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": "2018-01-01",
+      "snapshot_path": "evidence/raw/src_3defafe7a465_355d3b63.txt",
+      "content_sha256": "355d3b630af7e5ead9f205b74feb5ba062c4592c36c399256594ac837b4e648e",
+      "quote": "Concord Marketing Solutions named #20 on ASI Counselor’s Best Places to Work 2018.",
+      "quote_offset": 2507
+    },
+    {
+      "id": "ev_e7cbdcdcab",
+      "source_url": "https://concordmarketingsolutions.com/global-solutions-.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Services / capabilities",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_467f546694b5_b8c8fc68.txt",
+      "content_sha256": "b8c8fc6808e4e4eb73e4906e0ea52e7baa05ce037c623139e7727e56e1625b1c",
+      "quote": "Concord Marketing Solutions is a full-service corporate identity company with global distribution and sourcing capabilities.",
+      "quote_offset": 689
     }
   ],
   "signals": {
@@ -205,42 +320,43 @@
           "fct_b8acfde728_0"
         ],
         "published_at": null
-      },
-      {
-        "id": "sig_segment_promotional_products_supplier",
-        "kind": "segment",
-        "value": "promotional_products_supplier",
-        "evidence_ids": [
-          "ev_fd4a69b8ea"
-        ],
-        "fact_ids": [
-          "fct_fd4a69b8ea_0"
-        ],
-        "published_at": null
       }
     ],
-    "segment_conflict": "unresolved",
+    "segment_conflict": "none",
     "scale_band": "UNKNOWN",
     "scale_basis": "unknown",
     "scale_signal": null,
     "scale_candidates": [],
     "scale_conflict": false,
     "stack_signals": [],
-    "trigger_signals": [],
+    "trigger_signals": [
+      {
+        "id": "sig_trigger_",
+        "kind": "trigger",
+        "value": "GROWTH_HIGH",
+        "evidence_ids": [
+          "ev_89ac9fdc5f"
+        ],
+        "fact_ids": [
+          "fct_89ac9fdc5f_1"
+        ],
+        "published_at": "2015-01-01"
+      }
+    ],
     "ops_signals": [],
     "evidence_domains": [
       "concordmarketingsolutions.com"
     ],
-    "tier_1_2_fact_count": 6,
+    "tier_1_2_fact_count": 11,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
   },
   "score": {
     "status": "SCORED",
-    "total": 24,
+    "total": 29,
     "components": {
-      "c1": 20,
+      "c1": 25,
       "c2": 0,
       "c3": 0,
       "c4": 0,
@@ -254,26 +370,23 @@
       "c2": [],
       "c3": [],
       "c4": [],
-      "c5": [],
+      "c5": [
+        "sig_trigger_"
+      ],
       "c6": []
     },
     "evidence_grade": "C",
     "band": "DEPRIORITIZE",
-    "flags": [
-      "SEGMENT_CONFLICT_UNRESOLVED"
-    ],
+    "flags": [],
     "reported_as": "point",
     "range": null
   },
   "research_gaps": [
     "No sourced scale figure; scale scored 0",
     "No order or ERP system identified in public sources",
-    "No growth, hiring or migration trigger found in public sources",
+    "Read https://concordmarketingsolutions.com/technology_001.htm: no extractable claims",
     "Not de-duplicated against Trelium CRM",
-    "1/7 extracted claims failed verbatim-quote verification and were discarded",
-    "SEGMENT CONFLICT (unresolved, equal evidence tier) — sources disagree on the company's segment: promotional_products_distributor (1 fact(s); https://concordmarketingsolutions.com); promotional_products_supplier (1 fact(s); https://concordmarketingsolutions.com/aboutf.htm). Winner 'promotional_products_distributor' chosen by breadth of support then fixed lexical order, C1 penalised; validate manually before relying on the segment."
+    "2/13 extracted claims failed verbatim-quote verification and were discarded"
   ],
-  "flags": [
-    "SEGMENT_CONFLICT_UNRESOLVED"
-  ]
+  "flags": []
 }

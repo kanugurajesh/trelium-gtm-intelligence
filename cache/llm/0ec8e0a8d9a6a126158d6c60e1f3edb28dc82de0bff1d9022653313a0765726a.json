@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Your business is unique, so we offer several ways to connect with you.",
+      "statement": "SanMar offers several ways to connect with you.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}

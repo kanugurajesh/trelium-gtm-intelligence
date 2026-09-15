@@ -1,6 +1,6 @@
 # Staples Promotional Products
 
-Domain: `staplespromotionalproducts.com` | Corpus hash: `fad6219674dc`
+Domain: `staplespromotionalproducts.com` | Corpus hash: `d97e3effbbcb`
 
 > **Before any outreach:** this account has NOT been checked against Trelium's CRM or active pipeline. This tool has no visibility into existing customers, prospects or in-flight conversations. De-duplicate before contacting anyone.
 
@@ -34,6 +34,12 @@ No workflow hypothesis was generated for this account.
 **[3]** Staples Promotional Products works with Village Northwest Unlimited to employ neurodivergent talent.
   - Source: [Company website](https://staplespromotionalproducts.com/about) (retrieved 2026-09-15, tier 1) — "We also work with Village Northwest Unlimited to employ neurodivergent talent in our operations."
 
+**[4]** Staples Promotional Products is an Official Premium Licensee of LA28 and Team USA.
+  - Source: [Company website](https://staplespromotionalproducts.com/enterprise-solutions) (retrieved 2026-09-15, tier 1) — "Staples Promotional Products is an Official Premium Licensee of LA28 and Team USA."
+
+**[5]** Over 300 Fortune-ranked brands contract with Staples Promo™.
+  - Source: [Company website](https://staplespromotionalproducts.com/enterprise-solutions) (retrieved 2026-09-15, tier 1) — "Join over 300 Fortune-ranked brands that contract with Staples Promo™ to centralize branded merchandise strategy, sourcing, compliance and procurement."
+
 
 ## Research gaps
 
@@ -41,5 +47,6 @@ No workflow hypothesis was generated for this account.
 - No sourced scale figure; scale scored 0
 - No order or ERP system identified in public sources
 - No growth, hiring or migration trigger found in public sources
+- Read https://staplespromotionalproducts.com: no extractable claims
 - Not de-duplicated against Trelium CRM
-- 3/6 extracted claims failed verbatim-quote verification and were discarded
+- 3/8 extracted claims failed verbatim-quote verification and were discarded

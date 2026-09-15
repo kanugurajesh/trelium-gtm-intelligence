@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions is a full-service corporate identity company with global distribution and sourcing capabilities.",
+      "statement": "Concord Marketing Solutions is a full-service corporate identity company.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}

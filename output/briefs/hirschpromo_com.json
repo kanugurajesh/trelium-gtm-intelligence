@@ -10,8 +10,8 @@
       "evidence_ids": [
         "ev_438df52da5"
       ],
-      "field": "segment",
-      "value": "promotional_products_supplier"
+      "field": null,
+      "value": null
     },
     {
       "kind": "fact",
@@ -24,9 +24,39 @@
       "value": "promotional_products_supplier"
     }
   ],
-  "inferences": [],
-  "validation_questions": [],
-  "workflow_hypotheses": [],
+  "inferences": [
+    {
+      "kind": "inference",
+      "id": "inf_h_0",
+      "statement": "Supplier purchasing processes may be worth investigating at HIRSCH, given its position as a leading supplier of promotional products.",
+      "from_fact_ids": [
+        "fct_ca91fbf620_0"
+      ],
+      "rule": "ICP.WF.WF_SUPPLIER_PURCHASING",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_0_0"
+      ]
+    }
+  ],
+  "validation_questions": [
+    {
+      "id": "vq_h_0_0",
+      "question": "How does HIRSCH manage its supplier relationships and purchasing processes?",
+      "tests_inference_id": "inf_h_0",
+      "kills_if": "They have a fully automated purchasing system with no manual intervention."
+    }
+  ],
+  "workflow_hypotheses": [
+    {
+      "workflow_id": "WF_SUPPLIER_PURCHASING",
+      "inference_id": "inf_h_0",
+      "boundary_count": 0,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+    }
+  ],
   "evidence": [
     {
       "id": "ev_438df52da5",
@@ -36,7 +66,7 @@
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_69b6e1eaaf0b.txt",
+      "snapshot_path": "evidence/raw/src_69b6e1eaaf0b_091fa452.txt",
       "content_sha256": "091fa45202c26dd4b7a97c2f45cbd172bac172a3d83cc5185aed9b570e8366a1",
       "quote": "HIRSCH is built on premium products that say something about the people who give them — and the brands that stand behind them.",
       "quote_offset": 6262
@@ -49,7 +79,7 @@
       "title": "Careers",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_a516a4280335.txt",
+      "snapshot_path": "evidence/raw/src_a516a4280335_82300819.txt",
       "content_sha256": "8230081902382efc17367f9bfc9a239c790709258c30faa9c00f8bffd19dd78f",
       "quote": "Interested in a job opportunity at one of the leading suppliers of promotional products?",
       "quote_offset": 2206
@@ -63,11 +93,9 @@
       "kind": "segment",
       "value": "promotional_products_supplier",
       "evidence_ids": [
-        "ev_438df52da5",
         "ev_ca91fbf620"
       ],
       "fact_ids": [
-        "fct_438df52da5_0",
         "fct_ca91fbf620_0"
       ],
       "published_at": null
@@ -78,11 +106,9 @@
         "kind": "segment",
         "value": "promotional_products_supplier",
         "evidence_ids": [
-          "ev_438df52da5",
           "ev_ca91fbf620"
         ],
         "fact_ids": [
-          "fct_438df52da5_0",
           "fct_ca91fbf620_0"
         ],
         "published_at": null
@@ -100,7 +126,7 @@
     "evidence_domains": [
       "hirschpromo.com"
     ],
-    "tier_1_2_fact_count": 1,
+    "tier_1_2_fact_count": 2,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
@@ -136,6 +162,7 @@
     "No sourced scale figure; scale scored 0",
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://hirschpromo.com/usa/technology: no extractable claims",
     "Not de-duplicated against Trelium CRM"
   ],
   "flags": []

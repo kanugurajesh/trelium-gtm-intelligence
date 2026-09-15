@@ -18,9 +18,21 @@ Evidence grade: **C**
 | Evidence quality (0-10) | 2 |
 
 
-## Workflow opportunity
+## Workflow opportunities (ranked)
 
-No workflow hypothesis was generated for this account.
+### 1. WF_SUPPLIER_PURCHASING — Supplier Purchasing Agent
+Confidence: **medium** | System boundaries crossed: 0
+
+**Hypothesis:** Supplier purchasing processes may be worth investigating at HIRSCH, given its position as a leading supplier of promotional products.
+
+*Supporting rule:* `ICP.WF.WF_SUPPLIER_PURCHASING` (model-stated confidence: medium)
+
+**Persona:** COO / VP Operations
+*Why this role:* Suppliers route distributor PO intake and status requests through operations and customer-experience functions.
+
+**Validate before outreach:**
+- How does HIRSCH manage its supplier relationships and purchasing processes?
+  - *Kills the hypothesis if:* They have a fully automated purchasing system with no manual intervention.
 
 
 ## Verified facts
@@ -37,4 +49,5 @@ No workflow hypothesis was generated for this account.
 - No sourced scale figure; scale scored 0
 - No order or ERP system identified in public sources
 - No growth, hiring or migration trigger found in public sources
+- Read https://hirschpromo.com/usa/technology: no extractable claims
 - Not de-duplicated against Trelium CRM

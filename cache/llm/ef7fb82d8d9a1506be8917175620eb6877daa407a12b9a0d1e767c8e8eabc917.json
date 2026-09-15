@@ -1,0 +1,74 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "close collaboration with you and your team is what sets us apart from being just another promotional products company.",
+      "statement": "Leaderpromos is a promotional products company.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Supplier diversity \u2013 certified woman owned business",
+      "statement": "Leaderpromos is a certified woman-owned business.",
+      "value": "Supplier diversity \u2013 certified woman owned business"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Financial strength & stability consistent year after year growth & profitability",
+      "statement": "Leaderpromos has consistent year after year growth and profitability.",
+      "value": "Financial strength & stability consistent year after year growth & profitability"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "TOP 50 of 24,000 PROMOTIONAL DISTRIBUTORS NATIONWIDE",
+      "statement": "Leaderpromos is ranked in the top 50 of 24,000 promotional distributors nationwide.",
+      "value": "TOP 50 of 24,000 PROMOTIONAL DISTRIBUTORS NATIONWIDE"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "99% error-free inventory control kitting and fulfillment",
+      "statement": "Leaderpromos has 99% error-free inventory control kitting and fulfillment.",
+      "value": "99% error-free inventory control kitting and fulfillment"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Innovative promotional solutions that work \u2013 PROVEN ROI",
+      "statement": "Leaderpromos provides innovative promotional solutions that have proven ROI.",
+      "value": "Innovative promotional solutions that work \u2013 PROVEN ROI"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "RAPID LOGO \u2013 IN HOUSE ON-DEMAND DECORATION",
+      "statement": "Leaderpromos offers in-house on-demand decoration services.",
+      "value": "RAPID LOGO \u2013 IN HOUSE ON-DEMAND DECORATION"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Single source savings. ONE COMPANY. ONE SOLUTION.",
+      "statement": "Leaderpromos provides single source savings as one company with one solution.",
+      "value": "Single source savings. ONE COMPANY. ONE SOLUTION."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Leaderpromos.com award-winning website more than 40,000 products",
+      "statement": "Leaderpromos has an award-winning website with more than 40,000 products.",
+      "value": "Leaderpromos.com award-winning website more than 40,000 products"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "CUTTING-EDGE TECHNOLOGY WITH STREAMLINED CUSTOM INTEGRATION & ROBUST REPORTING",
+      "statement": "Leaderpromos uses cutting-edge technology with streamlined custom integration and robust reporting.",
+      "value": "CUTTING-EDGE TECHNOLOGY WITH STREAMLINED CUSTOM INTEGRATION & ROBUST REPORTING"
+    }
+  ]
+}

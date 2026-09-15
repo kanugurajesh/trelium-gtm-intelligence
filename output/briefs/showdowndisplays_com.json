@@ -16,7 +16,7 @@
     {
       "kind": "fact",
       "id": "fct_005658c530_1",
-      "statement": "Showdown Displays Europe has a dedicated team of 185 professionals.",
+      "statement": "Their dedicated team of 185 professionals operate out of two primary European locations.",
       "evidence_ids": [
         "ev_005658c530"
       ],
@@ -36,7 +36,7 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_93dc0e0c6474.txt",
+      "snapshot_path": "evidence/raw/src_93dc0e0c6474_6429e1bd.txt",
       "content_sha256": "6429e1bd366688c22ff3de6db48c78204f7382030410f42ad3ce97238f66111b",
       "quote": "Showdown Displays stands as a premier, privately-held global manufacturer and supplier of cutting-edge visual communication, event, and display products.",
       "quote_offset": 7455
@@ -49,7 +49,7 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_93dc0e0c6474.txt",
+      "snapshot_path": "evidence/raw/src_93dc0e0c6474_6429e1bd.txt",
       "content_sha256": "6429e1bd366688c22ff3de6db48c78204f7382030410f42ad3ce97238f66111b",
       "quote": "Their dedicated team of 185 professionals operate out of two primary European locations, serving clients in more than 45 countries.",
       "quote_offset": 9222
@@ -157,6 +157,8 @@
   "research_gaps": [
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://showdowndisplays.com: no extractable claims",
+    "Read https://showdowndisplays.com/Careers?display=SearchCareers: no extractable claims",
     "Not de-duplicated against Trelium CRM"
   ],
   "flags": []

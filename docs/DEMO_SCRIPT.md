@@ -49,15 +49,17 @@ for their agents."
 negative-control batch of five companies that are obviously outside the ICP — a law firm, a SaaS
 company, a bank — to check the model doesn't falsely qualify them. It didn't: 5 for 5."
 
-"The most useful thing I found wasn't a good lead. It was that public homepage content alone
-failed to collect anything usable for about two-thirds of these accounts — mostly sites blocking
-automated access — and when it did work, it almost never surfaced Trelium's own core PO-to-order
--entry pattern from a homepage alone. That's a finding about the method, and it's in the README."
+"The most useful thing I found wasn't a good lead. It was that public web pages can't qualify
+this vertical on workflow evidence. Two-thirds of these sites block automated access, and on the
+third that don't, reading careers, technology and press pages as well as the homepage added facts
+but not a single scoreable operational signal. I tested that as an explicit prediction from my
+own memo, and it held. That's a finding about the method, and it's in the README."
 
 **1:20-1:30**
 
-"Repo, findings memo, and the two bugs I found and fixed while manually auditing the output are
-all in the readme. Thanks for reading this far."
+"Repo, findings memo, and the six extraction defects I found and fixed by auditing the output
+against source, each with a code check and a test, are all in the readme. Thanks for reading
+this far."
 
 ---
 

@@ -8,7 +8,7 @@ from __future__ import annotations
 from trelium_gtm.models import Evidence, Fact
 from trelium_gtm.scoring import score
 from trelium_gtm.signals import (
-    compute_evidence_age_months_min,
+    compute_evidence_age_months_max,
     compute_trigger_ages_months,
     derive_signals,
 )
@@ -140,7 +140,7 @@ def test_derive_signals_from_synthetic_company_fixture():
         trigger_ages_months=compute_trigger_ages_months(
             signals, as_of=__import__("datetime").date(2026, 1, 1)
         ),
-        evidence_age_months_min=compute_evidence_age_months_min(
+        evidence_age_months_max=compute_evidence_age_months_max(
             evidence, as_of=__import__("datetime").date(2026, 1, 1)
         ),
     )
@@ -150,10 +150,12 @@ def test_derive_signals_from_synthetic_company_fixture():
     assert result.components["c4"] == 15
     assert result.components["c5"] == 11
     # C6: 2 domains (capped irrelevant, =2) + tier1/2 bucket for 8 facts (>=6 -> 3)
-    #     + recency: ev_3 published 2025-08-01, age = 5 months <=12 -> +2
-    #     + 2+ domains bonus +1  => 2+3+2+1 = 8
-    assert result.components["c6"] == 8
-    assert result.total == 25 + 4 + 14 + 15 + 11 + 8
+    #     + recency: only ev_3 is dated (2025-08-01); ev_1 and ev_2 are of
+    #       unknown age, so "all key evidence under N months" cannot be
+    #       claimed -> +0 (tests/test_recency.py covers the all-dated case)
+    #     + 2+ domains bonus +1  => 2+3+0+1 = 6
+    assert result.components["c6"] == 6
+    assert result.total == 25 + 4 + 14 + 15 + 11 + 6
     assert result.status == "SCORED"
 
 

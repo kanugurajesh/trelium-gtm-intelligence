@@ -1,0 +1,53 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "HALO deploys the latest technology to deliver outstanding solutions to every client.",
+      "statement": "HALO deploys the latest technology to deliver outstanding solutions to every client.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "statement": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "value": "GEP"
+    },
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "statement": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "value": "PerfectCommerce"
+    },
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "statement": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "value": "SciQuest"
+    },
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "statement": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "value": "Oracle"
+    },
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "statement": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "value": "SAP"
+    },
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "statement": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "value": "Ariba"
+    }
+  ]
+}

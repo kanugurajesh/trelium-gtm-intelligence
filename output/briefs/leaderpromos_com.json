@@ -1,12 +1,22 @@
 {
   "company": "LeaderPromos",
   "domain": "leaderpromos.com",
-  "corpus_hash": "5daac2e02920792ec59559c910131cabcf61c21b6e055de5d5449a2d2d67e5c6",
+  "corpus_hash": "5b34793d573db26960f22c6b6afed3c4c020b27a0fcbbf2c18f32ddf91e48acf",
   "facts": [
     {
       "kind": "fact",
+      "id": "fct_5f4f1b7817_0",
+      "statement": "Leaderpromos is a promotional products supplier.",
+      "evidence_ids": [
+        "ev_5f4f1b7817"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
       "id": "fct_7ba0866611_1",
-      "statement": "Leaderpromos is a certified woman-owned business.",
+      "statement": "Leaderpromos is a certified woman owned business.",
       "evidence_ids": [
         "ev_7ba0866611"
       ],
@@ -15,19 +25,140 @@
     },
     {
       "kind": "fact",
-      "id": "fct_e885e12966_3",
-      "statement": "Leaderpromos has consistent year after year growth and profitability.",
+      "id": "fct_e885e12966_2",
+      "statement": "Leaderpromos has consistent year after year growth & profitability.",
       "evidence_ids": [
         "ev_e885e12966"
       ],
       "field": null,
       "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_7f4a72cdc9_4",
+      "statement": "Leaderpromos has 99% error-free inventory control kitting and fulfillment.",
+      "evidence_ids": [
+        "ev_7f4a72cdc9"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_7201630c4b_5",
+      "statement": "Leaderpromos has low-to-no inventory requirements.",
+      "evidence_ids": [
+        "ev_7201630c4b"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_4b60c46962_6",
+      "statement": "Leaderpromos.com has an award-winning website with more than 40,000 products.",
+      "evidence_ids": [
+        "ev_4b60c46962"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_cd287d6bc1_7",
+      "statement": "Leaderpromos uses cutting-edge technology with streamlined custom integration and robust reporting.",
+      "evidence_ids": [
+        "ev_cd287d6bc1"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_d95bef3995_9",
+      "statement": "Leaderpromos promotes synergy between marketing and procurement.",
+      "evidence_ids": [
+        "ev_d95bef3995"
+      ],
+      "field": null,
+      "value": null
     }
   ],
-  "inferences": [],
-  "validation_questions": [],
-  "workflow_hypotheses": [],
+  "inferences": [
+    {
+      "kind": "inference",
+      "id": "inf_h_0",
+      "statement": "The business reporting processes at LeaderPromos may be worth investigating, given their use of cutting-edge technology and robust reporting capabilities.",
+      "from_fact_ids": [
+        "fct_cd287d6bc1_7"
+      ],
+      "rule": "ICP.WF.WF_REPORTING",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_0_0"
+      ]
+    },
+    {
+      "kind": "inference",
+      "id": "inf_h_1",
+      "statement": "The supplier purchasing workflows at LeaderPromos could be worth investigating, especially considering their promotional products supplier status and synergy between marketing and procurement.",
+      "from_fact_ids": [
+        "fct_5f4f1b7817_0",
+        "fct_d95bef3995_9"
+      ],
+      "rule": "ICP.WF.WF_SUPPLIER_PURCHASING",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_1_0"
+      ]
+    }
+  ],
+  "validation_questions": [
+    {
+      "id": "vq_h_0_0",
+      "question": "What specific reporting tools or processes do you currently use to track business performance?",
+      "tests_inference_id": "inf_h_0",
+      "kills_if": "They do not use any reporting tools or processes."
+    },
+    {
+      "id": "vq_h_1_0",
+      "question": "How do you manage relationships and purchasing decisions with your suppliers?",
+      "tests_inference_id": "inf_h_1",
+      "kills_if": "They do not have a structured process for managing supplier relationships."
+    }
+  ],
+  "workflow_hypotheses": [
+    {
+      "workflow_id": "WF_REPORTING",
+      "inference_id": "inf_h_0",
+      "boundary_count": 0,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Default operations-and-finance pairing for operations-heavy non-promo businesses."
+    },
+    {
+      "workflow_id": "WF_SUPPLIER_PURCHASING",
+      "inference_id": "inf_h_1",
+      "boundary_count": 0,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Default operations-and-finance pairing for operations-heavy non-promo businesses."
+    }
+  ],
   "evidence": [
+    {
+      "id": "ev_5f4f1b7817",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
+      "quote": "We create solutions that work with a proven ROI!",
+      "quote_offset": 1004
+    },
     {
       "id": "ev_7ba0866611",
       "source_url": "https://leaderpromos.com",
@@ -36,8 +167,8 @@
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_b50e8e939089.txt",
-      "content_sha256": "6306c4608a3091b086e208f067174ca400d02b01dcb286189ceee2db1162585c",
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
       "quote": "Supplier diversity – certified woman owned business",
       "quote_offset": 6701
     },
@@ -49,10 +180,75 @@
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_b50e8e939089.txt",
-      "content_sha256": "6306c4608a3091b086e208f067174ca400d02b01dcb286189ceee2db1162585c",
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
       "quote": "Financial strength & stability consistent year after year growth & profitability",
       "quote_offset": 6954
+    },
+    {
+      "id": "ev_7f4a72cdc9",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
+      "quote": "99% error-free inventory control kitting and fulfillment",
+      "quote_offset": 7222
+    },
+    {
+      "id": "ev_7201630c4b",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
+      "quote": "No risk, Low-to-no Inventory requirements",
+      "quote_offset": 7281
+    },
+    {
+      "id": "ev_4b60c46962",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
+      "quote": "Leaderpromos.com award-winning website more than 40,000 products",
+      "quote_offset": 7484
+    },
+    {
+      "id": "ev_cd287d6bc1",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
+      "quote": "CUTTING-EDGE TECHNOLOGY WITH STREAMLINED CUSTOM INTEGRATION & ROBUST REPORTING",
+      "quote_offset": 7606
+    },
+    {
+      "id": "ev_d95bef3995",
+      "source_url": "https://leaderpromos.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_b50e8e939089_0396dd3a.txt",
+      "content_sha256": "0396dd3a304530cb60f2b008f7ffce7e375e570d80f51a52faf9fb8385b710ad",
+      "quote": "PROMOTES SYNERGY BETWEEN MARKETING & PROCUREMENT",
+      "quote_offset": 7738
     }
   ],
   "signals": {
@@ -72,21 +268,21 @@
     "evidence_domains": [
       "leaderpromos.com"
     ],
-    "tier_1_2_fact_count": 2,
+    "tier_1_2_fact_count": 8,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
   },
   "score": {
     "status": "SCORED",
-    "total": 2,
+    "total": 4,
     "components": {
       "c1": 0,
       "c2": 0,
       "c3": 0,
       "c4": 0,
       "c5": 0,
-      "c6": 2
+      "c6": 4
     },
     "contributing_signals": {
       "c1": [],
@@ -107,8 +303,9 @@
     "No sourced scale figure; scale scored 0",
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://leaderpromos.com/leader/careers.jsf: all 1 extracted claims failed verbatim-quote verification",
     "Not de-duplicated against Trelium CRM",
-    "3/5 extracted claims failed verbatim-quote verification and were discarded"
+    "3/11 extracted claims failed verbatim-quote verification and were discarded"
   ],
   "flags": []
 }

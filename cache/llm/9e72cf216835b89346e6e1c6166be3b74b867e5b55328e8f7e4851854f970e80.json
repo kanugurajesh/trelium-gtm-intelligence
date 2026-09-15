@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Stran offers a wide variety of creative account services, technology solutions, and more to fulfill the needs of our clients.",
+      "statement": "Stran offers a wide variety of creative account services, technology solutions, and more to fulfill the needs of our clients.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}

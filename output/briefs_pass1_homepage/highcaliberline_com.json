@@ -1,0 +1,270 @@
+{
+  "company": "High Caliber Line",
+  "domain": "highcaliberline.com",
+  "corpus_hash": "5b8adc231d7875eeab28f063d9f006542720933097947c4758a715905f16ae83",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_5ca09ede5a_0",
+      "statement": "High Caliber Line is a promotional products supplier.",
+      "evidence_ids": [
+        "ev_5ca09ede5a"
+      ],
+      "field": "segment",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_eb72d53d93_0",
+      "statement": "High Caliber Line (HCL) is a trusted name in the promotional products industry.",
+      "evidence_ids": [
+        "ev_eb72d53d93"
+      ],
+      "field": "segment",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_03707682f3_1",
+      "statement": "High Caliber Line has over 25 years of experience.",
+      "evidence_ids": [
+        "ev_03707682f3"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_102d05aa9b_2",
+      "statement": "HCL operates three state-of-the-art facilities in the Greater Los Angeles area.",
+      "evidence_ids": [
+        "ev_102d05aa9b"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_102d05aa9b_3",
+      "statement": "HCL produces approximately 30 million items annually.",
+      "evidence_ids": [
+        "ev_102d05aa9b"
+      ],
+      "field": null,
+      "value": null
+    }
+  ],
+  "inferences": [
+    {
+      "kind": "inference",
+      "id": "inf_h_0",
+      "statement": "The quoting process may be worth investigating at High Caliber Line, given its role as a promotional products supplier and the scale of production.",
+      "from_fact_ids": [
+        "fct_5ca09ede5a_0",
+        "fct_eb72d53d93_0",
+        "fct_102d05aa9b_3"
+      ],
+      "rule": "ICP.WF.WF_QUOTING",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_0_0"
+      ]
+    },
+    {
+      "kind": "inference",
+      "id": "inf_h_1",
+      "statement": "Order status tracking may be worth investigating at High Caliber Line, considering the high volume of production and the need for effective order management.",
+      "from_fact_ids": [
+        "fct_102d05aa9b_3"
+      ],
+      "rule": "ICP.WF.WF_ORDER_STATUS",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_1_0"
+      ]
+    }
+  ],
+  "validation_questions": [
+    {
+      "id": "vq_h_0_0",
+      "question": "How does your team handle the quoting process for promotional products?",
+      "tests_inference_id": "inf_h_0",
+      "kills_if": "They do not have a formal quoting process."
+    },
+    {
+      "id": "vq_h_1_0",
+      "question": "What system do you use to track the status of orders?",
+      "tests_inference_id": "inf_h_1",
+      "kills_if": "They do not track order status."
+    }
+  ],
+  "workflow_hypotheses": [
+    {
+      "workflow_id": "WF_QUOTING",
+      "inference_id": "inf_h_0",
+      "boundary_count": 0,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+    },
+    {
+      "workflow_id": "WF_ORDER_STATUS",
+      "inference_id": "inf_h_1",
+      "boundary_count": 0,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_5ca09ede5a",
+      "source_url": "https://highcaliberline.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_acac15fcf096.txt",
+      "content_sha256": "bd90b489a38570adbfda3a9718c3c03d1f7698d2a43e7d9edf56cbe20b70d280",
+      "quote": "To be the industry’s most trusted and responsive partner — winning through exceptional service, outstanding people, and first-to-market innovation.",
+      "quote_offset": 1554
+    },
+    {
+      "id": "ev_eb72d53d93",
+      "source_url": "https://highcaliberline.com/pages/about-us",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_2d3aa6bcc293.txt",
+      "content_sha256": "d746c0d87fcc94d7849c78c2e0d3728d6f7e8d8b35e30a0abfb662c388abc585",
+      "quote": "High Caliber Line (HCL) is a family-owned and operated business that has been a trusted name in the promotional products industry since 1999.",
+      "quote_offset": 254
+    },
+    {
+      "id": "ev_03707682f3",
+      "source_url": "https://highcaliberline.com/pages/about-us",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_2d3aa6bcc293.txt",
+      "content_sha256": "d746c0d87fcc94d7849c78c2e0d3728d6f7e8d8b35e30a0abfb662c388abc585",
+      "quote": "From our humble beginnings specializing in lapel pins, we've grown into an award-winning company with over 25 years of experience.",
+      "quote_offset": 752
+    },
+    {
+      "id": "ev_102d05aa9b",
+      "source_url": "https://highcaliberline.com/pages/about-us",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_2d3aa6bcc293.txt",
+      "content_sha256": "d746c0d87fcc94d7849c78c2e0d3728d6f7e8d8b35e30a0abfb662c388abc585",
+      "quote": "Today, we operate three state-of-the-art facilities in the Greater Los Angeles area, including a 100,000 sq. ft. production and office space in Southern California, where we produce approximately 30 million items annually.",
+      "quote_offset": 883
+    },
+    {
+      "id": "ev_102d05aa9b",
+      "source_url": "https://highcaliberline.com/pages/about-us",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_2d3aa6bcc293.txt",
+      "content_sha256": "d746c0d87fcc94d7849c78c2e0d3728d6f7e8d8b35e30a0abfb662c388abc585",
+      "quote": "Today, we operate three state-of-the-art facilities in the Greater Los Angeles area, including a 100,000 sq. ft. production and office space in Southern California, where we produce approximately 30 million items annually.",
+      "quote_offset": 883
+    }
+  ],
+  "signals": {
+    "segment_label": "promotional_products_supplier",
+    "segment_tier": "A",
+    "segment_signal": {
+      "id": "sig_segment_promotional_products_supplier",
+      "kind": "segment",
+      "value": "promotional_products_supplier",
+      "evidence_ids": [
+        "ev_5ca09ede5a",
+        "ev_eb72d53d93"
+      ],
+      "fact_ids": [
+        "fct_5ca09ede5a_0",
+        "fct_eb72d53d93_0"
+      ],
+      "published_at": null
+    },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_5ca09ede5a",
+          "ev_eb72d53d93"
+        ],
+        "fact_ids": [
+          "fct_5ca09ede5a_0",
+          "fct_eb72d53d93_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "highcaliberline.com"
+    ],
+    "tier_1_2_fact_count": 4,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 28,
+    "components": {
+      "c1": 25,
+      "c2": 0,
+      "c3": 0,
+      "c4": 0,
+      "c5": 0,
+      "c6": 3
+    },
+    "contributing_signals": {
+      "c1": [
+        "sig_segment_promotional_products_supplier"
+      ],
+      "c2": [],
+      "c3": [],
+      "c4": [],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "No sourced scale figure; scale scored 0",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM"
+  ],
+  "flags": []
+}

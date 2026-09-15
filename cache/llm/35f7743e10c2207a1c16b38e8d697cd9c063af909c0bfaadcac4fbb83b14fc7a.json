@@ -1,0 +1,39 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions | Promotional Products & Apparel | Glendale Heights, IL - Events & News",
+      "statement": "Concord Marketing Solutions is a promotional products distributor.",
+      "value": "promotional_products_distributor"
+    },
+    {
+      "field": "trigger",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions announces record growth in 2015",
+      "statement": "Concord Marketing Solutions announces record growth in 2015.",
+      "value": "GROWTH_HIGH"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions Makes Counselor 2024 Best Places to Work",
+      "statement": "Concord Marketing Solutions makes Counselor 2024 Best Places to Work.",
+      "value": "Concord Marketing Solutions makes Counselor 2024 Best Places to Work."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions Makes PPAI's 2023 Greatest Companies to Work for List",
+      "statement": "Concord Marketing Solutions makes PPAI's 2023 Greatest Companies to Work for List.",
+      "value": "Concord Marketing Solutions makes PPAI's 2023 Greatest Companies to Work for List."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions named #20 on ASI Counselor\u2019s Best Places to Work 2018.",
+      "statement": "Concord Marketing Solutions named #20 on ASI Counselor\u2019s Best Places to Work 2018.",
+      "value": "Concord Marketing Solutions named #20 on ASI Counselor\u2019s Best Places to Work 2018."
+    }
+  ]
+}

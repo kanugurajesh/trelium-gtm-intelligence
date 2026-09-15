@@ -1,7 +1,7 @@
 {
   "company": "Staples Promotional Products",
   "domain": "staplespromotionalproducts.com",
-  "corpus_hash": "fad6219674dc573bede30d92da120470b0a9647e11fb724b93a15e594b5bd49b",
+  "corpus_hash": "d97e3effbbcb8e0b62d7aff417b34cb71f0f47eadac0d162d5267545389b8013",
   "facts": [
     {
       "kind": "fact",
@@ -32,6 +32,26 @@
       ],
       "field": null,
       "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_b496b7fb63_0",
+      "statement": "Staples Promotional Products is an Official Premium Licensee of LA28 and Team USA.",
+      "evidence_ids": [
+        "ev_b496b7fb63"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_7c7069ebd3_1",
+      "statement": "Over 300 Fortune-ranked brands contract with Staples Promo™.",
+      "evidence_ids": [
+        "ev_7c7069ebd3"
+      ],
+      "field": null,
+      "value": null
     }
   ],
   "inferences": [],
@@ -46,7 +66,7 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_42203bd70c13.txt",
+      "snapshot_path": "evidence/raw/src_42203bd70c13_c9469b9a.txt",
       "content_sha256": "c9469b9adb6c12f14c74a68182c2c7d007da6275b9c4e9427ab4ffd96650d95b",
       "quote": "Nike rates our decoration quality 3 million swooshes!",
       "quote_offset": 7587
@@ -59,7 +79,7 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_42203bd70c13.txt",
+      "snapshot_path": "evidence/raw/src_42203bd70c13_c9469b9a.txt",
       "content_sha256": "c9469b9adb6c12f14c74a68182c2c7d007da6275b9c4e9427ab4ffd96650d95b",
       "quote": "It runs on 100% renewable energy and was awarded a silver medal for sustainability by EcoVadis.",
       "quote_offset": 8010
@@ -72,10 +92,36 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_42203bd70c13.txt",
+      "snapshot_path": "evidence/raw/src_42203bd70c13_c9469b9a.txt",
       "content_sha256": "c9469b9adb6c12f14c74a68182c2c7d007da6275b9c4e9427ab4ffd96650d95b",
       "quote": "We also work with Village Northwest Unlimited to employ neurodivergent talent in our operations.",
       "quote_offset": 9081
+    },
+    {
+      "id": "ev_b496b7fb63",
+      "source_url": "https://staplespromotionalproducts.com/enterprise-solutions",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Services / capabilities",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_83205291d224_b421c7e0.txt",
+      "content_sha256": "b421c7e097a6c33494e2ff8eb02e9637f6f9f4e244142ce01f9f181cb863afff",
+      "quote": "Staples Promotional Products is an Official Premium Licensee of LA28 and Team USA.",
+      "quote_offset": 5798
+    },
+    {
+      "id": "ev_7c7069ebd3",
+      "source_url": "https://staplespromotionalproducts.com/enterprise-solutions",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Services / capabilities",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_83205291d224_b421c7e0.txt",
+      "content_sha256": "b421c7e097a6c33494e2ff8eb02e9637f6f9f4e244142ce01f9f181cb863afff",
+      "quote": "Join over 300 Fortune-ranked brands that contract with Staples Promo™ to centralize branded merchandise strategy, sourcing, compliance and procurement.",
+      "quote_offset": 5534
     }
   ],
   "signals": {
@@ -95,7 +141,7 @@
     "evidence_domains": [
       "staplespromotionalproducts.com"
     ],
-    "tier_1_2_fact_count": 3,
+    "tier_1_2_fact_count": 5,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
@@ -130,8 +176,9 @@
     "No sourced scale figure; scale scored 0",
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://staplespromotionalproducts.com: no extractable claims",
     "Not de-duplicated against Trelium CRM",
-    "3/6 extracted claims failed verbatim-quote verification and were discarded"
+    "3/8 extracted claims failed verbatim-quote verification and were discarded"
   ],
   "flags": []
 }

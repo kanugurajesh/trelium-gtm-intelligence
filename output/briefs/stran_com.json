@@ -1,7 +1,7 @@
 {
   "company": "Stran Promotional Solutions",
   "domain": "stran.com",
-  "corpus_hash": "cfc625f2181dfca7ae3a56229c8cf88f76c4b91f2badd84fc26b19b93d0db41f",
+  "corpus_hash": "7db8c00fcb04191d030b364e69b411df922079f606f13f02f718e2e5ec5a2c59",
   "facts": [
     {
       "kind": "fact",
@@ -40,8 +40,8 @@
       "evidence_ids": [
         "ev_347532df2b"
       ],
-      "field": "segment",
-      "value": "promotional_products_supplier"
+      "field": null,
+      "value": null
     },
     {
       "kind": "fact",
@@ -55,28 +55,50 @@
     },
     {
       "kind": "fact",
-      "id": "fct_028ee3330c_0",
-      "statement": "Stran is a promotional products supplier.",
+      "id": "fct_359f878057_0",
+      "statement": "Stran offers a wide variety of creative account services, technology solutions, and more to fulfill the needs of our clients.",
       "evidence_ids": [
-        "ev_028ee3330c"
-      ],
-      "field": "segment",
-      "value": "promotional_products_supplier"
-    },
-    {
-      "kind": "fact",
-      "id": "fct_f3c569d1c7_1",
-      "statement": "Stran has been in business for over 30 years.",
-      "evidence_ids": [
-        "ev_f3c569d1c7"
+        "ev_359f878057"
       ],
       "field": null,
       "value": null
     }
   ],
-  "inferences": [],
-  "validation_questions": [],
-  "workflow_hypotheses": [],
+  "inferences": [
+    {
+      "kind": "inference",
+      "id": "inf_h_0",
+      "statement": "Supplier purchasing processes may be worth investigating at Stran, given its role as a promotional product supplier and the diverse range of products it oversees.",
+      "from_fact_ids": [
+        "fct_8b86fa8756_0",
+        "fct_347532df2b_0",
+        "fct_359f878057_0"
+      ],
+      "rule": "ICP.WF.WF_SUPPLIER_PURCHASING",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_0_0"
+      ]
+    }
+  ],
+  "validation_questions": [
+    {
+      "id": "vq_h_0_0",
+      "question": "How does Stran manage its supplier relationships and purchasing processes for promotional products?",
+      "tests_inference_id": "inf_h_0",
+      "kills_if": "Stran has a fully automated supplier purchasing system in place."
+    }
+  ],
+  "workflow_hypotheses": [
+    {
+      "workflow_id": "WF_SUPPLIER_PURCHASING",
+      "inference_id": "inf_h_0",
+      "boundary_count": 1,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+    }
+  ],
   "evidence": [
     {
       "id": "ev_8b86fa8756",
@@ -86,7 +108,7 @@
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_b291531b6f9c.txt",
+      "snapshot_path": "evidence/raw/src_b291531b6f9c_52751317.txt",
       "content_sha256": "52751317c03421f62862e9a454155451e5c992c63bff000493a7918c9e15e969",
       "quote": "Promotional Product Supplier & Custom Swag Company | Stran",
       "quote_offset": 0
@@ -99,7 +121,7 @@
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_b291531b6f9c.txt",
+      "snapshot_path": "evidence/raw/src_b291531b6f9c_52751317.txt",
       "content_sha256": "52751317c03421f62862e9a454155451e5c992c63bff000493a7918c9e15e969",
       "quote": "we harness the power of a Magento-based technology platform to oversee a diverse range of promotional products, gifts, and branded merchandise.",
       "quote_offset": 7547
@@ -111,8 +133,8 @@
       "publisher": "Company website",
       "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
-      "published_at": null,
-      "snapshot_path": "evidence/raw/src_b291531b6f9c.txt",
+      "published_at": "1994-01-01",
+      "snapshot_path": "evidence/raw/src_b291531b6f9c_52751317.txt",
       "content_sha256": "52751317c03421f62862e9a454155451e5c992c63bff000493a7918c9e15e969",
       "quote": "Established in 1994, Stran has over two decades of expertise in promotional marketing, branding, and logistics management.",
       "quote_offset": 8541
@@ -125,7 +147,7 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_f7d8a9f97532.txt",
+      "snapshot_path": "evidence/raw/src_f7d8a9f97532_be4598f9.txt",
       "content_sha256": "be4598f96e938e87c2f9289d0a2a8fe3de10c648f37e34220f8a0cfb5ebe3c46",
       "quote": "Stran Promotional Product Solutions",
       "quote_offset": 14
@@ -138,36 +160,23 @@
       "title": "About",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_f7d8a9f97532.txt",
+      "snapshot_path": "evidence/raw/src_f7d8a9f97532_be4598f9.txt",
       "content_sha256": "be4598f96e938e87c2f9289d0a2a8fe3de10c648f37e34220f8a0cfb5ebe3c46",
       "quote": "Over 30 years in business",
       "quote_offset": 1333
     },
     {
-      "id": "ev_028ee3330c",
-      "source_url": "https://stran.com/about-stran",
+      "id": "ev_359f878057",
+      "source_url": "https://www.stran.com/services?hsLang=en",
       "source_tier": 1,
-      "publisher": "Company careers page",
-      "title": "Careers",
+      "publisher": "Company website",
+      "title": "Services / capabilities",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_46c972ef27de.txt",
-      "content_sha256": "be4598f96e938e87c2f9289d0a2a8fe3de10c648f37e34220f8a0cfb5ebe3c46",
-      "quote": "Stran Promotional Product Solutions",
-      "quote_offset": 14
-    },
-    {
-      "id": "ev_f3c569d1c7",
-      "source_url": "https://stran.com/about-stran",
-      "source_tier": 1,
-      "publisher": "Company careers page",
-      "title": "Careers",
-      "retrieved_at": "2026-09-15T00:00:00Z",
-      "published_at": null,
-      "snapshot_path": "evidence/raw/src_46c972ef27de.txt",
-      "content_sha256": "be4598f96e938e87c2f9289d0a2a8fe3de10c648f37e34220f8a0cfb5ebe3c46",
-      "quote": "Over 30 years in business",
-      "quote_offset": 1333
+      "snapshot_path": "evidence/raw/src_1744403a3d8f_b9169554.txt",
+      "content_sha256": "b916955465c1fc8b158be53863675e112b19ad692e4a1cc72683618384d5ae60",
+      "quote": "Stran offers a wide variety of creative account services, technology solutions, and more to fulfill the needs of our clients.",
+      "quote_offset": 868
     }
   ],
   "signals": {
@@ -178,13 +187,9 @@
       "kind": "segment",
       "value": "promotional_products_supplier",
       "evidence_ids": [
-        "ev_028ee3330c",
-        "ev_347532df2b",
         "ev_8b86fa8756"
       ],
       "fact_ids": [
-        "fct_028ee3330c_0",
-        "fct_347532df2b_0",
         "fct_8b86fa8756_0"
       ],
       "published_at": null
@@ -195,13 +200,9 @@
         "kind": "segment",
         "value": "promotional_products_supplier",
         "evidence_ids": [
-          "ev_028ee3330c",
-          "ev_347532df2b",
           "ev_8b86fa8756"
         ],
         "fact_ids": [
-          "fct_028ee3330c_0",
-          "fct_347532df2b_0",
           "fct_8b86fa8756_0"
         ],
         "published_at": null
@@ -213,34 +214,49 @@
     "scale_signal": null,
     "scale_candidates": [],
     "scale_conflict": false,
-    "stack_signals": [],
+    "stack_signals": [
+      {
+        "id": "sig_stack_commerce_store_magento",
+        "kind": "stack",
+        "value": "COMMERCE_STORE:magento",
+        "evidence_ids": [
+          "ev_bf23ae9156"
+        ],
+        "fact_ids": [
+          "fct_bf23ae9156_1"
+        ],
+        "published_at": null
+      }
+    ],
     "trigger_signals": [],
     "ops_signals": [],
     "evidence_domains": [
       "stran.com"
     ],
-    "tier_1_2_fact_count": 4,
+    "tier_1_2_fact_count": 6,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
   },
   "score": {
     "status": "SCORED",
-    "total": 28,
+    "total": 32,
     "components": {
       "c1": 25,
       "c2": 0,
-      "c3": 0,
+      "c3": 3,
       "c4": 0,
       "c5": 0,
-      "c6": 3
+      "c6": 4
     },
     "contributing_signals": {
       "c1": [
         "sig_segment_promotional_products_supplier"
       ],
       "c2": [],
-      "c3": [],
+      "c3": [
+        "sig_stack_commerce_store_magento"
+      ],
       "c4": [],
       "c5": [],
       "c6": []
@@ -253,10 +269,10 @@
   },
   "research_gaps": [
     "No sourced scale figure; scale scored 0",
-    "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://www.stran.com/blog?hsLang=en: no extractable claims",
     "Not de-duplicated against Trelium CRM",
-    "1/8 extracted claims failed verbatim-quote verification and were discarded"
+    "1/7 extracted claims failed verbatim-quote verification and were discarded"
   ],
   "flags": []
 }

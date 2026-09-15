@@ -1,0 +1,32 @@
+{
+  "claims": [
+    {
+      "field": "trigger",
+      "model_confidence": "high",
+      "quote": "The company is pleased to announce the appointment of Don Lyons as its new Customer Service Manager.",
+      "statement": "Don Lyons has been appointed as the new Customer Service Manager.",
+      "value": "LEADERSHIP_CHANGE_OPS"
+    },
+    {
+      "field": "trigger",
+      "model_confidence": "high",
+      "quote": "High Caliber is excited to announce the newest addition to the sales team\u2014Ray Jimenez, a seasoned promotional products professional with over 25 years of industry experience.",
+      "statement": "Ray Jimenez has joined the sales team.",
+      "value": "LEADERSHIP_CHANGE_OPS"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "\u201cI have no intention of raising prices, and actually lowered prices a few weeks ago after doing an item-by-item analysis.\u201d \u2013 Daniel Oas, CEO, High Caliber Line",
+      "statement": "CEO Daniel Oas stated he has lowered prices.",
+      "value": "I have no intention of raising prices, and actually lowered prices a few weeks ago after doing an item-by-item analysis."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "High Caliber Line is proud to announce the addition of UV ink (Nazdar) as a new imprint method across our product offerings.",
+      "statement": "High Caliber Line has added UV ink as a new imprint method.",
+      "value": "High Caliber Line is proud to announce the addition of UV ink (Nazdar) as a new imprint method across our product offerings."
+    }
+  ]
+}

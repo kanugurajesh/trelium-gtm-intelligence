@@ -1,51 +1,70 @@
 {
   "company": "HALO",
   "domain": "halo.com",
-  "corpus_hash": "fe553b0a05d1d19b8e16eea5ff9a092cdde31d0bf7cebc2c70f09561905dc1be",
+  "corpus_hash": "6fdd73c033b2042cbcc97fa77fc75d3eabbc0b92293ef3462efc5fc8b8527a58",
   "facts": [
     {
       "kind": "fact",
-      "id": "fct_6deadea1ae_0",
-      "statement": "HALO has more than 1,800 employees.",
+      "id": "fct_a51942b4b7_0",
+      "statement": "HALO Branded Solutions provides branded merchandise.",
       "evidence_ids": [
-        "ev_6deadea1ae"
+        "ev_a51942b4b7"
       ],
-      "field": "employee_count",
-      "value": 1800.0
+      "field": null,
+      "value": null
     },
     {
       "kind": "fact",
-      "id": "fct_a59894c534_1",
-      "statement": "HALO has grown to over $1B in revenue.",
+      "id": "fct_6f454b5936_0",
+      "statement": "HALO is the largest promotional merchandise distributor in the U.S.",
       "evidence_ids": [
-        "ev_a59894c534"
-      ],
-      "field": "revenue_usd",
-      "value": 1000000000.0
-    },
-    {
-      "kind": "fact",
-      "id": "fct_b2722f3888_2",
-      "statement": "HALO is a promotional products and recognition company.",
-      "evidence_ids": [
-        "ev_b2722f3888"
+        "ev_6f454b5936"
       ],
       "field": "segment",
-      "value": "promotional_products_supplier"
+      "value": "promotional_products_distributor"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_6f0979192b_0",
+      "statement": "HALO deploys the latest technology to deliver outstanding solutions to every client.",
+      "evidence_ids": [
+        "ev_6f0979192b"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_176e5ec2b0_1",
+      "statement": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "evidence_ids": [
+        "ev_176e5ec2b0"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_4a9b824574_0",
+      "statement": "HALO offers streamlined solutions for cost-efficient worldwide programs, all from a single employee recognition platform.",
+      "evidence_ids": [
+        "ev_4a9b824574"
+      ],
+      "field": null,
+      "value": null
     }
   ],
   "inferences": [
     {
       "kind": "inference",
       "id": "inf_h_0",
-      "statement": "Supplier purchasing processes may be worth investigating at HALO, given its significant size and presence in the promotional products segment.",
+      "statement": "Supplier purchasing processes may be worth investigating at HALO, given its position as the largest promotional merchandise distributor and its support for a wide range of punch-out connections.",
       "from_fact_ids": [
-        "fct_6deadea1ae_0",
-        "fct_a59894c534_1",
-        "fct_b2722f3888_2"
+        "fct_6f454b5936_0",
+        "fct_176e5ec2b0_1"
       ],
       "rule": "ICP.WF.WF_SUPPLIER_PURCHASING",
-      "model_confidence": "high",
+      "model_confidence": "medium",
       "validation_question_ids": [
         "vq_h_0_0"
       ]
@@ -53,13 +72,12 @@
     {
       "kind": "inference",
       "id": "inf_h_1",
-      "statement": "Order status tracking may be a candidate for investigation at HALO, considering its scale and the nature of its business in promotional products.",
+      "statement": "Quoting processes may be worth investigating at HALO, as the company provides branded merchandise and likely engages in pricing negotiations with clients.",
       "from_fact_ids": [
-        "fct_6deadea1ae_0",
-        "fct_a59894c534_1",
-        "fct_b2722f3888_2"
+        "fct_a51942b4b7_0",
+        "fct_6f454b5936_0"
       ],
-      "rule": "ICP.WF.WF_ORDER_STATUS",
+      "rule": "ICP.WF.WF_QUOTING",
       "model_confidence": "medium",
       "validation_question_ids": [
         "vq_h_1_0"
@@ -69,15 +87,15 @@
   "validation_questions": [
     {
       "id": "vq_h_0_0",
-      "question": "How does HALO manage its supplier purchasing processes?",
+      "question": "How does HALO manage supplier relationships and purchasing processes for branded merchandise?",
       "tests_inference_id": "inf_h_0",
-      "kills_if": "HALO does not have a structured supplier purchasing process."
+      "kills_if": "HALO uses a completely manual process without any technology or systems in place."
     },
     {
       "id": "vq_h_1_0",
-      "question": "What systems does HALO use to track order status?",
+      "question": "What is the process for generating quotes for clients seeking branded merchandise?",
       "tests_inference_id": "inf_h_1",
-      "kills_if": "HALO uses a simple or manual order status tracking system."
+      "kills_if": "HALO has a fixed pricing model with no need for customized quotes."
     }
   ],
   "workflow_hypotheses": [
@@ -85,118 +103,120 @@
       "workflow_id": "WF_SUPPLIER_PURCHASING",
       "inference_id": "inf_h_0",
       "boundary_count": 0,
-      "confidence": "high",
+      "confidence": "medium",
       "persona": "COO / VP Operations",
-      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+      "persona_rationale": "At smaller distributors the COO or a hands-on President typically owns day-to-day order operations directly."
     },
     {
-      "workflow_id": "WF_ORDER_STATUS",
+      "workflow_id": "WF_QUOTING",
       "inference_id": "inf_h_1",
       "boundary_count": 0,
       "confidence": "medium",
       "persona": "COO / VP Operations",
-      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+      "persona_rationale": "At smaller distributors the COO or a hands-on President typically owns day-to-day order operations directly."
     }
   ],
   "evidence": [
     {
-      "id": "ev_6deadea1ae",
-      "source_url": "https://halo.com/careers/",
+      "id": "ev_a51942b4b7",
+      "source_url": "https://halo.com",
       "source_tier": 1,
-      "publisher": "Company careers page",
-      "title": "Careers",
+      "publisher": "Company website",
+      "title": "Home",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_42483d608254.txt",
-      "content_sha256": "f804e7a834aaf499926a628c77418b7c951ee36a491ec56fe5486ad334de0029",
-      "quote": "With more than 1,800 employees in 42 global offices, HALO offers the industry’s most comprehensive range of capabilities, including creative services, technology solutions and logistics and global sourcing.",
-      "quote_offset": 8011
+      "snapshot_path": "evidence/raw/src_5150fc2c6f3f_da96154b.txt",
+      "content_sha256": "da96154b3e4cd00b8417036548b1468ecf4f42dbe9558b473e4690c19ef0e4e6",
+      "quote": "HALO Branded Solutions | Branded Solutions That Break Through",
+      "quote_offset": 0
     },
     {
-      "id": "ev_a59894c534",
-      "source_url": "https://halo.com/careers/",
+      "id": "ev_6f454b5936",
+      "source_url": "https://halo.com/join-our-sales-team/",
       "source_tier": 1,
       "publisher": "Company careers page",
       "title": "Careers",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_42483d608254.txt",
-      "content_sha256": "f804e7a834aaf499926a628c77418b7c951ee36a491ec56fe5486ad334de0029",
-      "quote": "Over the last few years we have grown exponentially to over $1B.",
-      "quote_offset": 8998
+      "snapshot_path": "evidence/raw/src_a1d908f58895_bc99158f.txt",
+      "content_sha256": "bc99158f73d3807242ce78d83ff7e3e9445790aa9efe7e164ec74524409c1b77",
+      "quote": "HALO is honored to be recognized by Advertising Specialty Institute’s Counselor Magazine as the largest promotional merchandise distributor in the U.S.",
+      "quote_offset": 12129
     },
     {
-      "id": "ev_b2722f3888",
-      "source_url": "https://halo.com/careers/",
+      "id": "ev_6f0979192b",
+      "source_url": "https://halo.com/technology-solutions/",
       "source_tier": 1,
-      "publisher": "Company careers page",
-      "title": "Careers",
+      "publisher": "Company website",
+      "title": "Technology / integrations",
       "retrieved_at": "2026-09-15T00:00:00Z",
       "published_at": null,
-      "snapshot_path": "evidence/raw/src_42483d608254.txt",
-      "content_sha256": "f804e7a834aaf499926a628c77418b7c951ee36a491ec56fe5486ad334de0029",
-      "quote": "We have built the most successful promotional products and recognition company anywhere.",
-      "quote_offset": 7764
+      "snapshot_path": "evidence/raw/src_1fab4ddc90a7_0fb1f47a.txt",
+      "content_sha256": "0fb1f47a7cbb0713e3e924b45c5214f6a0f5136304854329e1de86ccbf56291b",
+      "quote": "HALO deploys the latest technology to deliver outstanding solutions to every client.",
+      "quote_offset": 7559
+    },
+    {
+      "id": "ev_176e5ec2b0",
+      "source_url": "https://halo.com/technology-solutions/",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Technology / integrations",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_1fab4ddc90a7_0fb1f47a.txt",
+      "content_sha256": "0fb1f47a7cbb0713e3e924b45c5214f6a0f5136304854329e1de86ccbf56291b",
+      "quote": "We support a wide range of punch-out connections, including GEP, PerfectCommerce, SciQuest, Oracle, SAP and Ariba.",
+      "quote_offset": 8186
+    },
+    {
+      "id": "ev_4a9b824574",
+      "source_url": "https://halo.com/what-we-do/employee-recognition-incentives/achievement-solutions/",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Services / capabilities",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_c35180cdf375_eccd02f2.txt",
+      "content_sha256": "eccd02f2ac90a5478acde4bb2644be45cfb7f10a0cbde9022601dfc50cf8fb63",
+      "quote": "HALO offers streamlined solutions for cost-efficient worldwide programs, all from a single employee recognition platform.",
+      "quote_offset": 9924
     }
   ],
   "signals": {
-    "segment_label": "promotional_products_supplier",
+    "segment_label": "promotional_products_distributor",
     "segment_tier": "A",
     "segment_signal": {
-      "id": "sig_segment_promotional_products_supplier",
+      "id": "sig_segment_promotional_products_distributor",
       "kind": "segment",
-      "value": "promotional_products_supplier",
+      "value": "promotional_products_distributor",
       "evidence_ids": [
-        "ev_b2722f3888"
+        "ev_6f454b5936"
       ],
       "fact_ids": [
-        "fct_b2722f3888_2"
+        "fct_6f454b5936_0"
       ],
       "published_at": null
     },
     "segment_candidates": [
       {
-        "id": "sig_segment_promotional_products_supplier",
+        "id": "sig_segment_promotional_products_distributor",
         "kind": "segment",
-        "value": "promotional_products_supplier",
+        "value": "promotional_products_distributor",
         "evidence_ids": [
-          "ev_b2722f3888"
+          "ev_6f454b5936"
         ],
         "fact_ids": [
-          "fct_b2722f3888_2"
+          "fct_6f454b5936_0"
         ],
         "published_at": null
       }
     ],
     "segment_conflict": "none",
-    "scale_band": "ENTERPRISE",
-    "scale_basis": "revenue",
-    "scale_signal": {
-      "id": "sig_scale_revenue_enterprise",
-      "kind": "scale",
-      "value": "ENTERPRISE",
-      "evidence_ids": [
-        "ev_a59894c534"
-      ],
-      "fact_ids": [
-        "fct_a59894c534_1"
-      ],
-      "published_at": null
-    },
-    "scale_candidates": [
-      {
-        "id": "sig_scale_revenue_enterprise",
-        "kind": "scale",
-        "value": "ENTERPRISE",
-        "evidence_ids": [
-          "ev_a59894c534"
-        ],
-        "fact_ids": [
-          "fct_a59894c534_1"
-        ],
-        "published_at": null
-      }
-    ],
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "scale_candidates": [],
     "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
@@ -204,31 +224,29 @@
     "evidence_domains": [
       "halo.com"
     ],
-    "tier_1_2_fact_count": 3,
+    "tier_1_2_fact_count": 5,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
   },
   "score": {
     "status": "SCORED",
-    "total": 36,
+    "total": 28,
     "components": {
       "c1": 25,
       "c2": 0,
       "c3": 0,
-      "c4": 8,
+      "c4": 0,
       "c5": 0,
       "c6": 3
     },
     "contributing_signals": {
       "c1": [
-        "sig_segment_promotional_products_supplier"
+        "sig_segment_promotional_products_distributor"
       ],
       "c2": [],
       "c3": [],
-      "c4": [
-        "sig_scale_revenue_enterprise"
-      ],
+      "c4": [],
       "c5": [],
       "c6": []
     },
@@ -239,10 +257,12 @@
     "range": null
   },
   "research_gaps": [
+    "No sourced scale figure; scale scored 0",
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://halo.com/category/press-release/: no extractable claims",
     "Not de-duplicated against Trelium CRM",
-    "2/5 extracted claims failed verbatim-quote verification and were discarded"
+    "5/10 extracted claims duplicated an already accepted claim on the same page and were collapsed"
   ],
   "flags": []
 }

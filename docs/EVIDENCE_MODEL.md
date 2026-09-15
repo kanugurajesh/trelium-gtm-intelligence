@@ -89,8 +89,8 @@ Evidence:
   publisher: str          # "Company website", "PPAI", "Indeed", ...
   title: str
   retrieved_at: str       # ISO 8601, UTC
-  published_at: str|None  # ISO 8601 if determinable, else None
-  snapshot_path: str      # evidence/raw/<id>.txt, committed to the repo
+  published_at: str|None  # page publication date if the source gives one; else the latest year the quote itself names, as YYYY-01-01; else None (docs/SCORING.md section 7)
+  snapshot_path: str      # evidence/raw/src_<url hash>_<content hash>.txt, committed; a re-fetched page that changed gets a new file, never an overwrite
   content_sha256: str     # of the snapshot file
   quote: str              # verbatim span, <= 400 chars
   quote_offset: int       # character offset into the snapshot

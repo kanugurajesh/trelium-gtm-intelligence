@@ -1,0 +1,248 @@
+{
+  "company": "HALO",
+  "domain": "halo.com",
+  "corpus_hash": "fe553b0a05d1d19b8e16eea5ff9a092cdde31d0bf7cebc2c70f09561905dc1be",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_6deadea1ae_0",
+      "statement": "HALO has more than 1,800 employees.",
+      "evidence_ids": [
+        "ev_6deadea1ae"
+      ],
+      "field": "employee_count",
+      "value": 1800.0
+    },
+    {
+      "kind": "fact",
+      "id": "fct_a59894c534_1",
+      "statement": "HALO has grown to over $1B in revenue.",
+      "evidence_ids": [
+        "ev_a59894c534"
+      ],
+      "field": "revenue_usd",
+      "value": 1000000000.0
+    },
+    {
+      "kind": "fact",
+      "id": "fct_b2722f3888_2",
+      "statement": "HALO is a promotional products and recognition company.",
+      "evidence_ids": [
+        "ev_b2722f3888"
+      ],
+      "field": "segment",
+      "value": "promotional_products_supplier"
+    }
+  ],
+  "inferences": [
+    {
+      "kind": "inference",
+      "id": "inf_h_0",
+      "statement": "Supplier purchasing processes may be worth investigating at HALO, given its significant size and presence in the promotional products segment.",
+      "from_fact_ids": [
+        "fct_6deadea1ae_0",
+        "fct_a59894c534_1",
+        "fct_b2722f3888_2"
+      ],
+      "rule": "ICP.WF.WF_SUPPLIER_PURCHASING",
+      "model_confidence": "high",
+      "validation_question_ids": [
+        "vq_h_0_0"
+      ]
+    },
+    {
+      "kind": "inference",
+      "id": "inf_h_1",
+      "statement": "Order status tracking may be a candidate for investigation at HALO, considering its scale and the nature of its business in promotional products.",
+      "from_fact_ids": [
+        "fct_6deadea1ae_0",
+        "fct_a59894c534_1",
+        "fct_b2722f3888_2"
+      ],
+      "rule": "ICP.WF.WF_ORDER_STATUS",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_1_0"
+      ]
+    }
+  ],
+  "validation_questions": [
+    {
+      "id": "vq_h_0_0",
+      "question": "How does HALO manage its supplier purchasing processes?",
+      "tests_inference_id": "inf_h_0",
+      "kills_if": "HALO does not have a structured supplier purchasing process."
+    },
+    {
+      "id": "vq_h_1_0",
+      "question": "What systems does HALO use to track order status?",
+      "tests_inference_id": "inf_h_1",
+      "kills_if": "HALO uses a simple or manual order status tracking system."
+    }
+  ],
+  "workflow_hypotheses": [
+    {
+      "workflow_id": "WF_SUPPLIER_PURCHASING",
+      "inference_id": "inf_h_0",
+      "boundary_count": 0,
+      "confidence": "high",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+    },
+    {
+      "workflow_id": "WF_ORDER_STATUS",
+      "inference_id": "inf_h_1",
+      "boundary_count": 0,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "Suppliers route distributor PO intake and status requests through operations and customer-experience functions."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_6deadea1ae",
+      "source_url": "https://halo.com/careers/",
+      "source_tier": 1,
+      "publisher": "Company careers page",
+      "title": "Careers",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_42483d608254.txt",
+      "content_sha256": "f804e7a834aaf499926a628c77418b7c951ee36a491ec56fe5486ad334de0029",
+      "quote": "With more than 1,800 employees in 42 global offices, HALO offers the industry’s most comprehensive range of capabilities, including creative services, technology solutions and logistics and global sourcing.",
+      "quote_offset": 8011
+    },
+    {
+      "id": "ev_a59894c534",
+      "source_url": "https://halo.com/careers/",
+      "source_tier": 1,
+      "publisher": "Company careers page",
+      "title": "Careers",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_42483d608254.txt",
+      "content_sha256": "f804e7a834aaf499926a628c77418b7c951ee36a491ec56fe5486ad334de0029",
+      "quote": "Over the last few years we have grown exponentially to over $1B.",
+      "quote_offset": 8998
+    },
+    {
+      "id": "ev_b2722f3888",
+      "source_url": "https://halo.com/careers/",
+      "source_tier": 1,
+      "publisher": "Company careers page",
+      "title": "Careers",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_42483d608254.txt",
+      "content_sha256": "f804e7a834aaf499926a628c77418b7c951ee36a491ec56fe5486ad334de0029",
+      "quote": "We have built the most successful promotional products and recognition company anywhere.",
+      "quote_offset": 7764
+    }
+  ],
+  "signals": {
+    "segment_label": "promotional_products_supplier",
+    "segment_tier": "A",
+    "segment_signal": {
+      "id": "sig_segment_promotional_products_supplier",
+      "kind": "segment",
+      "value": "promotional_products_supplier",
+      "evidence_ids": [
+        "ev_b2722f3888"
+      ],
+      "fact_ids": [
+        "fct_b2722f3888_2"
+      ],
+      "published_at": null
+    },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_b2722f3888"
+        ],
+        "fact_ids": [
+          "fct_b2722f3888_2"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
+    "scale_band": "ENTERPRISE",
+    "scale_basis": "revenue",
+    "scale_signal": {
+      "id": "sig_scale_revenue_enterprise",
+      "kind": "scale",
+      "value": "ENTERPRISE",
+      "evidence_ids": [
+        "ev_a59894c534"
+      ],
+      "fact_ids": [
+        "fct_a59894c534_1"
+      ],
+      "published_at": null
+    },
+    "scale_candidates": [
+      {
+        "id": "sig_scale_revenue_enterprise",
+        "kind": "scale",
+        "value": "ENTERPRISE",
+        "evidence_ids": [
+          "ev_a59894c534"
+        ],
+        "fact_ids": [
+          "fct_a59894c534_1"
+        ],
+        "published_at": null
+      }
+    ],
+    "scale_conflict": false,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "halo.com"
+    ],
+    "tier_1_2_fact_count": 3,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 36,
+    "components": {
+      "c1": 25,
+      "c2": 0,
+      "c3": 0,
+      "c4": 8,
+      "c5": 0,
+      "c6": 3
+    },
+    "contributing_signals": {
+      "c1": [
+        "sig_segment_promotional_products_supplier"
+      ],
+      "c2": [],
+      "c3": [],
+      "c4": [
+        "sig_scale_revenue_enterprise"
+      ],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM",
+    "2/5 extracted claims failed verbatim-quote verification and were discarded"
+  ],
+  "flags": []
+}

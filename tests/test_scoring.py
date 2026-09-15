@@ -371,13 +371,13 @@ def test_c6_fact_count_buckets(n, expected_bucket):
 
 def test_c6_recency_bonus_under_12_months():
     signals = base_signals(evidence_domains=[], tier_1_2_fact_count=0)
-    result = score(signals, evidence_age_months_min=6)
+    result = score(signals, evidence_age_months_max=6)
     assert result.components["c6"] == 2
 
 
 def test_c6_recency_bonus_under_24_months():
     signals = base_signals(evidence_domains=[], tier_1_2_fact_count=0)
-    result = score(signals, evidence_age_months_min=20)
+    result = score(signals, evidence_age_months_max=20)
     assert result.components["c6"] == 1
 
 
@@ -386,7 +386,7 @@ def test_c6_capped_at_10():
         evidence_domains=["a.com", "b.com", "c.com", "d.com"],
         tier_1_2_fact_count=10,
     )
-    result = score(signals, evidence_age_months_min=6)
+    result = score(signals, evidence_age_months_max=6)
     # 4 + 3 + 2 + 1 = 10, exactly at cap
     assert result.components["c6"] == 10
 

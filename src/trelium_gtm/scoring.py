@@ -302,7 +302,7 @@ C6_CAP = 10
 
 
 def _score_c6_evidence_quality(
-    signals: SignalSet, all_evidence_ages_months_min: int | None
+    signals: SignalSet, all_evidence_ages_months_max: int | None
 ) -> int:
     total = 0
     total += min(len(set(signals.evidence_domains)), 4)
@@ -315,10 +315,10 @@ def _score_c6_evidence_quality(
     elif n >= 1:
         total += 1
 
-    if all_evidence_ages_months_min is not None:
-        if all_evidence_ages_months_min <= 12:
+    if all_evidence_ages_months_max is not None:
+        if all_evidence_ages_months_max <= 12:
             total += 2
-        elif all_evidence_ages_months_min <= 24:
+        elif all_evidence_ages_months_max <= 24:
             total += 1
 
     if len(set(signals.evidence_domains)) >= 2:
@@ -368,11 +368,11 @@ def score(
     signals: SignalSet,
     *,
     trigger_ages_months: dict[str, int | None] | None = None,
-    evidence_age_months_min: int | None = None,
+    evidence_age_months_max: int | None = None,
 ) -> ScoreResult:
     """Pure function: same SignalSet in, same ScoreResult out, always.
 
-    ``trigger_ages_months`` and ``evidence_age_months_min`` are integer ages
+    ``trigger_ages_months`` and ``evidence_age_months_max`` are integer ages
     in months, precomputed by the caller from Evidence.published_at against a
     fixed "as of" date — kept out of this function so it never reads a clock
     (CLAUDE.md R8).
@@ -390,7 +390,7 @@ def score(
     c3, c3_sigs = _score_c3_stack(signals)
     c4, c4_sigs = _score_c4_scale(signals)
     c5, c5_sigs = _score_c5_triggers(signals, trigger_ages_months)
-    c6 = _score_c6_evidence_quality(signals, evidence_age_months_min)
+    c6 = _score_c6_evidence_quality(signals, evidence_age_months_max)
 
     total = c1 + c2 + c3 + c4 + c5 + c6
     total = max(0, min(100, total))

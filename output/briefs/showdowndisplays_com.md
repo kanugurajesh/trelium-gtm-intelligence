@@ -28,7 +28,7 @@ No workflow hypothesis was generated for this account.
 **[1]** Showdown Displays stands as a premier, privately-held global manufacturer and supplier of cutting-edge visual communication, event, and display products.
   - Source: [Company website](https://showdowndisplays.com/Company?display=AboutUs) (retrieved 2026-09-15, tier 1) — "Showdown Displays stands as a premier, privately-held global manufacturer and supplier of cutting-edge visual communication, event, and display products."
 
-**[2]** Showdown Displays Europe has a dedicated team of 185 professionals.
+**[2]** Their dedicated team of 185 professionals operate out of two primary European locations.
   - Source: [Company website](https://showdowndisplays.com/Company?display=AboutUs) (retrieved 2026-09-15, tier 1) — "Their dedicated team of 185 professionals operate out of two primary European locations, serving clients in more than 45 countries."
 
 
@@ -36,4 +36,6 @@ No workflow hypothesis was generated for this account.
 
 - No order or ERP system identified in public sources
 - No growth, hiring or migration trigger found in public sources
+- Read https://showdowndisplays.com: no extractable claims
+- Read https://showdowndisplays.com/Careers?display=SearchCareers: no extractable claims
 - Not de-duplicated against Trelium CRM

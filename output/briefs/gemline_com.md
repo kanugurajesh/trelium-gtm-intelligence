@@ -23,4 +23,5 @@ None.
 - No sourced scale figure; scale scored 0
 - No order or ERP system identified in public sources
 - No growth, hiring or migration trigger found in public sources
+- Read https://gemline.com: no extractable claims
 - Not de-duplicated against Trelium CRM

@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "HALO Branded Solutions | Branded Solutions That Break Through",
+      "statement": "HALO Branded Solutions provides branded merchandise.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}

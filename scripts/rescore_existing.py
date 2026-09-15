@@ -26,7 +26,7 @@ from trelium_gtm.render.json_out import render_brief_json  # noqa: E402
 from trelium_gtm.render.markdown import render_brief_markdown  # noqa: E402
 from trelium_gtm.scoring import score as score_signals  # noqa: E402
 from trelium_gtm.signals import (  # noqa: E402
-    compute_evidence_age_months_min,
+    compute_evidence_age_months_max,
     compute_trigger_ages_months,
     conflict_gaps,
     derive_signals,
@@ -83,7 +83,7 @@ def main() -> None:
         result = score_signals(
             signals,
             trigger_ages_months=compute_trigger_ages_months(signals, as_of),
-            evidence_age_months_min=compute_evidence_age_months_min(old.evidence, as_of),
+            evidence_age_months_max=compute_evidence_age_months_max(old.evidence, as_of),
         )
         gaps = [g for g in old.research_gaps if "CONFLICT" not in g and "conflict resolved" not in g]
         gaps.extend(conflict_gaps(signals, old.evidence))

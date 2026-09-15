@@ -1,0 +1,47 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "high",
+      "from_fact_ids": [
+        "fct_6f454b5936_0",
+        "fct_176e5ec2b0_1",
+        "fct_176e5ec2b0_2",
+        "fct_176e5ec2b0_3",
+        "fct_176e5ec2b0_4",
+        "fct_176e5ec2b0_5",
+        "fct_176e5ec2b0_6"
+      ],
+      "reason": "The scale of operations and the technology integration suggest a potentially complex order entry system to handle numerous transactions efficiently.",
+      "statement": "Order Entry / PO Entry processes may be worth investigating at HALO, given its status as the largest promotional merchandise distributor in the U.S. and its support for multiple punch-out connections.",
+      "validation_questions": [
+        {
+          "kills_if": "HALO uses a fully automated system with no manual order entry processes.",
+          "question": "How does HALO manage order entry for punch-out connections?"
+        }
+      ],
+      "workflow_id": "WF_PO_ORDER_ENTRY"
+    },
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_6f454b5936_0",
+        "fct_6f0979192b_0",
+        "fct_176e5ec2b0_1",
+        "fct_176e5ec2b0_2",
+        "fct_176e5ec2b0_3",
+        "fct_176e5ec2b0_4",
+        "fct_176e5ec2b0_5",
+        "fct_176e5ec2b0_6"
+      ],
+      "reason": "The integration of advanced technology and multiple procurement platforms may indicate a sophisticated supplier purchasing workflow.",
+      "statement": "Supplier Purchasing processes could be worth investigating at HALO, considering its deployment of the latest technology and support for various procurement systems.",
+      "validation_questions": [
+        {
+          "kills_if": "HALO relies solely on manual processes for supplier purchasing.",
+          "question": "What systems does HALO use for supplier purchasing and how are they integrated?"
+        }
+      ],
+      "workflow_id": "WF_SUPPLIER_PURCHASING"
+    }
+  ]
+}

@@ -43,6 +43,10 @@
     "No sourced scale figure; scale scored 0",
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
+    "Read https://arielpremium.com: no extractable claims",
+    "Read https://arielpremium.com/products/technology: no extractable claims",
+    "Read https://arielpremium.com/media: no extractable claims",
+    "Read https://arielpremium.com/decoration-hub: no extractable claims",
     "Not de-duplicated against Trelium CRM"
   ],
   "flags": []

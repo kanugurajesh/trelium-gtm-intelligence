@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "There's a good reason people know us best for our branded merchandise!",
+      "statement": "Nadel is known best for their branded merchandise.",
+      "value": "adjacent_branded_merchandise"
+    }
+  ]
+}

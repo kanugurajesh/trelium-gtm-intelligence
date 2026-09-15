@@ -1,0 +1,18 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Staples Promotional Products is an Official Premium Licensee of LA28 and Team USA.",
+      "statement": "Staples Promotional Products is an Official Premium Licensee of LA28 and Team USA.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Join over 300 Fortune-ranked brands that contract with Staples Promo\u2122 to centralize branded merchandise strategy, sourcing, compliance and procurement.",
+      "statement": "Over 300 Fortune-ranked brands contract with Staples Promo\u2122.",
+      "value": "Join over 300 Fortune-ranked brands that contract with Staples Promo\u2122 to centralize branded merchandise strategy, sourcing, compliance and procurement."
+    }
+  ]
+}

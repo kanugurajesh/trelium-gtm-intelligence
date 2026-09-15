@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "HALO is honored to be recognized by Advertising Specialty Institute\u2019s Counselor Magazine as the largest promotional merchandise distributor in the U.S.",
+      "statement": "HALO is the largest promotional merchandise distributor in the U.S.",
+      "value": "promotional_products_distributor"
+    }
+  ]
+}
