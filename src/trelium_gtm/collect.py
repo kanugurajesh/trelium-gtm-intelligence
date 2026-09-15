@@ -89,6 +89,44 @@ class CollectResult:
     text: str | None = None
     error: str | None = None
     blocked_by_robots: bool = False
+    raw_html: str | None = None  # only populated when keep_html=True; never persisted (R25)
+
+
+_HREF_RE = re.compile(r'href\s*=\s*["\']([^"\']+)["\']', re.IGNORECASE)
+
+
+def discover_links(
+    html: str, base_url: str, keywords: tuple[str, ...], max_links: int = 3
+) -> list[str]:
+    """Best-effort same-domain link discovery: finds hrefs whose path
+    contains one of ``keywords`` (e.g. "about", "career"), resolves them
+    against ``base_url``, and returns up to ``max_links`` unique, same
+    registrable-domain URLs. This replaces blind path guessing (R25: we
+    still only ever store the cleaned text we actually fetch, never a site
+    mirror) with a lightweight real navigation pass.
+    """
+    from trelium_gtm.evidence.verify import registrable_domain
+
+    base_domain = registrable_domain(base_url)
+    seen: set[str] = set()
+    found: list[str] = []
+    for href in _HREF_RE.findall(html):
+        href_lower = href.lower()
+        if not any(kw in href_lower for kw in keywords):
+            continue
+        absolute = urljoin(base_url, href.split("#")[0])
+        parsed = urlparse(absolute)
+        if parsed.scheme not in ("http", "https"):
+            continue
+        if registrable_domain(absolute) != base_domain:
+            continue
+        if absolute in seen:
+            continue
+        seen.add(absolute)
+        found.append(absolute)
+        if len(found) >= max_links:
+            break
+    return found
 
 
 def _snapshot_id_for_url(url: str) -> str:
@@ -101,6 +139,7 @@ def collect_source(
     *,
     client: httpx.Client | None = None,
     user_agent: str = USER_AGENT,
+    keep_html: bool = False,
 ) -> CollectResult:
     """Fetch one URL, respect robots.txt, write a text snapshot.
 
@@ -151,6 +190,7 @@ def collect_source(
         snapshot_path=result.snapshot_path,
         content_sha256=result.content_sha256,
         text=text,
+        raw_html=response.text if keep_html else None,
     )
 
 
