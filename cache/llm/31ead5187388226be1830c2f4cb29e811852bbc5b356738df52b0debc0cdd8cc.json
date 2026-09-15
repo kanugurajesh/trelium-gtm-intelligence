@@ -1,0 +1,32 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Promotional Product Supplier & Custom Swag Company | Stran",
+      "statement": "Stran is a promotional product supplier.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "system",
+      "model_confidence": "high",
+      "quote": "we harness the power of a Magento-based technology platform to oversee a diverse range of promotional products, gifts, and branded merchandise.",
+      "statement": "Stran uses a Magento-based technology platform to oversee a diverse range of promotional products.",
+      "value": "Magento"
+    },
+    {
+      "field": "revenue_usd",
+      "model_confidence": "low",
+      "quote": "",
+      "statement": "The text does not provide a specific annual revenue figure for Stran.",
+      "value": "NNNM"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Established in 1994, Stran has over two decades of expertise in promotional marketing, branding, and logistics management.",
+      "statement": "Stran was established in 1994.",
+      "value": ""
+    }
+  ]
+}

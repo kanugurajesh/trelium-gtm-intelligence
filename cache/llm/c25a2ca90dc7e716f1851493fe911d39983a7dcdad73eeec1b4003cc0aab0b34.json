@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Our founder, Jack Nadel, first began creating branded merchandise in Culver City, California, in 1953.",
+      "statement": "Nadel first began creating branded merchandise in Culver City, California, in 1953.",
+      "value": "adjacent_branded_merchandise"
+    }
+  ]
+}

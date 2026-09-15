@@ -1,0 +1,32 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "close collaboration with you and your team is what sets us apart from being just another promotional products company.",
+      "statement": "Leaderpromos is a promotional products company.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Supplier diversity \u2013 certified woman owned business",
+      "statement": "Leaderpromos is a certified woman-owned business.",
+      "value": "Supplier diversity \u2013 certified woman owned business"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "TOP 50 of 24,000 PROMOTIONAL DISTRIBUTORS NATIONWIDE",
+      "statement": "Leaderpromos is ranked in the top 50 of promotional distributors nationwide.",
+      "value": "TOP 50 of 24,000 PROMOTIONAL DISTRIBUTORS NATIONWIDE"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Financial strength & stability consistent year after year growth & profitability",
+      "statement": "Leaderpromos has consistent year after year growth and profitability.",
+      "value": "Financial strength & stability consistent year after year growth & profitability"
+    }
+  ]
+}

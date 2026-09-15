@@ -1,0 +1,18 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Stran Promotional Product Solutions",
+      "statement": "Stran is a promotional products supplier.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Over 30 years in business",
+      "statement": "Stran has been in business for over 30 years.",
+      "value": "Over 30 years in business"
+    }
+  ]
+}

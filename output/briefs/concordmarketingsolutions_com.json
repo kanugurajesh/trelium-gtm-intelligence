@@ -1,0 +1,245 @@
+{
+  "company": "Concord Marketing Solutions",
+  "domain": "concordmarketingsolutions.com",
+  "corpus_hash": "d1c4ff89be7f6a88b433912df955defa76cfe0a0d9e62be6b0284e2c6523e023",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_b8acfde728_0",
+      "statement": "Concord Marketing Solutions is a promotional products distributor.",
+      "evidence_ids": [
+        "ev_b8acfde728"
+      ],
+      "field": "segment",
+      "value": "promotional_products_distributor"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_fd4a69b8ea_0",
+      "statement": "Concord Marketing Solutions Inc. was established in 1993 with a shared focus on ushering retail name-brands to the corporate marketplace.",
+      "evidence_ids": [
+        "ev_fd4a69b8ea"
+      ],
+      "field": "segment",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "kind": "fact",
+      "id": "fct_0ca76b9bec_1",
+      "statement": "Concord holds over $2.5 million dollars of blank soft goods.",
+      "evidence_ids": [
+        "ev_0ca76b9bec"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_c39f7315db_3",
+      "statement": "For the past ten years, Concord has been named as one of the Best Places to Work by the Counselor Magazine.",
+      "evidence_ids": [
+        "ev_c39f7315db"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_ad3b172a8e_4",
+      "statement": "In 2023, we were recognized by the Promotional Products Association International (PPAI) as one if its 'Greatest Companies to Work For.'",
+      "evidence_ids": [
+        "ev_ad3b172a8e"
+      ],
+      "field": null,
+      "value": null
+    },
+    {
+      "kind": "fact",
+      "id": "fct_92b91ae380_5",
+      "statement": "Concord was ranked 19 on the 2024 PPAI 100 Distributors.",
+      "evidence_ids": [
+        "ev_92b91ae380"
+      ],
+      "field": null,
+      "value": null
+    }
+  ],
+  "inferences": [
+    {
+      "kind": "inference",
+      "id": "inf_h_0",
+      "statement": "Supplier purchasing processes may be worth investigating at Concord Marketing Solutions, given its role as a promotional products distributor and its significant inventory of blank soft goods.",
+      "from_fact_ids": [
+        "fct_b8acfde728_0",
+        "fct_0ca76b9bec_1"
+      ],
+      "rule": "ICP.WF.WF_SUPPLIER_PURCHASING",
+      "model_confidence": "medium",
+      "validation_question_ids": [
+        "vq_h_0_0"
+      ]
+    }
+  ],
+  "validation_questions": [
+    {
+      "id": "vq_h_0_0",
+      "question": "How does Concord manage its supplier relationships and purchasing processes for inventory?",
+      "tests_inference_id": "inf_h_0",
+      "kills_if": "They have a fully automated supplier purchasing system with no manual intervention."
+    }
+  ],
+  "workflow_hypotheses": [
+    {
+      "workflow_id": "WF_SUPPLIER_PURCHASING",
+      "inference_id": "inf_h_0",
+      "boundary_count": 0,
+      "confidence": "medium",
+      "persona": "COO / VP Operations",
+      "persona_rationale": "At smaller distributors the COO or a hands-on President typically owns day-to-day order operations directly."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_b8acfde728",
+      "source_url": "https://concordmarketingsolutions.com",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "Home",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_8a78a5f14f18.txt",
+      "content_sha256": "12fe274c8dd1ec6aaa45c570536eaea609c25fdadd25c848145ffc4b894b11a8",
+      "quote": "Concord Marketing Solutions, the industry’s leading promotional products distributor.",
+      "quote_offset": 651
+    },
+    {
+      "id": "ev_fd4a69b8ea",
+      "source_url": "https://concordmarketingsolutions.com/aboutf.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
+      "quote": "Concord Marketing Solutions Inc. was established in 1993 by Kirk Graves and Robert Conte, with a shared focus on ushering retail name-brands to the corporate marketplace.",
+      "quote_offset": 656
+    },
+    {
+      "id": "ev_0ca76b9bec",
+      "source_url": "https://concordmarketingsolutions.com/aboutf.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
+      "quote": "as well as space to hold over $2.5 million dollars of blank soft goods.",
+      "quote_offset": 1561
+    },
+    {
+      "id": "ev_c39f7315db",
+      "source_url": "https://concordmarketingsolutions.com/aboutf.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
+      "quote": "For the past ten years, Concord has been named as one of the  Best Places to Work by the Counselor Magazine.",
+      "quote_offset": 1635
+    },
+    {
+      "id": "ev_ad3b172a8e",
+      "source_url": "https://concordmarketingsolutions.com/aboutf.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
+      "quote": "In 2023, we were recognized by the Promotional Products Association International (PPAI) as one if its “Greatest Companies to Work For.”",
+      "quote_offset": 1744
+    },
+    {
+      "id": "ev_92b91ae380",
+      "source_url": "https://concordmarketingsolutions.com/aboutf.htm",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_04e3f82018bb.txt",
+      "content_sha256": "dacdc0daa1e3be119fe732f0144469b8d60051785980c39c5a0ec8cfdd5a26f8",
+      "quote": "Most up to date, Concord was ranked 19 on the 2024 PPAI 100 Distributors.",
+      "quote_offset": 1881
+    }
+  ],
+  "signals": {
+    "segment_label": "promotional_products_distributor",
+    "segment_tier": "A",
+    "segment_signal": {
+      "id": "sig_segment_fct_b8acfde728_0",
+      "kind": "segment",
+      "value": "promotional_products_distributor",
+      "evidence_ids": [
+        "ev_b8acfde728"
+      ],
+      "fact_ids": [
+        "fct_b8acfde728_0"
+      ],
+      "published_at": null
+    },
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "concordmarketingsolutions.com"
+    ],
+    "tier_1_2_fact_count": 6,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 29,
+    "components": {
+      "c1": 25,
+      "c2": 0,
+      "c3": 0,
+      "c4": 0,
+      "c5": 0,
+      "c6": 4
+    },
+    "contributing_signals": {
+      "c1": [
+        "sig_segment_fct_b8acfde728_0"
+      ],
+      "c2": [],
+      "c3": [],
+      "c4": [],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "No sourced scale figure; scale scored 0",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM",
+    "1/7 extracted claims failed verbatim-quote verification and were discarded"
+  ],
+  "flags": []
+}

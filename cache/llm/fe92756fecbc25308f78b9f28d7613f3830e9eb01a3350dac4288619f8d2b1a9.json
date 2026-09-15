@@ -1,0 +1,38 @@
+{
+  "hypotheses": [
+    {
+      "confidence": "high",
+      "from_fact_ids": [
+        "fct_6deadea1ae_0",
+        "fct_a59894c534_1",
+        "fct_b2722f3888_2"
+      ],
+      "reason": "With over 1,800 employees and $1B in revenue, HALO likely engages in substantial supplier purchasing activities to support its operations.",
+      "statement": "Supplier purchasing processes may be worth investigating at HALO, given its significant size and presence in the promotional products segment.",
+      "validation_questions": [
+        {
+          "kills_if": "HALO does not have a structured supplier purchasing process.",
+          "question": "How does HALO manage its supplier purchasing processes?"
+        }
+      ],
+      "workflow_id": "WF_SUPPLIER_PURCHASING"
+    },
+    {
+      "confidence": "medium",
+      "from_fact_ids": [
+        "fct_6deadea1ae_0",
+        "fct_a59894c534_1",
+        "fct_b2722f3888_2"
+      ],
+      "reason": "The large employee count and revenue suggest a complex order management system that may require effective order status tracking.",
+      "statement": "Order status tracking may be a candidate for investigation at HALO, considering its scale and the nature of its business in promotional products.",
+      "validation_questions": [
+        {
+          "kills_if": "HALO uses a simple or manual order status tracking system.",
+          "question": "What systems does HALO use to track order status?"
+        }
+      ],
+      "workflow_id": "WF_ORDER_STATUS"
+    }
+  ]
+}

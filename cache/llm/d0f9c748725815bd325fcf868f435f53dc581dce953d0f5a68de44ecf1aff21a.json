@@ -1,0 +1,39 @@
+{
+  "claims": [
+    {
+      "field": "employee_count",
+      "model_confidence": "high",
+      "quote": "With more than 1,800 employees in 42 global offices, HALO offers the industry\u2019s most comprehensive range of capabilities, including creative services, technology solutions and logistics and global sourcing.",
+      "statement": "HALO has more than 1,800 employees.",
+      "value": "1800"
+    },
+    {
+      "field": "revenue_usd",
+      "model_confidence": "high",
+      "quote": "Over the last few years we have grown exponentially to over $1B.",
+      "statement": "HALO has grown to over $1B in revenue.",
+      "value": "1000000000"
+    },
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "We have built the most successful promotional products and recognition company anywhere.",
+      "statement": "HALO is a promotional products and recognition company.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "112 Fortune 500 Clients",
+      "statement": "HALO has 112 Fortune 500 clients.",
+      "value": "112 Fortune 500 Clients"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "60K Clients Worldwide",
+      "statement": "HALO has 60,000 clients worldwide.",
+      "value": "60K Clients Worldwide"
+    }
+  ]
+}

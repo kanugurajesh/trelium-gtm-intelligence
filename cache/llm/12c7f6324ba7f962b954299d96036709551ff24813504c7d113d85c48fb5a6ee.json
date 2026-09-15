@@ -1,0 +1,46 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions Inc. was established in 1993 by Kirk Graves and Robert Conte, with a shared focus on ushering retail name-brands to the corporate marketplace.",
+      "statement": "Concord Marketing Solutions Inc. was established in 1993 with a shared focus on ushering retail name-brands to the corporate marketplace.",
+      "value": "promotional_products_supplier"
+    },
+    {
+      "field": "revenue_usd",
+      "model_confidence": "high",
+      "quote": "as well as space to hold over $2.5 million dollars of blank soft goods.",
+      "statement": "Concord holds over $2.5 million dollars of blank soft goods.",
+      "value": "2500000"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Concord currently operates 150+ online store programs for companies located all around the globe.",
+      "statement": "Concord currently operates 150+ online store programs for companies located all around the globe.",
+      "value": "Concord currently operates 150+ online store programs for companies located all around the globe."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "For the past ten years, Concord has been named as one of the\u00a0 Best Places to Work by the Counselor Magazine.",
+      "statement": "For the past ten years, Concord has been named as one of the Best Places to Work by the Counselor Magazine.",
+      "value": "For the past ten years, Concord has been named as one of the Best Places to Work by the Counselor Magazine."
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "In 2023, we were recognized by the Promotional Products Association International (PPAI) as one if its \u201cGreatest Companies to Work For.\u201d",
+      "statement": "In 2023, we were recognized by the Promotional Products Association International (PPAI) as one if its 'Greatest Companies to Work For.'",
+      "value": "In 2023, we were recognized by the Promotional Products Association International (PPAI) as one if its 'Greatest Companies to Work For.'"
+    },
+    {
+      "field": "other",
+      "model_confidence": "high",
+      "quote": "Most up to date, Concord was ranked 19 on the 2024 PPAI 100 Distributors.",
+      "statement": "Concord was ranked 19 on the 2024 PPAI 100 Distributors.",
+      "value": "Concord was ranked 19 on the 2024 PPAI 100 Distributors."
+    }
+  ]
+}

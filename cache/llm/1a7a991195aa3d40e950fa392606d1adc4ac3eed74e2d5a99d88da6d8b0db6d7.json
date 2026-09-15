@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "Concord Marketing Solutions, the industry\u2019s leading promotional products distributor.",
+      "statement": "Concord Marketing Solutions is a promotional products distributor.",
+      "value": "promotional_products_distributor"
+    }
+  ]
+}

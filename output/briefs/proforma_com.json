@@ -1,0 +1,46 @@
+{
+  "company": "Proforma",
+  "domain": "proforma.com",
+  "corpus_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "facts": [],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [],
+  "signals": {
+    "segment_label": "unresolved",
+    "segment_tier": "UNRESOLVED",
+    "segment_signal": null,
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [],
+    "tier_1_2_fact_count": 0,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": false
+  },
+  "score": {
+    "status": "INSUFFICIENT_EVIDENCE",
+    "total": null,
+    "components": {},
+    "contributing_signals": {},
+    "evidence_grade": "D",
+    "band": null,
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "Segment unconfirmed from primary sources",
+    "No sourced scale figure; scale scored 0",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Failed to collect https://proforma.com: No visible text extracted",
+    "Not de-duplicated against Trelium CRM"
+  ],
+  "flags": []
+}

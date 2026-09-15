@@ -1,0 +1,98 @@
+{
+  "company": "Nadel",
+  "domain": "nadel.com",
+  "corpus_hash": "fa9fb2de1663568e06055dfce9d5bf072455c3b0bc3c472b95ca6e1aac496eeb",
+  "facts": [
+    {
+      "kind": "fact",
+      "id": "fct_8fbca08313_0",
+      "statement": "Nadel first began creating branded merchandise in Culver City, California, in 1953.",
+      "evidence_ids": [
+        "ev_8fbca08313"
+      ],
+      "field": "segment",
+      "value": "adjacent_branded_merchandise"
+    }
+  ],
+  "inferences": [],
+  "validation_questions": [],
+  "workflow_hypotheses": [],
+  "evidence": [
+    {
+      "id": "ev_8fbca08313",
+      "source_url": "https://nadel.com/about",
+      "source_tier": 1,
+      "publisher": "Company website",
+      "title": "About",
+      "retrieved_at": "2026-09-15T00:00:00Z",
+      "published_at": null,
+      "snapshot_path": "evidence/raw/src_399b6eea1e89.txt",
+      "content_sha256": "79d1fc26af0b6c99cf783bd54da2cac53d22eaab84a2e6de67d29372340a49c0",
+      "quote": "Our founder, Jack Nadel, first began creating branded merchandise in Culver City, California, in 1953.",
+      "quote_offset": 575
+    }
+  ],
+  "signals": {
+    "segment_label": "adjacent_branded_merchandise",
+    "segment_tier": "B",
+    "segment_signal": {
+      "id": "sig_segment_fct_8fbca08313_0",
+      "kind": "segment",
+      "value": "adjacent_branded_merchandise",
+      "evidence_ids": [
+        "ev_8fbca08313"
+      ],
+      "fact_ids": [
+        "fct_8fbca08313_0"
+      ],
+      "published_at": null
+    },
+    "scale_band": "UNKNOWN",
+    "scale_basis": "unknown",
+    "scale_signal": null,
+    "stack_signals": [],
+    "trigger_signals": [],
+    "ops_signals": [],
+    "evidence_domains": [
+      "nadel.com"
+    ],
+    "tier_1_2_fact_count": 1,
+    "is_public_customer": false,
+    "is_ecosystem_ambiguous": false,
+    "has_any_evidence": true
+  },
+  "score": {
+    "status": "SCORED",
+    "total": 17,
+    "components": {
+      "c1": 15,
+      "c2": 0,
+      "c3": 0,
+      "c4": 0,
+      "c5": 0,
+      "c6": 2
+    },
+    "contributing_signals": {
+      "c1": [
+        "sig_segment_fct_8fbca08313_0"
+      ],
+      "c2": [],
+      "c3": [],
+      "c4": [],
+      "c5": [],
+      "c6": []
+    },
+    "evidence_grade": "C",
+    "band": "DEPRIORITIZE",
+    "flags": [],
+    "reported_as": "point",
+    "range": null
+  },
+  "research_gaps": [
+    "No sourced scale figure; scale scored 0",
+    "No order or ERP system identified in public sources",
+    "No growth, hiring or migration trigger found in public sources",
+    "Not de-duplicated against Trelium CRM"
+  ],
+  "flags": []
+}

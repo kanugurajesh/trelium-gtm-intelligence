@@ -1,0 +1,11 @@
+{
+  "claims": [
+    {
+      "field": "segment",
+      "model_confidence": "high",
+      "quote": "close collaboration with you and your team is what sets us apart from being just another promotional products company.",
+      "statement": "Leaderpromos is a promotional products company.",
+      "value": "promotional_products_supplier"
+    }
+  ]
+}
