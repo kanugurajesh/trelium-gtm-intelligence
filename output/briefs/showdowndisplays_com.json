@@ -59,7 +59,7 @@
     "segment_label": "promotional_products_supplier",
     "segment_tier": "A",
     "segment_signal": {
-      "id": "sig_segment_fct_36a34f08af_0",
+      "id": "sig_segment_promotional_products_supplier",
       "kind": "segment",
       "value": "promotional_products_supplier",
       "evidence_ids": [
@@ -70,10 +70,25 @@
       ],
       "published_at": null
     },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_36a34f08af"
+        ],
+        "fact_ids": [
+          "fct_36a34f08af_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
     "scale_band": "SWEET_SPOT",
     "scale_basis": "headcount",
     "scale_signal": {
-      "id": "sig_scale_fct_005658c530_1",
+      "id": "sig_scale_headcount_sweet_spot",
       "kind": "scale",
       "value": "SWEET_SPOT",
       "evidence_ids": [
@@ -84,6 +99,21 @@
       ],
       "published_at": null
     },
+    "scale_candidates": [
+      {
+        "id": "sig_scale_headcount_sweet_spot",
+        "kind": "scale",
+        "value": "SWEET_SPOT",
+        "evidence_ids": [
+          "ev_005658c530"
+        ],
+        "fact_ids": [
+          "fct_005658c530_1"
+        ],
+        "published_at": null
+      }
+    ],
+    "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
     "ops_signals": [],
@@ -108,12 +138,12 @@
     },
     "contributing_signals": {
       "c1": [
-        "sig_segment_fct_36a34f08af_0"
+        "sig_segment_promotional_products_supplier"
       ],
       "c2": [],
       "c3": [],
       "c4": [
-        "sig_scale_fct_005658c530_1"
+        "sig_scale_headcount_sweet_spot"
       ],
       "c5": [],
       "c6": []

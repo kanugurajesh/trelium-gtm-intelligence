@@ -187,27 +187,48 @@
     "segment_label": "promotional_products_supplier",
     "segment_tier": "A",
     "segment_signal": {
-      "id": "sig_segment_fct_5ca09ede5a_0",
+      "id": "sig_segment_promotional_products_supplier",
       "kind": "segment",
       "value": "promotional_products_supplier",
       "evidence_ids": [
-        "ev_5ca09ede5a"
+        "ev_5ca09ede5a",
+        "ev_eb72d53d93"
       ],
       "fact_ids": [
-        "fct_5ca09ede5a_0"
+        "fct_5ca09ede5a_0",
+        "fct_eb72d53d93_0"
       ],
       "published_at": null
     },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_5ca09ede5a",
+          "ev_eb72d53d93"
+        ],
+        "fact_ids": [
+          "fct_5ca09ede5a_0",
+          "fct_eb72d53d93_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
     "scale_band": "UNKNOWN",
     "scale_basis": "unknown",
     "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
     "ops_signals": [],
     "evidence_domains": [
       "highcaliberline.com"
     ],
-    "tier_1_2_fact_count": 5,
+    "tier_1_2_fact_count": 4,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
@@ -225,7 +246,7 @@
     },
     "contributing_signals": {
       "c1": [
-        "sig_segment_fct_5ca09ede5a_0"
+        "sig_segment_promotional_products_supplier"
       ],
       "c2": [],
       "c3": [],

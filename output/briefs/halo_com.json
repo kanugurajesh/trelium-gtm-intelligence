@@ -143,7 +143,7 @@
     "segment_label": "promotional_products_supplier",
     "segment_tier": "A",
     "segment_signal": {
-      "id": "sig_segment_fct_b2722f3888_2",
+      "id": "sig_segment_promotional_products_supplier",
       "kind": "segment",
       "value": "promotional_products_supplier",
       "evidence_ids": [
@@ -154,10 +154,25 @@
       ],
       "published_at": null
     },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_b2722f3888"
+        ],
+        "fact_ids": [
+          "fct_b2722f3888_2"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
     "scale_band": "ENTERPRISE",
     "scale_basis": "revenue",
     "scale_signal": {
-      "id": "sig_scale_fct_a59894c534_1",
+      "id": "sig_scale_revenue_enterprise",
       "kind": "scale",
       "value": "ENTERPRISE",
       "evidence_ids": [
@@ -168,6 +183,21 @@
       ],
       "published_at": null
     },
+    "scale_candidates": [
+      {
+        "id": "sig_scale_revenue_enterprise",
+        "kind": "scale",
+        "value": "ENTERPRISE",
+        "evidence_ids": [
+          "ev_a59894c534"
+        ],
+        "fact_ids": [
+          "fct_a59894c534_1"
+        ],
+        "published_at": null
+      }
+    ],
+    "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
     "ops_signals": [],
@@ -192,12 +222,12 @@
     },
     "contributing_signals": {
       "c1": [
-        "sig_segment_fct_b2722f3888_2"
+        "sig_segment_promotional_products_supplier"
       ],
       "c2": [],
       "c3": [],
       "c4": [
-        "sig_scale_fct_a59894c534_1"
+        "sig_scale_revenue_enterprise"
       ],
       "c5": [],
       "c6": []

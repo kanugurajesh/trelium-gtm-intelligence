@@ -4,10 +4,10 @@
 |---|---|---|---|---|---|
 | 1 | Showdown Displays | 39 | DEPRIORITIZE | C | - |
 | 2 | HALO | 36 | DEPRIORITIZE | C | - |
-| 3 | Concord Marketing Solutions | 29 | DEPRIORITIZE | C | - |
-| 4 | Stran Promotional Solutions | 29 | DEPRIORITIZE | C | - |
-| 5 | High Caliber Line | 28 | DEPRIORITIZE | C | - |
-| 6 | Hirsch | 27 | DEPRIORITIZE | C | - |
+| 3 | High Caliber Line | 28 | DEPRIORITIZE | C | - |
+| 4 | Stran Promotional Solutions | 28 | DEPRIORITIZE | C | - |
+| 5 | Hirsch | 27 | DEPRIORITIZE | C | - |
+| 6 | Concord Marketing Solutions | 24 | DEPRIORITIZE | C | SEGMENT_CONFLICT_UNRESOLVED |
 | 7 | Nadel | 17 | DEPRIORITIZE | C | - |
 | 8 | SanMar | 10 | DEPRIORITIZE | C | ECOSYSTEM_AMBIGUOUS |
 | 9 | Ball Pro | 5 | DEPRIORITIZE | C | - |

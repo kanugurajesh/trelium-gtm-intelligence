@@ -167,10 +167,17 @@ class SignalSet(BaseModel):
     segment_label: SegmentLabel = SegmentLabel.UNRESOLVED
     segment_tier: SegmentTier = SegmentTier.UNRESOLVED
     segment_signal: Signal | None = None
+    # Contradiction policy (docs/EVIDENCE_MODEL.md section 9): every distinct
+    # segment label that was claimed, each as one merged signal carrying all
+    # of its supporting evidence. Never silently discarded.
+    segment_candidates: list[Signal] = []
+    segment_conflict: Literal["none", "resolved_by_tier", "unresolved"] = "none"
 
     scale_band: ScaleBand = ScaleBand.UNKNOWN
     scale_basis: Literal["revenue", "headcount", "unknown"] = "unknown"
     scale_signal: Signal | None = None
+    scale_candidates: list[Signal] = []
+    scale_conflict: bool = False  # sourced figures disagree on the scale band
 
     stack_signals: list[Signal] = []
     trigger_signals: list[Signal] = []

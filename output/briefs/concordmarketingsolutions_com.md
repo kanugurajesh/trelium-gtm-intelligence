@@ -4,13 +4,14 @@ Domain: `concordmarketingsolutions.com` | Corpus hash: `d1c4ff89be7f`
 
 > **Before any outreach:** this account has NOT been checked against Trelium's CRM or active pipeline. This tool has no visibility into existing customers, prospects or in-flight conversations. De-duplicate before contacting anyone.
 
-## Fit score: 29 / 100 — DEPRIORITIZE
+## Fit score: 24 / 100 — DEPRIORITIZE
 
 Evidence grade: **C**
+Flags: SEGMENT_CONFLICT_UNRESOLVED
 
 | Component | Points |
 |---|---|
-| Core vertical fit (0-25) | 25 |
+| Core vertical fit (0-25) | 20 |
 | Operational complexity (0-20) | 0 |
 | Software/ecosystem signals (0-15) | 0 |
 | Transaction/org scale (0-15) | 0 |
@@ -63,3 +64,4 @@ Confidence: **medium** | System boundaries crossed: 0
 - No growth, hiring or migration trigger found in public sources
 - Not de-duplicated against Trelium CRM
 - 1/7 extracted claims failed verbatim-quote verification and were discarded
+- SEGMENT CONFLICT (unresolved, equal evidence tier) — sources disagree on the company's segment: promotional_products_distributor (1 fact(s); https://concordmarketingsolutions.com); promotional_products_supplier (1 fact(s); https://concordmarketingsolutions.com/aboutf.htm). Winner 'promotional_products_distributor' chosen by breadth of support then fixed lexical order, C1 penalised; validate manually before relying on the segment.

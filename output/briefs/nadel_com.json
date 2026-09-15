@@ -36,7 +36,7 @@
     "segment_label": "adjacent_branded_merchandise",
     "segment_tier": "B",
     "segment_signal": {
-      "id": "sig_segment_fct_8fbca08313_0",
+      "id": "sig_segment_adjacent_branded_merchandise",
       "kind": "segment",
       "value": "adjacent_branded_merchandise",
       "evidence_ids": [
@@ -47,9 +47,26 @@
       ],
       "published_at": null
     },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_adjacent_branded_merchandise",
+        "kind": "segment",
+        "value": "adjacent_branded_merchandise",
+        "evidence_ids": [
+          "ev_8fbca08313"
+        ],
+        "fact_ids": [
+          "fct_8fbca08313_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
     "scale_band": "UNKNOWN",
     "scale_basis": "unknown",
     "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
     "ops_signals": [],
@@ -74,7 +91,7 @@
     },
     "contributing_signals": {
       "c1": [
-        "sig_segment_fct_8fbca08313_0"
+        "sig_segment_adjacent_branded_merchandise"
       ],
       "c2": [],
       "c3": [],

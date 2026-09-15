@@ -340,3 +340,33 @@ workflow hypothesised for 6 accounts at `high` confidence is a campaign.
 
 This also functions as a check on the taxonomy. If two workflows always co-occur, they are one
 workflow for targeting purposes, whatever the product does.
+
+---
+
+## 13. Deduplication policy (scoring side)
+
+Points are awarded per **distinct identity**, never per signal row. `signals.derive_signals`
+merges duplicates before scoring (`EVIDENCE_MODEL.md` section 9); `_score_c3_stack` additionally
+re-groups by normalised system name so a hand-built or externally supplied `SignalSet` cannot
+inflate C3 by repeating a name. C2 dedupes by sub-signal enum, C5 by trigger type (with
+`OPS_HIRING:<n>` counting distinct role titles), and C6's tier-1/2 fact count is a count of
+distinct claims. Regression tests: `tests/test_signals_integrity.py`.
+
+Before this policy a system named on two pages scored as two systems (6 + 2 instead of 6). That
+bug shipped in the first 30-account run; no account in that run happened to trigger it, but it
+was real. Recorded in `RESCORE_COMPARISON.md`.
+
+## 14. Contradiction policy (scoring side)
+
+Full policy in `EVIDENCE_MODEL.md` section 10. The scorer's part:
+
+| `SignalSet.segment_conflict` | C1 effect | Flag |
+|---|---|---|
+| `none` | as section 3 | — |
+| `resolved_by_tier` | as section 3, no penalty | `SEGMENT_CONFLICT_RESOLVED_BY_TIER` |
+| `unresolved` | `(points * 4) // 5` | `SEGMENT_CONFLICT_UNRESOLVED` |
+
+`SignalSet.scale_conflict` adds `SCALE_CONFLICT`; C4 is unchanged because the band already
+follows the evidence hierarchy. Both conflicts always produce a research gap on the brief. The
+scorer never sees the losing candidates' content, only the recorded conflict state, so it
+remains a pure function of the `SignalSet`.

@@ -59,27 +59,48 @@
     "segment_label": "promotional_products_supplier",
     "segment_tier": "A",
     "segment_signal": {
-      "id": "sig_segment_fct_438df52da5_0",
+      "id": "sig_segment_promotional_products_supplier",
       "kind": "segment",
       "value": "promotional_products_supplier",
       "evidence_ids": [
-        "ev_438df52da5"
+        "ev_438df52da5",
+        "ev_ca91fbf620"
       ],
       "fact_ids": [
-        "fct_438df52da5_0"
+        "fct_438df52da5_0",
+        "fct_ca91fbf620_0"
       ],
       "published_at": null
     },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_438df52da5",
+          "ev_ca91fbf620"
+        ],
+        "fact_ids": [
+          "fct_438df52da5_0",
+          "fct_ca91fbf620_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "none",
     "scale_band": "UNKNOWN",
     "scale_basis": "unknown",
     "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
     "ops_signals": [],
     "evidence_domains": [
       "hirschpromo.com"
     ],
-    "tier_1_2_fact_count": 2,
+    "tier_1_2_fact_count": 1,
     "is_public_customer": false,
     "is_ecosystem_ambiguous": false,
     "has_any_evidence": true
@@ -97,7 +118,7 @@
     },
     "contributing_signals": {
       "c1": [
-        "sig_segment_fct_438df52da5_0"
+        "sig_segment_promotional_products_supplier"
       ],
       "c2": [],
       "c3": [],

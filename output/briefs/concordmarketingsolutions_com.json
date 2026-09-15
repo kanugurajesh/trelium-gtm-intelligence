@@ -182,7 +182,7 @@
     "segment_label": "promotional_products_distributor",
     "segment_tier": "A",
     "segment_signal": {
-      "id": "sig_segment_fct_b8acfde728_0",
+      "id": "sig_segment_promotional_products_distributor",
       "kind": "segment",
       "value": "promotional_products_distributor",
       "evidence_ids": [
@@ -193,9 +193,38 @@
       ],
       "published_at": null
     },
+    "segment_candidates": [
+      {
+        "id": "sig_segment_promotional_products_distributor",
+        "kind": "segment",
+        "value": "promotional_products_distributor",
+        "evidence_ids": [
+          "ev_b8acfde728"
+        ],
+        "fact_ids": [
+          "fct_b8acfde728_0"
+        ],
+        "published_at": null
+      },
+      {
+        "id": "sig_segment_promotional_products_supplier",
+        "kind": "segment",
+        "value": "promotional_products_supplier",
+        "evidence_ids": [
+          "ev_fd4a69b8ea"
+        ],
+        "fact_ids": [
+          "fct_fd4a69b8ea_0"
+        ],
+        "published_at": null
+      }
+    ],
+    "segment_conflict": "unresolved",
     "scale_band": "UNKNOWN",
     "scale_basis": "unknown",
     "scale_signal": null,
+    "scale_candidates": [],
+    "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
     "ops_signals": [],
@@ -209,9 +238,9 @@
   },
   "score": {
     "status": "SCORED",
-    "total": 29,
+    "total": 24,
     "components": {
-      "c1": 25,
+      "c1": 20,
       "c2": 0,
       "c3": 0,
       "c4": 0,
@@ -220,7 +249,7 @@
     },
     "contributing_signals": {
       "c1": [
-        "sig_segment_fct_b8acfde728_0"
+        "sig_segment_promotional_products_distributor"
       ],
       "c2": [],
       "c3": [],
@@ -230,7 +259,9 @@
     },
     "evidence_grade": "C",
     "band": "DEPRIORITIZE",
-    "flags": [],
+    "flags": [
+      "SEGMENT_CONFLICT_UNRESOLVED"
+    ],
     "reported_as": "point",
     "range": null
   },
@@ -239,7 +270,10 @@
     "No order or ERP system identified in public sources",
     "No growth, hiring or migration trigger found in public sources",
     "Not de-duplicated against Trelium CRM",
-    "1/7 extracted claims failed verbatim-quote verification and were discarded"
+    "1/7 extracted claims failed verbatim-quote verification and were discarded",
+    "SEGMENT CONFLICT (unresolved, equal evidence tier) — sources disagree on the company's segment: promotional_products_distributor (1 fact(s); https://concordmarketingsolutions.com); promotional_products_supplier (1 fact(s); https://concordmarketingsolutions.com/aboutf.htm). Winner 'promotional_products_distributor' chosen by breadth of support then fixed lexical order, C1 penalised; validate manually before relying on the segment."
   ],
-  "flags": []
+  "flags": [
+    "SEGMENT_CONFLICT_UNRESOLVED"
+  ]
 }

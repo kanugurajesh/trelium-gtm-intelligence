@@ -168,3 +168,38 @@ def test_corpus_hash_is_stable_for_identical_evidence(monkeypatch, tmp_path):
         ).brief.corpus_hash
 
     assert one_run() == one_run()
+
+
+def test_run_account_surfaces_segment_conflict_as_research_gap_and_flag(monkeypatch, tmp_path):
+    """Contradiction policy end to end: two segment labels at equal tier must
+    reach the rendered brief as a flag AND a research gap, never vanish."""
+
+    def fake_extract_conflicting(**kwargs):
+        ev = Evidence(
+            id="ev_c", source_url=kwargs["source_url"], source_tier=SourceTier.COMPANY_PRIMARY,
+            publisher=kwargs["publisher"], title=kwargs["title"], retrieved_at=kwargs["retrieved_at"],
+            snapshot_path=kwargs["snapshot_path"], content_sha256="a" * 64,
+            quote="Acme Test Distributor is a promotional products distributor.", quote_offset=0,
+        )
+        facts = [
+            Fact(id="fct_d", statement="distributor", evidence_ids=["ev_c"], field="segment", value="promotional_products_distributor"),
+            Fact(id="fct_s", statement="supplier", evidence_ids=["ev_c"], field="segment", value="promotional_products_supplier"),
+        ]
+        return ExtractionOutcome(facts=facts, evidence=[ev], rejected=[], raw_claims_count=2)
+
+    monkeypatch.setattr("trelium_gtm.pipeline.collect_source", _fake_collect_ok)
+    monkeypatch.setattr("trelium_gtm.pipeline.extract_claims", fake_extract_conflicting)
+    monkeypatch.setattr(
+        "trelium_gtm.pipeline.generate_hypotheses",
+        lambda **kwargs: HypothesisOutcome(inferences=[], validation_questions=[], workflow_hypotheses=[]),
+    )
+    report = run_account(
+        company="Acme Test Distributor", domain="acme-test.example",
+        sources=[SourceSpec(url="https://acme-test.example/about", publisher="Company website", title="About")],
+        evidence_dir=tmp_path / "evidence", cache_dir=tmp_path / "cache", as_of=date(2026, 1, 1),
+    )
+    brief = report.brief
+    assert brief.signals.segment_conflict == "unresolved"
+    assert "SEGMENT_CONFLICT_UNRESOLVED" in brief.flags
+    assert any("SEGMENT CONFLICT" in g for g in brief.research_gaps)
+    assert brief.score.components["c1"] == 20

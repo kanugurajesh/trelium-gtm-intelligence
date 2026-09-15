@@ -4,7 +4,7 @@ Domain: `stran.com` | Corpus hash: `cfc625f2181d`
 
 > **Before any outreach:** this account has NOT been checked against Trelium's CRM or active pipeline. This tool has no visibility into existing customers, prospects or in-flight conversations. De-duplicate before contacting anyone.
 
-## Fit score: 29 / 100 — DEPRIORITIZE
+## Fit score: 28 / 100 — DEPRIORITIZE
 
 Evidence grade: **C**
 
@@ -15,7 +15,7 @@ Evidence grade: **C**
 | Software/ecosystem signals (0-15) | 0 |
 | Transaction/org scale (0-15) | 0 |
 | Growth/buying trigger (0-15) | 0 |
-| Evidence quality (0-10) | 4 |
+| Evidence quality (0-10) | 3 |
 
 
 ## Workflow opportunity

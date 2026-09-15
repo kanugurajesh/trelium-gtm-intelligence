@@ -171,3 +171,26 @@ artifact is the claim [notes section 12].
   `docs/SCORING.md` in the same commit.
 - Commit messages describe the decision, not just the change.
 - Do not commit an `OPENAI_API_KEY` or any credential.
+
+---
+
+## 9. Correctness-hardening rules (added after the first live audit)
+
+**R36. One identity, one signal.** Scoring signals are deduplicated by normalised identity
+(system name, trigger type, ops sub-signal, segment label, scale band) before scoring, with
+the provenance of every merged fact retained. A claim repeated across sources strengthens
+evidence; it never becomes a second business signal. Do not "simplify" `signals.derive_signals`
+back to one-signal-per-fact, and do not remove the defensive by-name grouping in
+`scoring._score_c3_stack`. Policy: `docs/EVIDENCE_MODEL.md` section 9, `docs/SCORING.md`
+section 13. Tests: `tests/test_signals_integrity.py`.
+
+**R37. Contradictions are recorded, ranked by an explicit rule, penalised, and surfaced —
+never silently resolved and never handed to the LLM.** All candidate segment/scale values stay
+on the `SignalSet`; the winner is chosen by evidence tier, then breadth of support, then a fixed
+lexical tie-break; an unresolved conflict lowers C1 and always emits a research gap. Do not
+restore first-seen-wins behaviour and do not add a prompt asking the model which claim is
+right. Policy: `docs/EVIDENCE_MODEL.md` section 10, `docs/SCORING.md` section 14.
+
+**R38. Signal derivation and scoring must be order-independent.** Shuffling the facts or
+evidence lists must not change any derived signal or any score. A test enforces this; keep it
+passing.

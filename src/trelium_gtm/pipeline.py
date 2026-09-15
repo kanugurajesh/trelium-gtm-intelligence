@@ -22,6 +22,7 @@ from trelium_gtm.scoring import score as score_signals
 from trelium_gtm.signals import (
     compute_evidence_age_months_min,
     compute_trigger_ages_months,
+    conflict_gaps,
     derive_signals,
 )
 from trelium_gtm.taxonomy import ScaleBand, SegmentTier
@@ -63,6 +64,7 @@ def _rule_based_gaps(
         gaps.append("No order or ERP system identified in public sources")
     if not signals.trigger_signals:
         gaps.append("No growth, hiring or migration trigger found in public sources")
+    gaps.extend(conflict_gaps(signals, evidence))
     gaps.extend(collection_errors)
     gaps.append("Not de-duplicated against Trelium CRM")
     return gaps

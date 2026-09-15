@@ -54,12 +54,21 @@ def _score_c1_vertical_fit(signals: SignalSet) -> tuple[int, list[str]]:
     strong_evidence = signals.tier_1_2_fact_count >= 1
 
     if tier == SegmentTier.A:
-        return (25 if strong_evidence else 20), contributing
-    if tier == SegmentTier.B:
-        return 15, contributing
-    if tier == SegmentTier.C:
-        return 8, contributing
-    return 0, contributing
+        points = 25 if strong_evidence else 20
+    elif tier == SegmentTier.B:
+        points = 15
+    elif tier == SegmentTier.C:
+        points = 8
+    else:
+        return 0, contributing
+
+    # Contradiction policy (SCORING.md section 14): an UNRESOLVED segment
+    # conflict — two labels claimed at the same evidence tier — is scored at
+    # 4/5 (integer floor) of the winner's points. A conflict resolved by
+    # evidence tier carries no penalty: the source hierarchy did its job.
+    if signals.segment_conflict == "unresolved":
+        points = (points * 4) // 5
+    return points, contributing
 
 
 # ---------------------------------------------------------------------------
@@ -119,15 +128,20 @@ _CROSS_BOUNDARY_BONUS = 3
 
 
 def _score_c3_stack(signals: SignalSet) -> tuple[int, list[str]]:
-    by_class: dict[SystemClass, list[Signal]] = {}
+    # Deduplication policy (SCORING.md section 13): points are awarded per
+    # DISTINCT system identity (class + normalised name), never per signal
+    # row. signals.derive_signals already merges duplicates, but the scorer
+    # re-groups by name defensively so a hand-built SignalSet — or a future
+    # caller that forgets to merge — cannot inflate C3 by repeating a name.
+    by_class: dict[SystemClass, dict[str, list[Signal]]] = {}
     for sig in signals.stack_signals:
         # Signal.value for stack signals is "<SystemClass>:<system name>"
-        cls_str, _, _name = sig.value.partition(":")
+        cls_str, _, name = sig.value.partition(":")
         try:
             cls = SystemClass(cls_str)
         except ValueError:
             continue
-        by_class.setdefault(cls, []).append(sig)
+        by_class.setdefault(cls, {}).setdefault(" ".join(name.split()).strip().lower(), []).append(sig)
 
     non_generic_classes_present = {
         c for c in by_class if c != SystemClass.GENERIC_OFFICE
@@ -135,15 +149,17 @@ def _score_c3_stack(signals: SignalSet) -> tuple[int, list[str]]:
 
     total = 0
     contributing: list[str] = []
-    for cls, sigs in by_class.items():
+    for cls in sorted(by_class, key=lambda c: c.value):
+        by_name = by_class[cls]
         if cls == SystemClass.GENERIC_OFFICE and not non_generic_classes_present:
             # Generic-office rule (ICP.md section 4): scores 0 in isolation.
             continue
-        first, *rest = sigs
-        pts = _CLASS_FIRST_POINTS[cls] + _CLASS_ADDITIONAL_POINTS[cls] * len(rest)
+        distinct_systems = len(by_name)
+        pts = _CLASS_FIRST_POINTS[cls] + _CLASS_ADDITIONAL_POINTS[cls] * (distinct_systems - 1)
         pts = min(pts, _CLASS_CAP[cls])
         total += pts
-        contributing.extend(s.id for s in sigs)
+        for name in sorted(by_name):
+            contributing.extend(s.id for s in by_name[name])
 
     if len(non_generic_classes_present) >= 2:
         total += _CROSS_BOUNDARY_BONUS
@@ -385,6 +401,12 @@ def score(
         flags.append("PUBLIC_CUSTOMER")
     if signals.is_ecosystem_ambiguous:
         flags.append("ECOSYSTEM_AMBIGUOUS")
+    if signals.segment_conflict == "unresolved":
+        flags.append("SEGMENT_CONFLICT_UNRESOLVED")
+    elif signals.segment_conflict == "resolved_by_tier":
+        flags.append("SEGMENT_CONFLICT_RESOLVED_BY_TIER")
+    if signals.scale_conflict:
+        flags.append("SCALE_CONFLICT")
     if grade == EvidenceGrade.D:
         flags.append("LOW_EVIDENCE")
 

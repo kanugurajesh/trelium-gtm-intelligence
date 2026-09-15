@@ -12,13 +12,20 @@ reference to this scoring model (`docs/TRELIUM_RESEARCH_NOTES.md` section 10). T
 opinion, not ground truth — no external party has Trelium's actual win data
 (`docs/SCORING.md` section 10).
 
-**Spearman's rho: 0.182** — weak positive correlation, on 11 comparable accounts.
+**Spearman's rho: −0.045** (was 0.182 before the correctness-hardening re-score; see
+`RESCORE_COMPARISON.md`) — effectively zero correlation, on 11 comparable accounts.
 
-Model ranking (scored accounts, best first): Showdown Displays, HALO, Concord Marketing
-Solutions, Stran Promotional Solutions, High Caliber Line, Hirsch, Nadel, SanMar, Ball Pro,
-Staples Promotional Products, LeaderPromos.
+Model ranking (scored accounts, best first): Showdown Displays, HALO, High Caliber Line, Stran
+Promotional Solutions, Hirsch, Concord Marketing Solutions, Nadel, SanMar, Ball Pro, Staples
+Promotional Products, LeaderPromos.
 
-**Read honestly:** a rho of 0.18 means this run's ranking is not a good proxy for the report's
+**Why it got worse, stated plainly:** the report's #1 pick, Concord Marketing Solutions, fell
+from model rank 3 to 6 because its own pages disagree about whether it is a distributor or a
+supplier, and the contradiction policy now penalises that instead of silently picking the
+first claim. That is the system behaving correctly on bad evidence, not the rubric agreeing
+less with the report — but the number is what it is.
+
+**Read honestly:** a rho near zero means this run's ranking is not a proxy for the report's
 independent judgment. The most direct explanation, cross-checked against V2 below: with only
 homepage-level evidence, the score is driven almost entirely by which segment label got
 assigned and how many source pages were reachable — not by the growth, scale and stack signals
@@ -69,7 +76,7 @@ Solutions — 10 facts total) checked by hand against its quote and statement.
 | 4 | HALO | Grown to over $1B in revenue | **Ambiguous** — quote says "grown exponentially to over $1B" without stating *what* reached $1B; revenue is the plausible reading given it's on a careers/growth page, but the quote does not say "revenue" |
 | 5 | HALO | Promotional products and recognition company | Accurate |
 | 6 | Concord | Promotional products distributor | Accurate |
-| 7 | Concord | *(segment: supplier)* — founded 1993 by Kirk Graves and Robert Conte, "ushering retail name-brands to the corporate marketplace" | **Inaccurate** — the quote is company-history prose and does not support "supplier" as a segment label at all |
+| 7 | Concord | *(segment: supplier)* — founded 1993 by Kirk Graves and Robert Conte, "ushering retail name-brands to the corporate marketplace" | **Inaccurate** — the quote is company-history prose and does not support "supplier" as a segment label at all. *Since the correctness-hardening pass this disagreement with row 6 is detected: the brief now carries `SEGMENT_CONFLICT_UNRESOLVED`, a research gap naming both labels, and a C1 penalty (25→20). The bad extraction still exists; it can no longer hide.* |
 | 8 | Concord | Holds $2.5M of blank soft goods (inventory) | Accurate (correctly rendered as an unscored "other" fact after the fix) |
 | 9 | Concord | Named a "Best Place to Work" for 10 years | Accurate |
 | 10 | Concord | Ranked 19 on the 2024 PPAI 100 Distributors | Accurate |

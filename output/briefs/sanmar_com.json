@@ -36,10 +36,12 @@
     "segment_label": "unresolved",
     "segment_tier": "UNRESOLVED",
     "segment_signal": null,
+    "segment_candidates": [],
+    "segment_conflict": "none",
     "scale_band": "LARGE",
     "scale_basis": "headcount",
     "scale_signal": {
-      "id": "sig_scale_fct_d3d015d9e8_1",
+      "id": "sig_scale_headcount_large",
       "kind": "scale",
       "value": "LARGE",
       "evidence_ids": [
@@ -50,6 +52,21 @@
       ],
       "published_at": null
     },
+    "scale_candidates": [
+      {
+        "id": "sig_scale_headcount_large",
+        "kind": "scale",
+        "value": "LARGE",
+        "evidence_ids": [
+          "ev_d3d015d9e8"
+        ],
+        "fact_ids": [
+          "fct_d3d015d9e8_1"
+        ],
+        "published_at": null
+      }
+    ],
+    "scale_conflict": false,
     "stack_signals": [],
     "trigger_signals": [],
     "ops_signals": [],
@@ -77,7 +94,7 @@
       "c2": [],
       "c3": [],
       "c4": [
-        "sig_scale_fct_d3d015d9e8_1"
+        "sig_scale_headcount_large"
       ],
       "c5": [],
       "c6": []

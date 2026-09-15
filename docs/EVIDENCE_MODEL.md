@@ -243,3 +243,70 @@ Stated plainly, because the memo should say it too.
   does not fix it.
 - **The whole ICP model is an inference.** No part of this has been checked against Trelium's
   actual win data, because no outsider can. See `SCORING.md` section 8.
+
+---
+
+## 9. Normalisation and deduplication policy
+
+Added during correctness hardening after a live audit found that a system name appearing on
+two pages was being scored as two systems. Enforced in `signals.derive_signals` (and
+defensively re-applied in `scoring._score_c3_stack`); tests in
+`tests/test_signals_integrity.py`. Do not undo: `CLAUDE.md` R36.
+
+**The unit of a scoring signal is an identity, not a fact.** One software system, one trigger
+type, one operational sub-signal, one segment label, one scale band. Every fact asserting the
+same identity is merged into a single `Signal` whose `evidence_ids` and `fact_ids` are the
+sorted union of all supporting facts. Provenance is never dropped when merging.
+
+| Identity | Normalisation key |
+|---|---|
+| System | `SystemClass` + name lower-cased, whitespace-collapsed, stripped |
+| Ops sub-signal / trigger | enum value, upper-cased, stripped |
+| Hiring role (for `OPS_HIRING:<n>`) | title lower-cased, whitespace-collapsed; `n` counts *distinct* titles |
+| Segment label / scale band | enum value / the band the figure falls in |
+| Distinct claim (C6 evidence-quality count) | `(field, normalised value)` if structured, else normalised statement |
+
+"SAGE" on the homepage and "sage" on the careers page is one system with two pieces of
+evidence. "SAGE" and "ShopWorks" are two systems. Six copies of one tier-1 claim are one claim.
+
+**Deliberately not done:** fuzzy or alias-based entity resolution. "NetSuite" and "Net Suite"
+stay different until a human adds an alias to `taxonomy.SYSTEM_NAME_TO_CLASS`. Exact
+normalisation is predictable and testable; fuzzy matching would reintroduce the silent
+judgment this project exists to avoid.
+
+**Determinism guarantee:** `derive_signals` is a pure function of the *set* of facts and
+evidence. Reordering either input list cannot change any field of the result or the score.
+Tested with 25 random shuffles.
+
+---
+
+## 10. Contradiction policy
+
+Added after a live audit found two facts asserting different segments for the same company
+(Concord Marketing Solutions: "distributor" on one page, "supplier" on another) being resolved
+silently by whichever was processed first. Applies to mutually exclusive classifications:
+segment label and scale band. Do not undo: `CLAUDE.md` R37.
+
+**Rule 1 — nothing is discarded.** Every claimed value is kept as a merged signal in
+`SignalSet.segment_candidates` / `scale_candidates`, with full provenance.
+
+**Rule 2 — the winner is chosen by an explicit, order-independent rule, never by the LLM and
+never by processing order.** Segment candidates rank by: (1) strongest supporting evidence tier;
+(2) more supporting facts; (3) more independent source domains; (4) fixed lexical order of the
+label value — a documented, arbitrary, reproducible last resort that exists only so the
+function has a total order. Scale: strongest tier, then the larger figure, then fact id.
+
+**Rule 3 — the conflict is recorded and surfaced three ways.** On the `SignalSet`
+(`segment_conflict` = `"resolved_by_tier"` when the winner's tier is strictly stronger than the
+runner-up's, else `"unresolved"`; `scale_conflict` when sourced figures fall in different bands);
+as score flags (`SEGMENT_CONFLICT_UNRESOLVED`, `SEGMENT_CONFLICT_RESOLVED_BY_TIER`,
+`SCALE_CONFLICT`); and as a research gap naming every candidate and its sources.
+
+**Rule 4 — an unresolved segment conflict lowers the score.** C1 is taken at 4/5 (integer
+floor) of the winner's points: a tier-A company with a distributor/supplier disagreement scores
+20, not 25. A conflict resolved by tier carries no penalty — the source hierarchy did its job.
+Scale conflicts are flagged, not penalised; the band already follows the evidence hierarchy.
+
+**Rule 5 — the LLM is never asked to adjudicate.** A contradiction between two verified quotes
+is a fact about the evidence and is reported as one. Resolving it belongs on a discovery call,
+which is why it becomes a validation gap rather than a model judgment.
