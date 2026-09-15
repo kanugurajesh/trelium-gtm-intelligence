@@ -68,6 +68,17 @@ _EMPLOYEE_COUNT_REQUIRED_KEYWORDS = (
     "headcount", "workers", "people work",
 )
 
+# A third live instance of the exact same failure class: "produces
+# approximately 30 million items annually" (a unit-production volume, no
+# dollar amount at all) was tagged revenue_usd=30000000 for the SAME
+# company, High Caliber Line, in a later re-run. The blacklist above didn't
+# catch it because nothing about it mentions inventory/capacity/etc. — it
+# simply isn't a dollar figure. A blacklist alone is not enough; require a
+# positive currency/revenue indicator too, on top of the blacklist (a
+# quote can contain "$" and still be disqualified, e.g. the inventory
+# example above also contains "$2.5 million dollars").
+_REVENUE_REQUIRED_KEYWORDS = ("$", "usd", "dollars", "revenue", "sales", "turnover")
+
 _SYSTEM_PROMPT_TEMPLATE = """You are a careful research analyst extracting claims from ONE webpage of \
 company text for a GTM research tool. You must never invent or paraphrase.
 
@@ -242,6 +253,10 @@ def extract_claims(
             field = "other"
         if field == "revenue_usd" and any(
             kw in quote.lower() for kw in _REVENUE_DISQUALIFYING_KEYWORDS
+        ):
+            field = "other"
+        if field == "revenue_usd" and not any(
+            kw in quote.lower() for kw in _REVENUE_REQUIRED_KEYWORDS
         ):
             field = "other"
         if field == "employee_count" and not any(

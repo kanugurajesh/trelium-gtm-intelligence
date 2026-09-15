@@ -178,6 +178,52 @@ def test_inventory_value_misclassified_as_revenue_is_downgraded(monkeypatch, tmp
     assert outcome.facts[0].field is None  # downgraded to "other", not scored as scale
 
 
+def test_unit_production_volume_misclassified_as_revenue_is_downgraded(monkeypatch, tmp_path):
+    """Regression test for a third real bug, same class, found on a later
+    re-run of the same company (High Caliber Line): "produces approximately
+    30 million items annually" (a unit count, no dollar amount at all) was
+    tagged revenue_usd=30000000. The blacklist alone didn't catch this one
+    because nothing here mentions inventory/warehouse/capacity — it just
+    isn't a currency figure. Requires a positive currency indicator too.
+    """
+    snapshot = "Today we produce approximately 30 million items annually across our facilities."
+    payload = {
+        "claims": [
+            {
+                "field": "revenue_usd",
+                "value": "30000000",
+                "statement": "The company produces 30 million items annually.",
+                "quote": "we produce approximately 30 million items annually",
+                "model_confidence": "medium",
+            }
+        ]
+    }
+    outcome = _run(monkeypatch, tmp_path, payload, snapshot_text=snapshot)
+    assert len(outcome.facts) == 1
+    assert outcome.facts[0].field is None
+
+
+def test_real_revenue_figure_with_dollar_sign_is_accepted(monkeypatch, tmp_path):
+    outcome = _run(
+        monkeypatch,
+        tmp_path,
+        {
+            "claims": [
+                {
+                    "field": "revenue_usd",
+                    "value": "87000000",
+                    "statement": "The company reported $87M in revenue.",
+                    "quote": "We reported $87M in revenue last year.",
+                    "model_confidence": "high",
+                }
+            ]
+        },
+    )
+    assert len(outcome.facts) == 1
+    assert outcome.facts[0].field == "revenue_usd"
+    assert outcome.facts[0].value == 87_000_000.0
+
+
 def test_years_of_experience_misclassified_as_employee_count_is_downgraded(monkeypatch, tmp_path):
     """Regression test for a second real bug found during the manual claim
     audit (docs/FINDINGS.md): gpt-4o-mini tagged "over 25 years of
