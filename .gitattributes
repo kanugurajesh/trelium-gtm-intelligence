@@ -1,10 +1,10 @@
-# Generated artifacts and snapshots are byte-exact evidence; never let the
-# checkout platform rewrite their line endings (E1 hashes are computed over
-# the stored text).
+# Generated artifacts use LF so diffs are stable across platforms.
 * text=auto eol=lf
-*.txt text eol=lf
 *.json text eol=lf
 *.md text eol=lf
 *.py text eol=lf
 *.csv text eol=lf
 *.pdf binary
+# Evidence snapshots are hashed bytes (E1 in docs/EVIDENCE_MODEL.md). Git must never
+# normalise their line endings in either direction, or a clean clone fails verification.
+evidence/raw/** -text

@@ -106,7 +106,7 @@ trusted to do the other's job.
 
 ## What I learned
 
-Four findings, in full in `docs/FINDINGS.md`:
+Five findings, in full in `docs/FINDINGS.md` and `docs/VALIDATION.md`:
 
 - **Two-thirds of this vertical cannot be researched from its own site.** 19 of 30 accounts
   produced nothing, mostly robots.txt and bot protection, and no amount of deeper crawling
@@ -121,6 +121,11 @@ Four findings, in full in `docs/FINDINGS.md`:
   described wrongly; each fixed with a deterministic keyword check in code. The sixth, segment
   labels on quotes that never stated the role, was carrying 25 of the top score's 39 points.
   Fixing it moved four accounts out of the top ten.
+- **The reproducibility claim had to be checked, not assumed.** Verifying every cited quote
+  against the bytes git actually stores, rather than the files on disk, found that 11 of 42
+  committed snapshots had been silently rewritten by line-ending normalisation, four of them
+  from the first run. A clean clone would have failed a quarter of the corpus. Fixed, and now
+  enforced by a script (`docs/VALIDATION.md` V5).
 - **Claim precision is measurable and should be published.** 22 of 26 facts in the top five
   briefs are fully accurate on a by-hand audit; the four that are not are all semantic
   over-readings the substring check cannot catch, and they are listed row by row in
@@ -165,6 +170,7 @@ trelium run-all --input data/prospects.csv
 trelium rank --output docs/RANKING.md
 trelium score --from output/briefs/stran_com.json   # proves the score is reproducible
 python scripts/compare_passes.py                    # regenerates docs/DEEP_COLLECTION.md
+python scripts/verify_corpus.py --committed         # every cited quote, against the committed bytes
 ```
 
 Collection and extraction need `OPENAI_API_KEY` set (see `.env.example`) unless the exact

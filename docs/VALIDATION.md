@@ -123,3 +123,22 @@ regional bank) run through the identical live pipeline, re-run on the deeper-pag
 or no extractable claims), 1 (Asana) by scoring 3/100 with segment left UNRESOLVED rather than
 explicitly OUT_OF_ICP. Unchanged from the homepage-only pass. See `docs/VALIDATION_V4.md` for
 why the pass/fail definition was refined after the first run.
+
+---
+
+## V5 — Corpus integrity on a clean checkout
+
+`scripts/verify_corpus.py` re-checks E1 (snapshot hash) and E2 (quote at offset) for every
+evidence item in every committed brief, and with `--committed` repeats both checks against the
+blob git actually stores, which is what a fresh clone receives.
+
+**87 evidence items over 42 distinct snapshots: 0 failures, working copy and committed blobs.**
+
+That number was not always zero. The working copy had always verified, but until this pass
+**11 of the 42 committed snapshot blobs were wrong**, four of them from the original
+homepage-only run: git's line-ending normalisation had rewritten CRLF page text to LF on the way
+into the repository, so anyone cloning the repo would have failed E1 on those snapshots and the
+"reproducible offline" claim would have been false for a quarter of the corpus. Found by
+checking the committed blobs rather than the files on disk; fixed by storing `evidence/raw/**`
+byte-for-byte (`.gitattributes`) and re-adding the blobs. The verifier now exists so the claim
+is checked, not assumed.
