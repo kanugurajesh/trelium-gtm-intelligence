@@ -1,0 +1,157 @@
+[
+ {
+  "id": "S1",
+  "account": "Stran Promotional Solutions",
+  "source": "Stran & Company FY2025 Form 10-K, filed 2026-03-25 (SEC EDGAR)",
+  "url": "https://www.sec.gov/Archives/edgar/data/1872525/000121390026034104/ea0282261-10k_stran.htm",
+  "quotes": [
+   "We have also invested in an internal commercial Enterprise Resource Planning (ERP) system, Oracle/NetSuite's NetSuite ERP, which is expected to enhance the process of gathering and organizing the business data of our company through an integrated software suite, and was launched in the first half of 2025.",
+   "NetSuite combines accounting, order management, inventory, CRM, and presentation functionality.",
+   "We believe that this ERP will reduce inefficiencies, expenses and headcount, automate current manual processes, and potentially contribute to growing net revenues.",
+   "Additional NetSuite phases will be planned and rolled out in the future as necessary.",
+   "As of March 13, 2026, we employed 154 full-time employees, 2 part-time employees and 15 independent contractors.",
+   "We identified material weaknesses in our internal control over financial reporting as of December 31, 2025."
+  ]
+ },
+ {
+  "id": "S2",
+  "account": "Stran Promotional Solutions",
+  "source": "Stran & Company press release, 2026-07-24",
+  "url": "https://ir.stran.com/news-events/press-releases/detail/119/stran-company-advances-to-no-21-on-asi-counselor-top",
+  "quotes": [
+   "Top 40 Distributors List",
+   "it has been ranked No. 21 on the 2026 ASI Counselor",
+   "advancing two positions from its No. 23 ranking in 2025",
+   "utilizes cutting-edge technology, including efficient ordering and logistics technology to provide order processing, warehousing and fulfillment functions"
+  ]
+ },
+ {
+  "id": "S3",
+  "account": "Stran Promotional Solutions",
+  "source": "Stran & Company press release, 2026-03-25",
+  "url": "https://ir.stran.com/news-events/press-releases/detail/112/stran-company-reports-40-6-year-over-year-revenue-growth",
+  "quotes": [
+   "Sales increased $33.5 million, or 40.6%, to $116.2 million for the year ended December 31, 2025",
+   "sales of our SLS segment (which consists of the former Gander Group business) increased 242.6%, or $24.1 million, to $34.1 million"
+  ]
+ },
+ {
+  "id": "S4",
+  "account": "Stran Promotional Solutions",
+  "source": "stran.com careers page",
+  "url": "https://www.stran.com/careers",
+  "quotes": [
+   "Solutions Marketing Lead",
+   "Strategic Account Executive",
+   "Senior Vice President, Sales"
+  ]
+ },
+ {
+  "id": "H1",
+  "account": "HALO",
+  "source": "HALO press release, 2026-06-04",
+  "url": "https://halo.com/halo-announces-new-technology-investments-and-strategic-growth-initiatives-at-house-of-halo/",
+  "quotes": [
+   "the $1B brand experience and merchandise company",
+   "help users quickly find information, summarize content, draft responses, and access guidance across HALO systems",
+   "We're investing in the tools, expertise, and infrastructure to help our account executives, clients, and suppliers build these brand worlds at scale",
+   "Print-on-demand storefront capabilities"
+  ]
+ },
+ {
+  "id": "H2",
+  "account": "HALO",
+  "source": "ASI Central, 2026-03-31, 'Halo Adds 3 Executives as Part of Growth Strategy'",
+  "url": "https://members.asicentral.com/news/industry-news/march-2026/halo-adds-3-executives-as-part-of-growth-strategy/",
+  "quotes": [
+   "chief product and technology officer to lead platform modernization",
+   "That includes platform modernization and the development of tools that support sellers, clients and partners",
+   "Based on 2024 North American promotional products revenue of $964.7 million, HALO Branded Solutions ranks second"
+  ]
+ },
+ {
+  "id": "H3",
+  "account": "HALO",
+  "source": "Remote Rocketship listing of HALO remote roles",
+  "url": "https://www.remoterocketship.com/company/halo-2/",
+  "quotes": [
+   "Director Supplier Network",
+   "Proposal Specialist"
+  ]
+ },
+ {
+  "id": "D1",
+  "account": "Showdown Displays",
+  "source": "ZipRecruiter posting, 'Order Entry Associate', Showdown Displays, Brooklyn Center MN (robots.txt disallows automated fetch; verify in a browser)",
+  "url": "https://www.ziprecruiter.com/c/Showdown-Displays/Job/Order-Entry-Associate/-in-Minneapolis,MN?jid=751140d7cc2b27a4",
+  "quotes": [
+   "Same day data entry of customer purchase orders into the system",
+   "Order receipt can come in the form of e-mail, or phone",
+   "Provide same day order confirmations and clarify order discrepancies",
+   "Support order status requests, limited processing of return material authorizations",
+   "Contact customers for needed or missing information via email or phone",
+   "Obtain 100% accuracy entering customer Purchase Orders",
+   "Ability to interpret complex business documents including customer purchase orders"
+  ]
+ },
+ {
+  "id": "G1",
+  "account": "Geiger",
+  "source": "ASI Central, 2026-04-08, 'Geiger Expands to Austria With Acquisition of Nowak Werbeartikel'",
+  "url": "https://members.asicentral.com/news/industry-news/april-2026/geiger-expands-to-austria-with-acquisition-of-nowak-werbeartikel/",
+  "quotes": [
+   "Based on 2024 North American promotional products revenue of $364.6 million, Geiger ranks 10th on Counselor's most recent list of top distributors in the industry",
+   "The announcement comes just months after Geiger GmbH, the distributor's German subsidiary, acquired two promotional products distributors",
+   "To date, Geiger has acquired at least seven distributors in the United Kingdom and four in Germany",
+   "all employees will be retained as part of the acquisition"
+  ]
+ },
+ {
+  "id": "T1",
+  "account": "Hit Promotional Products",
+  "source": "ASI Central, 2026-07-22, 'Counselor Top 40 Suppliers 2026: No. 4 Hit Promotional Products'",
+  "url": "https://members.asicentral.com/news/awards/july-2026/counselor-top-40-suppliers-2026-no-4-hit-promotional-products",
+  "quotes": [
+   "2025 Revenue: $683.0",
+   "2024 Revenue: $655.1",
+   "Year-Over-Year Difference: 4.3%",
+   "In addition, we continued advancing technology across the business,",
+   "including the implementation of AI-driven tools to enhance efficiency, service and decision-making.",
+   "its new Ohio facility, scheduled to be up and running by Q4 this year and will allow for greater fulfillment across the Midwest"
+  ]
+ },
+ {
+  "id": "TR1",
+  "account": "Trelium (positioning)",
+  "source": "trelium.com, Order Entry AI Agent for Distributors",
+  "url": "https://www.trelium.com/use-cases/order-entry-ai-agent-for-distributors",
+  "quotes": [
+   "routes exceptions instead of guessing",
+   "brings people in when judgment is needed",
+   "follows the same repeatable steps your team already trusts",
+   "Works with the tools your team already uses Gmail Printavo ShopWorks Many more"
+  ]
+ },
+ {
+  "id": "TR2",
+  "account": "Trelium (positioning)",
+  "source": "trelium.com, prints and promo use cases",
+  "url": "https://www.trelium.com/use-cases/prints-and-promo",
+  "quotes": [
+   "AI agents for the work behind every order"
+  ]
+ },
+ {
+  "id": "TR3",
+  "account": "Trelium (positioning)",
+  "source": "trelium.com homepage",
+  "url": "https://www.trelium.com/",
+  "quotes": [
+   "Orders entered. Quotes built. POs matched to invoices, automatically.",
+   "Trelium is an AI agent-building platform for mid-market and enterprise teams that need repetitive operational work completed across the software they already use.",
+   "route exceptions to humans when judgment or approval is required",
+   "It is an execution layer for repeatable business processes where teams need deterministic workflow steps, system updates, auditability, human review gates, and organization-wide agent sharing.",
+   "Trelium is a PPAI recognized solution provider"
+  ]
+ }
+]

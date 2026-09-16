@@ -143,10 +143,19 @@ Five findings, in full in `docs/FINDINGS.md` and `docs/VALIDATION.md`:
   over-readings the substring check cannot catch, and they are listed row by row in
   `docs/VALIDATION.md`.
 
+A manual pilot of that second data source is in `docs/ACCOUNT_NOTES.md`: five accounts, three
+scored and two blocked, researched from SEC filings, trade press and job boards, every quote
+re-verified against its page by a script. The site pass found operational-complexity evidence on
+0 of 30 accounts; the hand pass found it on 1 of 5, a dated 2026 trigger on 4 of 5, and made both
+blocked accounts researchable. It also found that the top-scored account's scale points rest on
+a subsidiary's headcount, which is recorded there as a defect for the next hardening pass.
+
 ## What I would do next
 
 Add a second data source (job postings, industry-association listings) rather than crawl
-deeper, with a stated prediction for what it should do to the trigger component. Then run a
+deeper, with a stated prediction for what it should do to the trigger component. The hand pilot
+shows the useful postings sit behind robots.txt rules the tool honours, so this means a licensed
+feed, not a crawler. Then run a
 frontier deep-research product on the same five audited accounts, hold its claims to the same
 verbatim-quote standard, and publish the two precision numbers side by side. If deep research
 wins on verified precision and reach, that is the recommendation. See the closing section of
@@ -172,7 +181,8 @@ output/briefs/       Generated account briefs, JSON + Markdown, for all 30 accou
 output/briefs_pass1_homepage/  The homepage-only pass, archived for comparison
 output/negative_controls/  5 out-of-ICP companies run through the same pipeline (V4)
 scripts/             One-off analysis drivers: validation, negative controls, pass comparison,
-                     offline re-score of committed briefs, corpus verification against git blobs
+                     offline re-score of committed briefs, corpus verification against git blobs,
+                     re-check of the hand-research quotes against their live pages
 docs/                Planning docs, research notes, scoring/evidence model, findings, validation
 ```
 
@@ -180,7 +190,9 @@ Where to read, in order, if you have ten minutes:
 
 | Document | What it answers |
 |---|---|
+| `docs/APPLICATION_MEMO.md` | One page: what I understood about Trelium, what the tool found, five accounts by hand |
 | `docs/FINDINGS.md` | What running it on 30 accounts produced, and what that means for the tool |
+| `docs/ACCOUNT_NOTES.md` | Five accounts researched by hand from filings, trade press and job boards, every quote sourced and script-verified |
 | `docs/VALIDATION.md` | Rank correlation, component ablation, the by-hand claim audit, negative control, corpus integrity (V1-V5) |
 | `docs/DEEP_COLLECTION.md` | Homepage-only pass versus the six-page pass, account by account |
 | `docs/RANKING.md`, `docs/COVERAGE.md` | The current ranking; which of the nine workflows public evidence can and cannot reach |
@@ -210,6 +222,7 @@ python scripts/rescore_existing.py                  # re-scores the committed br
 python scripts/run_validation.py                    # recomputes V1/V2/V4 and docs/COVERAGE.md; overwrites docs/VALIDATION.md,
                                                     # so the hand-written V3 audit and V5 sections must be restored from git
 python scripts/run_negative_controls.py             # V4: 5 out-of-ICP companies through the full pipeline
+python scripts/verify_hand_quotes.py                # re-checks every docs/ACCOUNT_NOTES.md quote against its live page (network)
 ```
 
 Collection and extraction need `OPENAI_API_KEY` set (see `.env.example`) unless the exact
