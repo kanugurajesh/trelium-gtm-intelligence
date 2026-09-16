@@ -1,6 +1,6 @@
 # I researched Trelium's ICP and built an account-research system to find workflows worth automating
 
-One page. Repo: github.com/kanugurajesh/GTM. Everything below is either a verbatim quote with a
+One page. Repo: github.com/kanugurajesh/trelium-gtm-intelligence. Everything below is either a verbatim quote with a
 source or labelled as my reading. Workflow ideas about named companies are hypotheses to test on
 a call, not claims about how those companies operate.
 
