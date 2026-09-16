@@ -25,7 +25,9 @@ workflow evidence?" is no.
 | Facts in the top five briefs that survived a by-hand audit against the page | 22 of 26 |
 | Extraction defects found by that auditing, each fixed in code with a test | 6 |
 
-Full memo: `docs/FINDINGS.md`. What one brief looks like, from `output/briefs/stran_com.md`:
+Full memo: `docs/FINDINGS.md`. What one brief looks like, abridged from
+`output/briefs/stran_com.md` (the full brief also carries the CRM de-duplication banner, a
+second verified fact and the target persona):
 
 > **Fit score: 32 / 100 — DEPRIORITIZE** · Evidence grade C
 > Core vertical fit 25 · Operational complexity 0 · Software/ecosystem 3 · Scale 0 · Trigger 0 · Evidence quality 4
@@ -76,7 +78,7 @@ prospects.csv --> collect (fetch up to 6 pages/site + robots.txt + content-addre
               --> render  (Markdown / JSON brief)
 ```
 
-Two things make this trustworthy rather than merely plausible-sounding:
+Three things make this trustworthy rather than merely plausible-sounding:
 
 1. **Every fact is a verbatim substring of a committed snapshot.** The extraction model is
    asked for an exact quote, never an offset (models are reliably worse at exact character
@@ -86,8 +88,18 @@ Two things make this trustworthy rather than merely plausible-sounding:
 2. **The score is a pure function of evidence-linked signals, and the model never sees the
    rubric.** `score(signals) -> ScoreResult` takes no network, no clock, no randomness. A signal
    with no evidence behind it scores zero, enforced at the type level, not by convention.
+3. **Repetition strengthens evidence; it never creates a second signal, and disagreement is
+   never quietly resolved.** Facts asserting the same normalised identity (one system name, one
+   trigger type, one segment label) merge into a single signal that keeps every source, so a
+   system named on two pages cannot score twice. Conflicting claims stay on the record: the
+   winner is chosen by evidence tier, then breadth of support, then a fixed tie-break, never by
+   input order and never by asking the model. An unresolved conflict lowers the score and
+   always appears as a research gap naming both candidates. Shuffling the facts changes no
+   signal and no score; a test enforces that (`docs/EVIDENCE_MODEL.md` sections 9-10,
+   `docs/SCORING.md` sections 13-14, `docs/RESCORE_COMPARISON.md` for what this did to the
+   committed dataset).
 
-A third thing turned out to matter as much: **a verbatim quote can still be misread.** Six
+A fourth thing turned out to matter as much: **a verbatim quote can still be misread.** Six
 times, the model quoted a real sentence and mislabelled what it meant (inventory as revenue,
 years as headcount, a 2015 headline as a live trigger, customers' procurement systems as the
 company's own, a page heading as a segment). Each is now a deterministic check on the quote's
@@ -143,11 +155,14 @@ wins on verified precision and reach, that is the recommendation. See the closin
 ## Repository layout
 
 ```
-src/trelium_gtm/     Pipeline: models, taxonomy, scoring, evidence verification, collection,
-                     extraction, hypothesis generation, rendering, CLI
+src/trelium_gtm/     Pipeline: models, taxonomy, scoring, ranking, evidence store + verifier,
+                     collection, extraction, signal derivation, hypothesis generation, hedging
+                     linter, deterministic persona lookup, workflow coverage analysis,
+                     validation experiments, rendering, CLI
 tests/               226 tests covering every deterministic component: scoring boundaries,
                      evidence invariants, link discovery, snapshot preservation across passes,
-                     the six extraction guards, the hedging linter, ranking, validation harness
+                     the six extraction guards, signal dedup and contradiction policy incl.
+                     order independence, the hedging linter, ranking, validation harness
 data/prospects.csv   30 candidate accounts, domains verified by search (not guessed), with
                      disambiguation and exclusion notes
 evidence/            Committed source snapshots, content-addressed, for every collected page
@@ -156,14 +171,33 @@ cache/llm/           Committed, content-addressed LLM responses — the whole pi
 output/briefs/       Generated account briefs, JSON + Markdown, for all 30 accounts (deeper-page pass)
 output/briefs_pass1_homepage/  The homepage-only pass, archived for comparison
 output/negative_controls/  5 out-of-ICP companies run through the same pipeline (V4)
-scripts/             One-off analysis drivers: validation, negative controls, pass comparison
+scripts/             One-off analysis drivers: validation, negative controls, pass comparison,
+                     offline re-score of committed briefs, corpus verification against git blobs
 docs/                Planning docs, research notes, scoring/evidence model, findings, validation
 ```
 
+Where to read, in order, if you have ten minutes:
+
+| Document | What it answers |
+|---|---|
+| `docs/FINDINGS.md` | What running it on 30 accounts produced, and what that means for the tool |
+| `docs/VALIDATION.md` | Rank correlation, component ablation, the by-hand claim audit, negative control, corpus integrity (V1-V5) |
+| `docs/DEEP_COLLECTION.md` | Homepage-only pass versus the six-page pass, account by account |
+| `docs/RANKING.md`, `docs/COVERAGE.md` | The current ranking; which of the nine workflows public evidence can and cannot reach |
+| `docs/SCORING.md`, `docs/EVIDENCE_MODEL.md` | The rubric and the evidence rules the code enforces, with the invariants each test checks |
+| `docs/ICP.md`, `docs/PROJECT_SPEC.md` | Who the tool is for, the closed workflow taxonomy, and what was deliberately not built |
+| `docs/RESCORE_COMPARISON.md` | How the dedup and contradiction fixes changed the committed scores, account by account |
+| `docs/IMPLEMENTATION_STATUS.md`, `docs/IMPLEMENTATION_PLAN.md` | What exists now, with known problems, and the order things would have been cut |
+| `docs/TRELIUM_RESEARCH_NOTES.md` | Notes on Trelium's public positioning that the ICP and taxonomy are built from |
+| `docs/DEMO_SCRIPT.md` | The 60-90 second walkthrough |
+
 ## Running it
 
+Python 3.11 or later (developed and run on 3.13). Runtime dependencies are pydantic, httpx and
+the OpenAI client; pytest is the only dev dependency.
+
 ```bash
-pip install -e .
+pip install -e ".[dev]"
 pytest                                    # 226 tests, no network, no API key needed
 trelium brief --company "Stran Promotional Solutions" --domain stran.com
 trelium run-all --input data/prospects.csv
@@ -171,6 +205,11 @@ trelium rank --output docs/RANKING.md
 trelium score --from output/briefs/stran_com.json   # proves the score is reproducible
 python scripts/compare_passes.py                    # regenerates docs/DEEP_COLLECTION.md
 python scripts/verify_corpus.py --committed         # every cited quote, against the committed bytes
+python scripts/rescore_existing.py                  # re-scores the committed briefs offline (no fetch, no model
+                                                    # call) and rewrites them plus docs/RESCORE_COMPARISON.md in place
+python scripts/run_validation.py                    # recomputes V1/V2/V4 and docs/COVERAGE.md; overwrites docs/VALIDATION.md,
+                                                    # so the hand-written V3 audit and V5 sections must be restored from git
+python scripts/run_negative_controls.py             # V4: 5 out-of-ICP companies through the full pipeline
 ```
 
 Collection and extraction need `OPENAI_API_KEY` set (see `.env.example`) unless the exact
